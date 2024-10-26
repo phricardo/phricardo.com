@@ -5,6 +5,7 @@ import DeveloperBadge from "../DeveloperBadge/DeveloperBadge";
 import {
   InstagramLine,
   LinkedInFill,
+  MingcuteExternalLinkLine,
   MingcuteHome4Fill,
   MingcuteTerminalBoxFill,
 } from "../Icons";
@@ -31,6 +32,11 @@ export default function Footer() {
                 <li>
                   <Link href="#projects">
                     <MingcuteTerminalBoxFill /> Projetos
+                  </Link>
+                </li>
+                <li>
+                  <Link href="http://links.phricardo.com/" target="_blank">
+                    <MingcuteExternalLinkLine /> Links Externos
                   </Link>
                 </li>
               </ul>

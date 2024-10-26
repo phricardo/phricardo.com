@@ -8,7 +8,13 @@ import { SkeletonLoading } from "../SkeletonLoading/SkeletonLoading";
 import { fetchGitHubUser, IGitHubUser } from "@/app/functions/fetchGitHubUser";
 import styles from "./DeveloperBadge.module.css";
 
-export default function DeveloperBadge({ github }: { github: string }) {
+export default function DeveloperBadge({
+  github,
+  hexColor,
+}: {
+  github: string;
+  hexColor?: string;
+}) {
   const [user, setUser] = React.useState<IGitHubUser | null>(null);
 
   React.useEffect(() => {
@@ -31,6 +37,7 @@ export default function DeveloperBadge({ github }: { github: string }) {
       className={styles.badge}
       href={`https://github.com/${github}`}
       target="_blank"
+      style={{ color: hexColor }}
     >
       <div className={styles.badge_wrapper}>
         <Image
