@@ -9,8 +9,8 @@ html {
   scroll-behavior: smooth !important;
 }
 body {
-  --type-first: var(--type-first-inter), Arial, sans-serif;
-  --type-second: var(--type-second-poppins), Helvetica, sans-serif;
+  --type-first: var(--type-first-poppins), Arial, sans-serif;
+  --type-second: var(--type-second-inter), Helvetica, sans-serif;
   --type-third: var(--type-third-tiny5), Helvetica, sans-serif;
 
   --gap-sm: 0.5rem; /* small */
@@ -23,6 +23,7 @@ body {
 
   background: #ffffff;
   font-family: var(--type-first), Arial, Helvetica, sans-serif;
+  font-weight: 400;
   font-size: 1rem;
 }
 li {

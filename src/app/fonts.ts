@@ -1,16 +1,16 @@
 import { Inter, Poppins, Tiny5 } from "next/font/google";
 
-export const type_first = Inter({
-  weight: ["200", "300", "400", "600", "800"],
+export const type_first = Poppins({
+  weight: ["200", "400", "600", "800"],
   subsets: ["latin"],
-  variable: "--type-first-inter",
+  variable: "--type-first-poppins",
   display: "swap",
 });
 
-export const type_second = Poppins({
-  weight: ["600", "800"],
+export const type_second = Inter({
+  weight: ["200", "300", "400", "600", "800"],
   subsets: ["latin"],
-  variable: "--type-second-poppins",
+  variable: "--type-second-inter",
   display: "swap",
 });
 
