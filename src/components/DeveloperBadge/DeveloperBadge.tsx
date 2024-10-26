@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
+import { GithubLine } from "../Icons";
 import { SkeletonLoading } from "../SkeletonLoading/SkeletonLoading";
 import { fetchGitHubUser, IGitHubUser } from "@/app/functions/fetchGitHubUser";
 import styles from "./DeveloperBadge.module.css";
-import Link from "next/link";
 
 export default function DeveloperBadge({ github }: { github: string }) {
   const [user, setUser] = React.useState<IGitHubUser | null>(null);
@@ -41,7 +42,9 @@ export default function DeveloperBadge({ github }: { github: string }) {
         />
         <div>
           <h1>{user.name}</h1>
-          <span>@{user.login}</span>
+          <span>
+            <GithubLine /> @{user.login}
+          </span>
         </div>
       </div>
     </Link>

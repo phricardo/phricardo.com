@@ -7,7 +7,21 @@
   min-height: 60vh;
 
   display: flex;
-  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: calc(var(--gap-sm) * 2);
+}
 
-  background: #171718;
+.title {
+  font-size: 3rem;
+  font-family: var(--type-third);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+.header_wrapper {
+  width: 20rem;
 }

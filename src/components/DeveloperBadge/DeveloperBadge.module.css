@@ -42,5 +42,9 @@
 }
 
 .badge div span {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: calc(var(--gap-sm) / 2);
   font-size: 0.8rem;
 }

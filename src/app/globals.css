@@ -7,12 +7,11 @@
 }
 html {
   scroll-behavior: smooth !important;
-  scroll-behavior: smooth;
 }
 body {
   --type-first: var(--type-first-inter), Arial, sans-serif;
   --type-second: var(--type-second-poppins), Helvetica, sans-serif;
-  --type-third: var(--type-third-concert_one), Helvetica, sans-serif;
+  --type-third: var(--type-third-tiny5), Helvetica, sans-serif;
 
   --gap-sm: 0.5rem; /* small */
   --gap-md: 2rem; /* medium */

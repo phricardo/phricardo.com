@@ -3,13 +3,12 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  background: #171718;
+  background: #0e0e0f;
+  border-bottom: 0.1rem solid #312d2d;
   height: 3rem;
 }
 
 .navbar .navbar_wrapper {
   display: flex;
   align-items: center;
-
-  height: 100%;
 }

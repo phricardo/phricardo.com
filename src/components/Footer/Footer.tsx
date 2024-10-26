@@ -2,6 +2,12 @@
 
 import Link from "next/link";
 import DeveloperBadge from "../DeveloperBadge/DeveloperBadge";
+import {
+  InstagramLine,
+  LinkedInFill,
+  MingcuteHome4Fill,
+  MingcuteTerminalBoxFill,
+} from "../Icons";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -18,10 +24,14 @@ export default function Footer() {
               <h1>Links</h1>
               <ul>
                 <li>
-                  <Link href="#home">Início</Link>
+                  <Link href="#home">
+                    <MingcuteHome4Fill /> Início
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#projects">Projetos</Link>
+                  <Link href="#projects">
+                    <MingcuteTerminalBoxFill /> Projetos
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -34,7 +44,7 @@ export default function Footer() {
                     href="https://www.instagram.com/phricardorj/"
                     target="_blank"
                   >
-                    Instagram
+                    <InstagramLine /> Instagram
                   </Link>
                 </li>
                 <li>
@@ -42,7 +52,7 @@ export default function Footer() {
                     href="https://www.linkedin.com/in/phricardorj/"
                     target="_blank"
                   >
-                    LinkedIn
+                    <LinkedInFill /> LinkedIn
                   </Link>
                 </li>
               </ul>

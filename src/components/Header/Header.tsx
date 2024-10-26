@@ -8,9 +8,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <Navbar />
-      <div className={`container ${styles.header_wrapper}`}>
-        <h1>Olá Mundo!</h1>
-      </div>
+      <div className={`container ${styles.header_wrapper}`}></div>
     </header>
   );
 }

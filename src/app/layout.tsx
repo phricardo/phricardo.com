@@ -1,5 +1,5 @@
-import { type_first, type_second } from "./fonts";
 import type { Metadata } from "next";
+import { fonts } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,9 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${type_first.variable} ${type_second.variable}`}>
-        {children}
-      </body>
+      <body className={fonts}>{children}</body>
     </html>
   );
 }
