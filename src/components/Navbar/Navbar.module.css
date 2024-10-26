@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background: #171718;
+  height: 3rem;
+}
+
+.navbar .navbar_wrapper {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+}

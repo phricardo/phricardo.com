@@ -1,0 +1,13 @@
+.header {
+  background: #171718;
+  color: white;
+}
+
+.header .header_wrapper {
+  min-height: 60vh;
+
+  display: flex;
+  align-items: center;
+
+  background: #171718;
+}

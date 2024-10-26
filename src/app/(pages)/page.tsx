@@ -1,9 +1,15 @@
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <h1>Hello World!</h1>
-    </div>
+    <>
+      <Header />
+
+      <main className={styles.main}></main>
+
+      <Footer />
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import { type_first, type_second } from "./fonts";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body className={`${type_first.variable} ${type_second.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
