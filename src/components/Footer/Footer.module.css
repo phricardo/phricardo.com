@@ -9,17 +9,12 @@
   height: 100%;
   min-height: 10rem;
   padding: 1rem var(--gap-sm);
-  gap: calc(var(--gap-sm) * 5);
+  gap: calc(var(--gap-sm) * 2);
 }
 
 .brand {
   height: 100%;
   width: 20rem;
-
-  display: flex;
-  justify-content: baseline;
-  flex-direction: column;
-
   color: #fafafa;
 }
 

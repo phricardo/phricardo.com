@@ -10,7 +10,8 @@
   transition: 0.1s all;
 
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  align-items: baseline;
 }
 
 .badge:hover {
