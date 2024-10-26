@@ -4,10 +4,11 @@ import Link from "next/link";
 import DeveloperBadge from "../DeveloperBadge/DeveloperBadge";
 import {
   InstagramLine,
-  LinkedInFill,
-  MingcuteExternalLinkLine,
-  MingcuteHome4Fill,
-  MingcuteTerminalBoxFill,
+  MingcuteHome1Line,
+  MingcuteTerminalLine,
+  MingcuteUser1Line,
+  MingcuteMailLine,
+  LinkedinLine,
 } from "../Icons";
 import styles from "./Footer.module.css";
 
@@ -22,21 +23,26 @@ export default function Footer() {
         <div className={styles.footer_links}>
           <div className={styles.columns}>
             <div className={styles.column}>
-              <h1>Links</h1>
+              <h1>Menu</h1>
               <ul>
                 <li>
                   <Link href="#home">
-                    <MingcuteHome4Fill /> Início
+                    <MingcuteHome1Line /> Início
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#about">
+                    <MingcuteUser1Line /> Sobre
                   </Link>
                 </li>
                 <li>
                   <Link href="#projects">
-                    <MingcuteTerminalBoxFill /> Projetos
+                    <MingcuteTerminalLine /> Projetos
                   </Link>
                 </li>
                 <li>
-                  <Link href="http://links.phricardo.com/" target="_blank">
-                    <MingcuteExternalLinkLine /> Links Externos
+                  <Link href="#contact">
+                    <MingcuteMailLine /> Contato
                   </Link>
                 </li>
               </ul>
@@ -58,7 +64,7 @@ export default function Footer() {
                     href="https://www.linkedin.com/in/phricardorj/"
                     target="_blank"
                   >
-                    <LinkedInFill /> LinkedIn
+                    <LinkedinLine /> LinkedIn
                   </Link>
                 </li>
               </ul>
@@ -71,6 +77,8 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} phricardo.com. Todos os direitos
           reservados.
         </p>
+        <p>Desenvolvido por phricardo.com no Rio de Janeiro/BR</p>
+        <p>MingCute Icon - Apache 2.0</p>
       </div>
     </footer>
   );

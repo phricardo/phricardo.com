@@ -5,16 +5,11 @@
 
 .header .header_wrapper {
   min-height: 60vh;
+  width: 100%;
 
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: calc(var(--gap-sm) * 2);
-}
-
-.title {
-  font-size: 3rem;
-  font-family: var(--type-third);
 }
 
 .subtitle {
@@ -24,4 +19,14 @@
 
 .header_wrapper {
   width: 20rem;
+}
+
+.highlight .title {
+  font-size: 3rem;
+  line-height: 3.5rem;
+  width: 18rem;
+}
+
+.highlight .title span {
+  font-weight: 200;
 }
