@@ -7,6 +7,7 @@ export { MingcuteHome1Line } from "./MingcuteHome1Line";
 export { MingcuteTerminalLine } from "./MingcuteTerminalLine";
 export { MingcuteMailLine } from "./MingcuteMailLine";
 export { MingcuteExternalLinkFill } from "./MingcuteExternalLinkFill";
+export { MingcuteMenuLine } from "./MingcuteMenuLine";
 
 // Custom Icons
 export { XTwitterLine } from "./XTwitterLine";

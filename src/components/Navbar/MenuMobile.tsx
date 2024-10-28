@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   MingcuteHome1Line,
   MingcuteMailLine,
+  MingcuteMenuLine,
   MingcuteTerminalLine,
   MingcuteUser1Line,
 } from "../Icons";
@@ -30,9 +31,9 @@ export default function MenuMobile() {
     <div className={styles.menu_wrapper}>
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className={styles.button}
+        className={`${styles.button} ${isMenuOpen ? styles.activated : ""}`}
       >
-        Menu
+        <MingcuteMenuLine />
       </button>
 
       <div className={styles.menu} ref={menuRef}>
