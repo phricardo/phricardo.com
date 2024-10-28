@@ -22,17 +22,17 @@ export default function MenuLinks({
         </Link>
       </li>
       <li>
-        <Link href="/sobre" onClick={onClickLink}>
+        <Link href="#sobre" onClick={onClickLink}>
           <MingcuteUser1Line /> Sobre
         </Link>
       </li>
       <li>
-        <Link href="/projetos" onClick={onClickLink}>
+        <Link href="#projetos" onClick={onClickLink}>
           <MingcuteTerminalLine /> Projetos
         </Link>
       </li>
       <li>
-        <Link href="/contato" onClick={onClickLink}>
+        <Link href="#contato" onClick={onClickLink}>
           <MingcuteMailLine /> Contato
         </Link>
       </li>
