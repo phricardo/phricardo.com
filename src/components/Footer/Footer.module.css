@@ -1,6 +1,6 @@
 .footer {
   color: #fafafa;
-  background: #171718;
+  background: #111111;
   border-top: 0.1rem solid #343232;
 }
 
@@ -71,7 +71,7 @@
   flex-direction: column;
   text-align: center;
   padding: var(--gap-sm);
-  background: #0e0e0f;
+  background: #000000;
   border-top: 0.1rem solid #343232;
   color: #827b7b;
   margin-top: 1rem;

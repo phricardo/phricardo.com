@@ -4,8 +4,8 @@
   flex-direction: column;
   justify-content: center;
   background: #0e0e0f;
-  border-bottom: 0.1rem solid #312d2d;
   padding: 0.2rem 0;
+  height: 3rem;
 }
 
 .navbar .navbar_wrapper {

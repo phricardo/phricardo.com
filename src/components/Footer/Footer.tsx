@@ -73,12 +73,11 @@ export default function Footer() {
         </div>
       </div>
       <div className={styles.copyright}>
+        <p>Ícones: MingCute Icon - Apache 2.0</p>
         <p>
           &copy; {new Date().getFullYear()} phricardo.com. Todos os direitos
           reservados.
         </p>
-        <p>Desenvolvido por phricardo.com no Rio de Janeiro/BR</p>
-        <p>MingCute Icon - Apache 2.0</p>
       </div>
     </footer>
   );

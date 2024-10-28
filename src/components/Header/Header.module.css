@@ -1,5 +1,5 @@
 .header {
-  background: #171718;
+  background: #000000;
   color: white;
 }
 
@@ -22,11 +22,19 @@
 }
 
 .highlight .title {
-  font-size: 3rem;
-  line-height: 3.5rem;
-  width: 18rem;
+  font-size: 4.5rem;
+  line-height: 4.8rem;
+  width: 25rem;
 }
 
 .highlight .title span {
   font-weight: 200;
+}
+
+@media (max-width: 450px) {
+  .highlight .title {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    width: 18rem;
+  }
 }
