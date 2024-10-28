@@ -7,6 +7,7 @@ import {
   MingcuteMailLine,
   MingcuteTerminalLine,
   MingcuteUser1Line,
+  MingcuteTrophyLine,
 } from "../Icons";
 
 export default function MenuLinks({
@@ -22,17 +23,22 @@ export default function MenuLinks({
         </Link>
       </li>
       <li>
-        <Link href="#sobre" onClick={onClickLink}>
-          <MingcuteUser1Line /> Sobre
+        <Link href="#xp" onClick={onClickLink}>
+          <MingcuteTrophyLine /> Experiência
         </Link>
       </li>
       <li>
-        <Link href="#projetos" onClick={onClickLink}>
+        <Link href="#projects" onClick={onClickLink}>
           <MingcuteTerminalLine /> Projetos
         </Link>
       </li>
       <li>
-        <Link href="#contato" onClick={onClickLink}>
+        <Link href="#about" onClick={onClickLink}>
+          <MingcuteUser1Line /> Sobre
+        </Link>
+      </li>
+      <li>
+        <Link href="#contact" onClick={onClickLink}>
           <MingcuteMailLine /> Contato
         </Link>
       </li>
