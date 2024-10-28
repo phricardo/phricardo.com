@@ -1,0 +1,42 @@
+.menu_wrapper {
+  position: relative;
+}
+
+.menu_wrapper .menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+}
+
+.menu_wrapper .menu ul {
+  width: 200px;
+  background: #0e0e0f;
+  border: 0.1rem solid #343232;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  z-index: 999;
+}
+
+.menu_wrapper .menu ul li a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d2cfcf;
+  padding: 1rem;
+}
+
+.menu_wrapper .menu ul li a:hover {
+  background: #1e1c1c;
+  color: #ffffff;
+}
+
+.button {
+  /* height: 2rem;
+  width: 2rem; */
+  font-size: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.4rem;
+}
