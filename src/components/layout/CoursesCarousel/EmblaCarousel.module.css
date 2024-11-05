@@ -1,3 +1,8 @@
+.embla {
+  width: 100%;
+  overflow: hidden;
+}
+
 .embla__slide {
   position: relative;
   border-radius: 1rem;
