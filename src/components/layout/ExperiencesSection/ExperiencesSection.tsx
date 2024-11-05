@@ -50,25 +50,25 @@ const formatExperiencePeriod = (
   years: number,
   months: number
 ): string => {
-  if (end) {
-    const endYear = new Date(end).getFullYear();
-    return `${startYear} - ${endYear}`;
-  } else {
-    let period = `${startYear} - o momento`;
-    const yearPart = years > 0 ? `${years} ano${years > 1 ? "s" : ""}` : "";
-    const monthPart =
-      months > 0 ? `${months} ${months > 1 ? "meses" : "mês"}` : "";
+  // if (end) {
+  //   const endYear = new Date(end).getFullYear();
+  //   return `${startYear} - ${endYear}`;
+  // }
 
-    if (yearPart && monthPart) {
-      period += ` (${yearPart} e ${monthPart})`;
-    } else if (yearPart) {
-      period += ` (${yearPart})`;
-    } else if (monthPart) {
-      period += ` (${monthPart})`;
-    }
+  let period = `${startYear} - o momento`;
+  const yearPart = years > 0 ? `${years} ano${years > 1 ? "s" : ""}` : "";
+  const monthPart =
+    months > 0 ? `${months} ${months > 1 ? "meses" : "mês"}` : "";
 
-    return period;
+  if (yearPart && monthPart) {
+    period += ` (${yearPart} e ${monthPart})`;
+  } else if (yearPart) {
+    period += ` (${yearPart})`;
+  } else if (monthPart) {
+    period += ` (${monthPart})`;
   }
+
+  return period;
 };
 
 export default function ExperiencesSection() {
