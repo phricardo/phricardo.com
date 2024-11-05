@@ -20,19 +20,23 @@
 }
 
 .xp {
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 0.8rem;
   color: #f3f3f3;
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   gap: 1.5rem;
 
   background: #212121;
   border: 0.1rem solid #414141;
 
-  width: 100%;
+  flex: 1 1 400px;
+
+  height: 400px;
+  overflow-y: auto;
 }
 
 .xp div img {
@@ -65,3 +69,10 @@
   border-radius: 0.8rem;
   font-size: 1rem;
 }
+
+@media (max-width: 1000px) {
+  .xp {
+    height: auto;
+  }
+}
+

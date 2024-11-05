@@ -26,11 +26,11 @@ export default function Footer() {
             <div className={styles.column}>
               <h1>Menu</h1>
               <ul>
-                <li>
+                {/* <li>
                   <Link href="#home">
                     <MingcuteHome1Line /> Início
                   </Link>
-                </li>
+                </li> */}
                 {/* <li>
                   <Link href="#about">
                     <MingcuteUser1Line /> Sobre

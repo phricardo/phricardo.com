@@ -10,7 +10,7 @@ export default function Home() {
 
       <main>
         <ExperiencesSection />
-        {/* <ProjectsSection /> */}
+        <ProjectsSection />
       </main>
 
       <Footer />
