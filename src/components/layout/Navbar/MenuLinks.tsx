@@ -17,14 +17,14 @@ export default function MenuLinks({
 }) {
   return (
     <ul>
-      <li>
+      {/* <li>
         <Link href="/" onClick={onClickLink}>
           <MingcuteHome1Line /> Início
         </Link>
-      </li>
+      </li> */}
       <li>
         <Link href="#xp" onClick={onClickLink}>
-          <MingcuteTrophyLine /> Experiência
+          <MingcuteTrophyLine /> Experiências
         </Link>
       </li>
       <li>
@@ -32,7 +32,7 @@ export default function MenuLinks({
           <MingcuteTerminalLine /> Projetos
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link href="#about" onClick={onClickLink}>
           <MingcuteUser1Line /> Sobre
         </Link>
@@ -41,7 +41,7 @@ export default function MenuLinks({
         <Link href="#contact" onClick={onClickLink}>
           <MingcuteMailLine /> Contato
         </Link>
-      </li>
+      </li> */}
     </ul>
   );
 }

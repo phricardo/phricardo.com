@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import DeveloperBadge from "../DeveloperBadge/DeveloperBadge";
+import DeveloperBadge from "../../global/DeveloperBadge/DeveloperBadge";
 import {
   InstagramLine,
   MingcuteHome1Line,
   MingcuteTerminalLine,
   MingcuteUser1Line,
   MingcuteMailLine,
+  MingcuteTrophyLine,
   LinkedinLine,
 } from "../Icons";
 import styles from "./Footer.module.css";
@@ -30,9 +31,14 @@ export default function Footer() {
                     <MingcuteHome1Line /> Início
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="#about">
                     <MingcuteUser1Line /> Sobre
+                  </Link>
+                </li> */}
+                <li>
+                  <Link href="#xp">
+                    <MingcuteTrophyLine /> Experiências
                   </Link>
                 </li>
                 <li>
@@ -40,11 +46,11 @@ export default function Footer() {
                     <MingcuteTerminalLine /> Projetos
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="#contact">
                     <MingcuteMailLine /> Contato
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
 

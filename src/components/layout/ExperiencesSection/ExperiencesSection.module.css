@@ -1,0 +1,67 @@
+.section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: #000000;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #f3f3f3;
+}
+
+.xps {
+  display: flex;
+
+  gap: 1rem;
+  width: 100%;
+
+  flex-wrap: wrap;
+}
+
+.xp {
+  padding: 2rem;
+  border-radius: 0.8rem;
+  color: #f3f3f3;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.5rem;
+
+  background: #212121;
+  border: 0.1rem solid #414141;
+
+  width: 100%;
+}
+
+.xp div img {
+  height: 2rem;
+}
+
+.xp h1 {
+  font-size: 1rem;
+  color: #f3f3f3;
+}
+
+.xp span {
+  font-size: 1rem;
+  color: #f3f3f3;
+}
+
+.xp p {
+  font-size: 1rem;
+}
+
+.xp .skills {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.xp .skills span {
+  padding: 0.2rem 0.5rem;
+  background: #414141;
+  border-radius: 0.8rem;
+  font-size: 1rem;
+}

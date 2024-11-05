@@ -3,8 +3,8 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-smooth: always;
+  box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
 }
 html {
@@ -23,7 +23,7 @@ body {
   --radius-md: 0.4rem; /* medium */
   --radius-lg: 50%; /* large */
 
-  background: #ffffff;
+  background: #000000;
   font-family: var(--type-first), Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 1rem;
@@ -46,7 +46,7 @@ button {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--gap-sm);
+  padding: 0 1rem;
 }
 @media (max-width: 1000px) {
   .container {
