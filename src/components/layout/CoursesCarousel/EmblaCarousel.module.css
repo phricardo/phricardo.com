@@ -73,15 +73,15 @@
   height: 3.6rem;
   z-index: 1;
   border-radius: 50%;
-  color: #f3f3f3;
+  color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #222325;
+  background: #02fe83;
 }
 
 .embla__button:hover {
-  background: #292a2e;
+  background: #0fec81;
 }
 
 .embla__button:disabled {
@@ -149,7 +149,7 @@
   width: 100%;
   padding: 0.5rem;
   color: #000000;
-  background: #02fe83;
+  /* background: #02fe83; */
   display: flex;
   justify-content: center;
   flex-direction: column;

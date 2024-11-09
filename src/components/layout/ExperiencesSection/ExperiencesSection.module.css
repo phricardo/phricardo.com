@@ -18,7 +18,7 @@
   flex-direction: column;
 
   background: transparent;
-  border: 0.1rem solid #dacbd2;
+  border: 0.1rem solid #02fe83;
 
   gap: 1rem;
 
@@ -52,7 +52,7 @@
 
 .xp .skills span {
   padding: 0.2rem 0.5rem;
-  background: #dacbd2;
+  background: #02fe83;
   font-weight: 600;
   color: #000000;
   border-radius: 0.8rem;

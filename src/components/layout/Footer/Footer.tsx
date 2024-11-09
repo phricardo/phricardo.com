@@ -4,10 +4,7 @@ import Link from "next/link";
 import DeveloperBadge from "../../global/DeveloperBadge/DeveloperBadge";
 import {
   InstagramLine,
-  MingcuteHome1Line,
   MingcuteTerminalLine,
-  MingcuteUser1Line,
-  MingcuteMailLine,
   MingcuteTrophyLine,
   LinkedinLine,
 } from "../Icons";
@@ -26,16 +23,6 @@ export default function Footer() {
             <div className={styles.column}>
               <h1>Menu</h1>
               <ul>
-                {/* <li>
-                  <Link href="#home">
-                    <MingcuteHome1Line /> Início
-                  </Link>
-                </li> */}
-                {/* <li>
-                  <Link href="#about">
-                    <MingcuteUser1Line /> Sobre
-                  </Link>
-                </li> */}
                 <li>
                   <Link href="#xp">
                     <MingcuteTrophyLine /> Experiências
@@ -46,11 +33,6 @@ export default function Footer() {
                     <MingcuteTerminalLine /> Projetos
                   </Link>
                 </li>
-                {/* <li>
-                  <Link href="#contact">
-                    <MingcuteMailLine /> Contato
-                  </Link>
-                </li> */}
               </ul>
             </div>
 

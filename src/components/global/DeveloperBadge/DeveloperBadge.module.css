@@ -1,18 +1,21 @@
 .badge {
   color: currentColor;
   border-radius: var(--radius-md);
-  overflow: hidden;
 
-  width: 12rem;
   cursor: pointer;
   opacity: 0.9;
   transition: 0.1s all;
 
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  justify-content: center;
 
   text-transform: uppercase;
   font-family: var(--type-third);
+
+  padding: 0.25rem;
+
+  border: 0.1rem solid currentColor;
 }
 
 .badge:hover {
@@ -22,7 +25,7 @@
 .badge .badge_wrapper {
   gap: var(--gap-sm);
   display: inline-flex;
-  /* padding: var(--gap-sm); */
+  align-items: center;
 }
 
 .badge img {
@@ -48,7 +51,7 @@
 .badge div span {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: calc(var(--gap-sm) / 2);
   font-size: 0.8rem;
 }

@@ -1,7 +1,7 @@
 .footer {
   color: #fafafa;
-  /* background: #111111;
-  border-top: 0.1rem solid #343232; */
+  background: #111111;
+  border-top: 0.1rem solid #343232;
   margin-top: 8rem;
 }
 
@@ -14,8 +14,6 @@
 }
 
 .brand {
-  height: 100%;
-  width: 20rem;
   color: #fafafa;
 }
 
