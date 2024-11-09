@@ -1,12 +1,20 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Navbar } from "../Navbar/Navbar";
 import DeveloperBadge from "@/components/global/DeveloperBadge/DeveloperBadge";
+import TypingEffect from "@/components/global/TypingEffect/TypingEffect";
 import styles from "./Header.module.css";
-import Image from "next/image";
 
 export default function Header() {
+  const intervalSeconds = 10;
+  const texts = [
+    "Brazilian Software Developer",
+    "Fullstack Developer",
+    "Frontend / Backend Developer",
+  ];
+
   return (
     <header className={styles.header}>
       <Navbar />
@@ -24,7 +32,7 @@ export default function Header() {
                 height="20"
                 width="20"
               />{" "}
-              Brazilian software developer_
+              <TypingEffect texts={texts} intervalSeconds={intervalSeconds} />
             </p>
           </div>
         </div>
