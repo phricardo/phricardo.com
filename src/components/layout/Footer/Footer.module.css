@@ -1,8 +1,8 @@
 .footer {
   color: #fafafa;
-  background: #111111;
-  border-top: 0.1rem solid #343232;
-  margin-top: 4rem;
+  /* background: #111111;
+  border-top: 0.1rem solid #343232; */
+  margin-top: 8rem;
 }
 
 .footer_wrapper {
@@ -44,6 +44,9 @@
   text-transform: uppercase;
   color: #fafafa;
   margin-bottom: calc(var(--gap-sm) * 0.8);
+
+  text-transform: uppercase;
+  font-family: var(--type-third);
 }
 
 .columns ul {

@@ -44,6 +44,29 @@ button {
   outline: none;
   border: none;
 }
+section {
+  color: #f3f3f3;
+}
+main > section:first-of-type {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+main > section:not(:first-of-type) {
+  padding-top: 5rem;
+  padding-bottom: 2.5rem;
+}
+section h1.title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  font-family: var(--type-third);
+  color: #dacbd2;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* Standard container */
 .container {
   height: 100%;
@@ -57,7 +80,6 @@ button {
     padding: var(--gap-sm);
   }
 }
-
 /* Scrollbar */
 ::-webkit-scrollbar {
   height: 12px;

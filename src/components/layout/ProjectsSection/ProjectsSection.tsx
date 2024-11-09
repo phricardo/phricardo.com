@@ -4,6 +4,7 @@ import React from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import EmblaCarousel from "../CoursesCarousel/EmblaCarousel";
 import styles from "./ProjectsSection.module.css";
+import { MingcuteTerminalLine } from "../Icons";
 
 const SLIDES = [
   {
@@ -38,10 +39,12 @@ export default function ProjectsSection() {
   return (
     <section className={styles.section} id="projects">
       <div className={`${styles.section_wrapper} container`}>
-        <h1 className={styles.title}>Projetos</h1>
+        <h1 className={`title`}>
+          <MingcuteTerminalLine /> Projetos
+        </h1>
+
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </div>
     </section>
   );
 }
-

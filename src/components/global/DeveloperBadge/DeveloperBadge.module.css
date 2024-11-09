@@ -1,17 +1,18 @@
 .badge {
   color: currentColor;
-  /* border: 0.1rem solid currentColor; */
   border-radius: var(--radius-md);
   overflow: hidden;
-  height: 4rem;
+
   width: 12rem;
   cursor: pointer;
   opacity: 0.9;
   transition: 0.1s all;
 
   display: flex;
-  /* align-items: center; */
   align-items: baseline;
+
+  text-transform: uppercase;
+  font-family: var(--type-third);
 }
 
 .badge:hover {

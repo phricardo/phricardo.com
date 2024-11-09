@@ -11,6 +11,12 @@ import {
   usePrevNextButtons,
 } from "./EmblaCarouselArrowButtons";
 import styles from "./EmblaCarousel.module.css";
+import Link from "next/link";
+import {
+  InstagramLine,
+  MingcuteExternalLinkLine,
+  MingcuteGithubLine,
+} from "../Icons";
 
 type Slide = {
   src?: string;
@@ -53,6 +59,14 @@ export default function EmblaCarousel({
               </div>
               <div className={styles.embla__slide_info}>
                 <h1>{slide.title}</h1>
+                <div>
+                  <Link href="">
+                    <MingcuteGithubLine /> Repositório
+                  </Link>
+                  <Link href="">
+                    <MingcuteExternalLinkLine /> Link
+                  </Link>
+                </div>
               </div>
             </div>
           ))}

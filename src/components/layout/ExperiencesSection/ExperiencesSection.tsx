@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { MingcuteTrophyLine } from "../Icons";
 import styles from "./ExperiencesSection.module.css";
 
 const experiences = [
@@ -13,7 +14,7 @@ const experiences = [
     description:
       "Desenvolvedor no Magalu Ads (AdTech) (https://magaluads.com.br/), solução interna de publicidade da Magazine Luiza, trabalho na área de tecnologia e inovação da Magalu — LuizaLabs. Como desenvolvedor, estou engajado no processo de desenvolvimento de novas funcionalidades e implementações, além de possuir habilidades em DEVOPs (CI/CD) e Gitlab para aprimorar os processos.",
     skills:
-      "Java, Spring Boot, Micronaut, PostgreSQL, Docker, Testes Unitários e de Integração",
+      "Java, Spring Boot, Micronaut, Arquitetura de Microsserviços, PostgreSQL, Docker, Testes Unitários e de Integração",
   },
   {
     id: 2,
@@ -24,7 +25,7 @@ const experiences = [
     description:
       "Desenvolvedor Full Stack Freelancer, atuando em uma ampla carteira de clientes. Envolvido em todas as etapas do ciclo de desenvolvimento de software, desde a análise de requisitos até a entrega final. No decorrer dessa trajetória, desenvolvi mais de 50 sites e mantive vários deles ao longo dos anos, incluindo sistemas de SGA (Sistema de Gerenciamento de Agendamentos) e SGE (Sistema de Gestão de Estoque). Além disso, criei landing pages com alta conversão para microempresas e pequenos negócios do Rio de Janeiro.",
     skills:
-      "Java, Spring Boot, Micronaut, PostgreSQL, Docker, Testes Unitários e de Integração",
+      "Javascript, Typescript, React, Angular, Java, Spring Boot, Micronaut, PostgreSQL, Docker, Testes Unitários e de Integração",
   },
 ];
 
@@ -50,12 +51,9 @@ const formatExperiencePeriod = (
   years: number,
   months: number
 ): string => {
-  // if (end) {
-  //   const endYear = new Date(end).getFullYear();
-  //   return `${startYear} - ${endYear}`;
-  // }
-
   let period = `${startYear} - o momento`;
+  if (end) period = `${startYear} - ${startYear}`;
+
   const yearPart = years > 0 ? `${years} ano${years > 1 ? "s" : ""}` : "";
   const monthPart =
     months > 0 ? `${months} ${months > 1 ? "meses" : "mês"}` : "";
@@ -73,9 +71,21 @@ const formatExperiencePeriod = (
 
 export default function ExperiencesSection() {
   return (
-    <section className={styles.section} id="xp">
-      <div className={`${styles.section_wrapper} container`}>
-        <h1 className={styles.title}>Experiências</h1>
+    <section id="xp">
+      <div className="container">
+        <h1 className={`title`}>
+          <MingcuteTrophyLine /> Experiências
+        </h1>
+
+        <p>
+          Desenvolvedor Backend Java com mais de 4 anos de experiência. Trabalho
+          com aplicações distribuídas em Arquitetura de Microsserviços
+          utilizando “message brokers” como o Kafka e RabbitMQ. Conhecimento e
+          prática em Banco de Dados relacionais e não relacionais, como também
+          conhecimento de testes unitários e de integração. Aptidão com diversas
+          tecnologias, como React, Angular, Javascript, Typescript, Java, Spring
+          Boot, Next.js e NestJS.
+        </p>
 
         <div className={styles.xps}>
           {experiences.map((xp) => {
@@ -95,10 +105,8 @@ export default function ExperiencesSection() {
               <div key={xp.id} className={styles.xp}>
                 <div>
                   <img src={xp.logo} alt={`${xp.company} logo`} />
-                  <h1>{xp.company}</h1>
-                  <span>{period}</span>
+                  <p className={styles.period}>{period}</p>
                 </div>
-                <p>{xp.description}</p>
 
                 <div className={styles.skills}>
                   {(xp.skills || "").split(", ").map((skill, index) => (
