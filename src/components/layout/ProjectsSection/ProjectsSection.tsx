@@ -1,35 +1,35 @@
 "use client";
 
 import React from "react";
-import { EmblaOptionsType } from "embla-carousel";
-import EmblaCarousel from "../CoursesCarousel/EmblaCarousel";
 import { MingcuteFoldersLine } from "../Icons";
+import { EmblaOptionsType } from "embla-carousel";
+import ProjectsCarousel from "../ProjectsCarousel/ProjectsCarousel";
 import styles from "./ProjectsSection.module.css";
 
 const SLIDES = [
   {
-    title: "Project Name",
-    src: "/assets/images/01.webp",
-    build: "http://phricardo.com/",
-    repo: "https://github.com/",
+    title: "PetLoveTag!",
+    thumbnail: "/assets/images/01.webp",
+    build: "https://petlovetag.com/",
+    repo: "",
   },
   {
-    title: "Project Name",
-    src: "/assets/images/01.webp",
-    build: "http://phricardo.com/",
-    repo: "https://github.com/",
+    title: "integra.cefetrj",
+    thumbnail: "/assets/images/01.webp",
+    build: "https://integra-cefetrj.phricardo.com/",
+    repo: "https://github.com/phricardo/integra.cefetrj",
   },
   {
-    title: "Project Name",
-    src: "/assets/images/01.webp",
-    build: "http://phricardo.com/",
-    repo: "https://github.com/",
+    title: "ListVideo",
+    thumbnail: "/assets/images/01.webp",
+    build: "http://listvideo.phricardo.com/",
+    repo: "",
   },
   {
-    title: "Project Name",
-    src: "/assets/images/01.webp",
-    build: "http://phricardo.com/",
-    repo: "https://github.com/",
+    title: "MockEcomm API",
+    thumbnail: "/assets/images/01.webp",
+    build: "",
+    repo: "https://github.com/phricardo/mockecomm-api",
   },
 ];
 
@@ -43,7 +43,7 @@ export default function ProjectsSection() {
           <MingcuteFoldersLine /> Projetos
         </h1>
 
-        <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+        <ProjectsCarousel slides={SLIDES} options={OPTIONS} />
       </div>
     </section>
   );

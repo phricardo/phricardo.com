@@ -1,29 +1,27 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
+import { MingcuteExternalLinkLine, MingcuteGithubLine } from "../Icons";
 import {
   PrevButton,
   NextButton,
   usePrevNextButtons,
 } from "./EmblaCarouselArrowButtons";
-import styles from "./EmblaCarousel.module.css";
-import Link from "next/link";
-import {
-  InstagramLine,
-  MingcuteExternalLinkLine,
-  MingcuteGithubLine,
-} from "../Icons";
+import styles from "./ProjectsCarousel.module.css";
 
 type Slide = {
-  src?: string;
+  thumbnail?: string;
   title: string;
+  build?: string;
+  repo?: string;
 };
 
-export default function EmblaCarousel({
+export default function ProjectsCarousel({
   slides,
   options,
 }: {
@@ -52,23 +50,35 @@ export default function EmblaCarousel({
                 <Image
                   layout="fill"
                   alt={slide.title}
-                  src={`${slide.src ? slide.src : ""}`}
+                  src={`${slide.thumbnail ? slide.thumbnail : ""}`}
                   className={styles.image}
                 />
               </div>
               <div className={styles.embla__slide_info}>
                 <h1>{slide.title}</h1>
                 <div>
-                  <Link href="">
-                    <MingcuteGithubLine /> Repositório
-                  </Link>
-                  <Link href="">
-                    <MingcuteExternalLinkLine /> Link
-                  </Link>
+                  {slide.build && (
+                    <Link href={slide.build} target="_blank">
+                      <MingcuteExternalLinkLine /> Visitar On-line
+                    </Link>
+                  )}
+                  {slide.repo && (
+                    <Link href={slide.repo} target="_blank">
+                      <MingcuteGithubLine /> Repositório
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
           ))}
+
+          <Link
+            target="_blank"
+            href="https://github.com/phricardo?tab=repositories"
+            className={`${styles.embla__slide} ${styles.slide_more}`}
+          >
+            <MingcuteExternalLinkLine /> Ver todos os projetos
+          </Link>
         </div>
       </div>
 
