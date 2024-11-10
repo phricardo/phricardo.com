@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { MingcuteTerminalLine, MingcuteTrophyLine } from "../Icons";
+import { MingcuteFoldersLine, MingcuteTrophyLine } from "../Icons";
 
 export default function MenuLinks({
   onClickLink,
@@ -18,7 +18,7 @@ export default function MenuLinks({
       </li>
       <li>
         <Link href="#projects" onClick={onClickLink}>
-          <MingcuteTerminalLine /> Projetos
+          <MingcuteFoldersLine /> Projetos
         </Link>
       </li>
     </ul>

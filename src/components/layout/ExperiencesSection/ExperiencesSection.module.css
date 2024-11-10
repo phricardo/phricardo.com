@@ -18,7 +18,12 @@
   flex-direction: column;
 
   background: transparent;
-  border: 0.1rem solid #02fe83;
+
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+    linear-gradient(to bottom, #000000, transparent),
+    url("/assets/images/grid.svg");
+
+  border: 0.0625rem solid #626262;
 
   gap: 1rem;
 
@@ -52,9 +57,9 @@
 
 .xp .skills span {
   padding: 0.2rem 0.5rem;
-  background: #02fe83;
+  background: #383838;
   font-weight: 600;
-  color: #000000;
+  color: #f3f3f3;
   border-radius: 0.8rem;
   font-size: 1rem;
 }

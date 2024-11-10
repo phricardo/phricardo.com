@@ -72,20 +72,22 @@ const formatExperiencePeriod = (
 export default function ExperiencesSection() {
   return (
     <section id="xp">
-      <div className="container">
-        <h1 className={`title`}>
-          <MingcuteTrophyLine /> Experiências
-        </h1>
+      <div className={`container`}>
+        <div>
+          <h1 className={`title`}>
+            <MingcuteTrophyLine /> Experiências
+          </h1>
 
-        <p>
-          Desenvolvedor Backend Java com mais de 4 anos de experiência. Trabalho
-          com aplicações distribuídas em Arquitetura de Microsserviços
-          utilizando “message brokers” como o Kafka e RabbitMQ. Conhecimento e
-          prática em Banco de Dados relacionais e não relacionais, como também
-          conhecimento de testes unitários e de integração. Aptidão com diversas
-          tecnologias, como React, Angular, Javascript, Typescript, Java, Spring
-          Boot, Next.js e NestJS.
-        </p>
+          <p>
+            Desenvolvedor Backend Java com mais de 4 anos de experiência.
+            Trabalho com aplicações distribuídas em Arquitetura de
+            Microsserviços utilizando “message brokers” como o Kafka e RabbitMQ.
+            Conhecimento e prática em Banco de Dados relacionais e não
+            relacionais, como também conhecimento de testes unitários e de
+            integração. Aptidão com diversas tecnologias, como React, Angular,
+            Javascript, Typescript, Java, Spring Boot, Next.js e NestJS.
+          </p>
+        </div>
 
         <div className={styles.xps}>
           {experiences.map((xp) => {

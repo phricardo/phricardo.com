@@ -4,7 +4,7 @@ import Link from "next/link";
 import DeveloperBadge from "../../global/DeveloperBadge/DeveloperBadge";
 import {
   InstagramLine,
-  MingcuteTerminalLine,
+  MingcuteFoldersLine,
   MingcuteTrophyLine,
   LinkedinLine,
 } from "../Icons";
@@ -30,7 +30,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link href="#projects">
-                    <MingcuteTerminalLine /> Projetos
+                    <MingcuteFoldersLine /> Projetos
                   </Link>
                 </li>
               </ul>

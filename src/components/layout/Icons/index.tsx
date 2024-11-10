@@ -10,6 +10,8 @@ export { MingcuteExternalLinkFill } from "./MingcuteExternalLinkFill";
 export { MingcuteMenuLine } from "./MingcuteMenuLine";
 export { MingcuteTrophyLine } from "./MingcuteTrophyLine";
 export { MingcuteGithubLine } from "./MingcuteGithubLine";
+export { MingcuteFoldersLine } from "./MingcuteFoldersLine";
+export { MingcuteCheckCircleFill } from "./MingcuteCheckCircleFill";
 
 // Custom Icons
 export { XTwitterLine } from "./XTwitterLine";
@@ -20,3 +22,13 @@ export { GithubFill } from "./GithubFill";
 export { YoutubeLine } from "./YoutubeLine";
 export { LinkedinLine } from "./LinkedinLine";
 export { TiktokLine } from "./TiktokLine";
+
+// Brands
+export { LogosJava } from "./brands/LogosJava";
+export { LogosReact } from "./brands/LogosReact";
+export { LogosJavascript } from "./brands/LogosJavascript";
+export { LogosTypescript } from "./brands/LogosTypescript";
+export { LogosNodeJs } from "./brands/LogosNodeJs";
+export { LogosAngular } from "./brands/LogosAngular";
+export { LogosCss3 } from "./brands/LogosCss3";
+export { LogosHtml5 } from "./brands/LogosHtml5";

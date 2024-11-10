@@ -50,8 +50,7 @@ export default function EmblaCarousel({
             <div className={styles.embla__slide} key={index}>
               <div className={styles.embla__slide_image}>
                 <Image
-                  height={400}
-                  width={300}
+                  layout="fill"
                   alt={slide.title}
                   src={`${slide.src ? slide.src : ""}`}
                   className={styles.image}
