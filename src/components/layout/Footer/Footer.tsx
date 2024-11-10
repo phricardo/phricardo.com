@@ -7,6 +7,7 @@ import {
   MingcuteFoldersLine,
   MingcuteTrophyLine,
   LinkedinLine,
+  MingcuteTerminalLine,
 } from "../Icons";
 import styles from "./Footer.module.css";
 
@@ -31,6 +32,11 @@ export default function Footer() {
                 <li>
                   <Link href="#projects">
                     <MingcuteFoldersLine /> Projetos
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#skills">
+                    <MingcuteTerminalLine /> Habilidades
                   </Link>
                 </li>
               </ul>

@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
+import MenuLinks from "./MenuLinks";
 import { MingcuteMenuLine } from "../Icons";
 import styles from "./MenuMobile.module.css";
-import MenuLinks from "./MenuLinks";
 
 export default function MenuMobile() {
   const menuRef = React.useRef<HTMLDivElement>(null);
