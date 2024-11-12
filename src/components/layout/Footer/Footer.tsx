@@ -8,6 +8,7 @@ import {
   MingcuteTrophyLine,
   LinkedinLine,
   MingcuteTerminalLine,
+  GithubLine,
 } from "../Icons";
 import styles from "./Footer.module.css";
 
@@ -59,6 +60,14 @@ export default function Footer() {
                     target="_blank"
                   >
                     <LinkedinLine /> LinkedIn
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="https://www.github.com/phricardo/"
+                    target="_blank"
+                  >
+                    <GithubLine /> Github
                   </Link>
                 </li>
               </ul>

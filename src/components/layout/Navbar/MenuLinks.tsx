@@ -37,11 +37,11 @@ export default function MenuLinks({
       </ul>
       <span />
       <ul>
-        <li>
+        {/* <li>
           <Link href="https://www.instagram.com/phricardorj/" target="_blank">
             <InstagramLine /> Instagram
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link href="https://www.linkedin.com/in/phricardorj/" target="_blank">
             <LinkedinLine /> LinkedIn
