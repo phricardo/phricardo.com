@@ -25,13 +25,12 @@
   transition: 0.2s all;
 }
 
-.cardGroup > div:focus,
+/* .cardGroup > div:focus,
 .cardGroup > div:hover,
 .cardGroup > div:focus .languageName,
   .cardGroup > div:hover .languageName {
-  color: #02fe83 !important;
-  border-color: #02fe83;
-}
+  border-color: #003b1e;
+} */
 
 .infoHover {
   font-size: 1rem;
@@ -71,7 +70,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #02fe83;
+  color: #003b1e;
   background: #666666;
   border-radius: 0.625rem;
   padding: 0.3125rem;

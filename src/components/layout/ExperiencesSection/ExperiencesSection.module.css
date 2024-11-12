@@ -32,10 +32,10 @@
   transition: 0.2s all;
 }
 
-.xp:focus,
+/* .xp:focus,
 .xp:hover {
-  border-color: #02fe83;
-}
+  border-color: #003b1e;
+} */
 
 .xp div img {
   height: 2rem;
