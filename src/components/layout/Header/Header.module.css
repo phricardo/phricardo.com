@@ -23,6 +23,8 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
+
+  position: relative;
 }
 
 .subtitle {
@@ -67,4 +69,59 @@
 .description {
   font-weight: 400;
   text-transform: capitalize;
+}
+
+.floatSkill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 5rem;
+  width: 5rem;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+
+  position: absolute;
+  border-radius: 0.4rem;
+  font-size: 4rem;
+
+  animation: float 3s ease-in-out infinite;
+}
+
+.floatSkill:nth-child(1) {
+  top: 5vh;
+  left: 18vw;
+  animation-delay: 0s;
+}
+
+.floatSkill:nth-child(2) {
+  top: 5vh;
+  right: 18vw;
+  animation-delay: 0.5s;
+}
+
+.floatSkill:nth-child(3) {
+  bottom: 5vh;
+  right: 12vw;
+  animation-delay: 1s;
+}
+
+.floatSkill:nth-child(4) {
+  bottom: 5vh;
+  left: 12vw;
+  animation-delay: 1.5s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }

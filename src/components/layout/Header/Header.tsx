@@ -6,6 +6,7 @@ import { Navbar } from "../Navbar/Navbar";
 import DeveloperBadge from "@/components/global/DeveloperBadge/DeveloperBadge";
 import TypingEffect from "@/components/global/TypingEffect/TypingEffect";
 import styles from "./Header.module.css";
+import { LogosAngular, LogosJava, LogosReact, LogosTypescript } from "../Icons";
 
 export default function Header() {
   const intervalSeconds = 10;
@@ -19,6 +20,19 @@ export default function Header() {
     <header className={styles.header}>
       <Navbar />
       <div className={`container ${styles.header_wrapper}`}>
+        <div className={styles.floatSkill}>
+          <LogosJava />
+        </div>
+        <div className={styles.floatSkill}>
+          <LogosReact />
+        </div>
+        <div className={styles.floatSkill}>
+          <LogosAngular />
+        </div>
+        <div className={styles.floatSkill}>
+          <LogosTypescript />
+        </div>
+
         <div className={styles.highlight}>
           <DeveloperBadge github="phricardo" />
           <div>
