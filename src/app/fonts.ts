@@ -1,4 +1,4 @@
-import { Inter, Poppins, Tiny5 } from "next/font/google";
+import { Staatliches, Poppins, Tiny5 } from "next/font/google";
 
 export const type_first = Poppins({
   weight: ["200", "400", "600", "800"],
@@ -7,10 +7,10 @@ export const type_first = Poppins({
   display: "swap",
 });
 
-export const type_second = Inter({
-  weight: ["200", "300", "400", "600", "800"],
+export const type_second = Staatliches({
+  weight: ["400"],
   subsets: ["latin"],
-  variable: "--type-second-inter",
+  variable: "--type-second-staatliches",
   display: "swap",
 });
 

@@ -4,7 +4,11 @@
   flex-direction: column;
   justify-content: center;
 
+  height: 4rem;
   color: #f3f3f3;
+
+  background: #111111;
+  border-bottom: 0.1rem solid #343232;
 }
 
 .navbar .navbar_wrapper {
@@ -20,6 +24,7 @@
 
 .branding h1 {
   font-weight: 600;
+  font-family: var(--type-second);
 }
 
 .menu {

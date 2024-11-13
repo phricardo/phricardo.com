@@ -1,9 +1,9 @@
 .header {
   color: #fafafa;
 
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+  /* background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
     linear-gradient(to top, #02fe83, transparent),
-    url("/assets/images/grid.svg");
+    url("/assets/images/grid.svg"); */
 }
 
 .header .header_wrapper {

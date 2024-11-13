@@ -12,7 +12,7 @@ html {
 }
 body {
   --type-first: var(--type-first-poppins), Arial, sans-serif;
-  --type-second: var(--type-second-inter), Helvetica, sans-serif;
+  --type-second: var(--type-second-staatliches), Helvetica, sans-serif;
   --type-third: var(--type-third-tiny5), Helvetica, sans-serif;
 
   --gap-sm: 0.5rem; /* small */
