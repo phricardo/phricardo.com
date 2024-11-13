@@ -70,31 +70,62 @@
   border-radius: 0.4rem;
   font-size: 4rem;
 
-  animation: float 3s ease-in-out infinite;
+  border: 0.1rem solid #343232;
+
+  animation: float 3s ease-in-out infinite, rotate3D 4s linear infinite;
+  perspective: 1000px;
 }
 
 .floatSkill:nth-child(1) {
   top: 5vh;
   left: 18vw;
-  animation-delay: 0s;
+  animation-delay: 0s, 0s;
+  transform-origin: 50% 50%;
 }
 
 .floatSkill:nth-child(2) {
   top: 5vh;
   right: 18vw;
-  animation-delay: 0.5s;
+  animation-delay: 0.5s, 0.5s;
+  transform-origin: 50% 50%;
 }
 
 .floatSkill:nth-child(3) {
   bottom: 5vh;
   right: 12vw;
-  animation-delay: 1s;
+  animation-delay: 1s, 1s;
+  transform-origin: 50% 50%;
 }
 
 .floatSkill:nth-child(4) {
   bottom: 5vh;
   left: 12vw;
-  animation-delay: 1.5s;
+  animation-delay: 1.5s, 1.5s;
+  transform-origin: 50% 50%;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotateX(10deg) rotateY(10deg);
+  }
+  100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+}
+
+@keyframes rotate3D {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: rotateX(15deg) rotateY(15deg);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
 }
 
 @media (max-width: 775px) {
@@ -124,17 +155,5 @@
 @media (max-width: 500px) {
   .floatSkill {
     display: none;
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
   }
 }
