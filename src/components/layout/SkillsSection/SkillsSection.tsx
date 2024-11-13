@@ -25,22 +25,6 @@ export default function SkillsSection() {
 
         <div className={styles.cardGroup}>
           <div>
-            <span className={styles.languageName}>HTML 5</span>
-            <LogosHtml5 />
-          </div>
-          <div>
-            <span className={styles.languageName}>CSS</span>
-            <LogosCss3 />
-          </div>
-          <div>
-            <div className={styles.topSkill}>
-              <span className={styles.infoHover}>Top Skill</span>
-              <MingcuteCheckCircleFill />
-            </div>
-            <span className={styles.languageName}>JavaScript</span>
-            <LogosJavascript />
-          </div>
-          <div>
             <div className={styles.topSkill}>
               <span className={styles.infoHover}>Top Skill</span>
               <MingcuteCheckCircleFill />
@@ -53,24 +37,40 @@ export default function SkillsSection() {
               <span className={styles.infoHover}>Top Skill</span>
               <MingcuteCheckCircleFill />
             </div>
-            <span className={styles.languageName}>React Js</span>
-            <LogosReact />
-          </div>
-          <div>
-            <span className={styles.languageName}>Angular 2+</span>
-            <LogosAngular />
-          </div>
-          <div>
-            <span className={styles.languageName}>Node.js</span>
-            <LogosNodeJs />
+            <span className={styles.languageName}>Java</span>
+            <LogosJava />
           </div>
           <div>
             <div className={styles.topSkill}>
               <span className={styles.infoHover}>Top Skill</span>
               <MingcuteCheckCircleFill />
             </div>
-            <span className={styles.languageName}>Java</span>
-            <LogosJava />
+            <span className={styles.languageName}>React Js</span>
+            <LogosReact />
+          </div>
+          <div>
+            <span className={styles.languageName}>Node.js</span>
+            <LogosNodeJs />
+          </div>
+          <div>
+            <span className={styles.languageName}>Angular 2+</span>
+            <LogosAngular />
+          </div>
+          <div>
+            <div className={styles.topSkill}>
+              <span className={styles.infoHover}>Top Skill</span>
+              <MingcuteCheckCircleFill />
+            </div>
+            <span className={styles.languageName}>JavaScript</span>
+            <LogosJavascript />
+          </div>
+          <div>
+            <span className={styles.languageName}>HTML 5</span>
+            <LogosHtml5 />
+          </div>
+          <div>
+            <span className={styles.languageName}>CSS</span>
+            <LogosCss3 />
           </div>
         </div>
       </div>
