@@ -62,11 +62,20 @@
   z-index: 999;
 }
 
-.menu span {
+.menu .divider {
   display: block;
   height: 2rem;
   width: 0.025rem;
   background: #585858;
+}
+
+.menu .social {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.menu .social li a {
+  font-size: 1.5rem;
 }
 
 @media (max-width: 775px) {
