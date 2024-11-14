@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import Menu from "./Menu";
 import Link from "next/link";
 import Image from "next/image";
 import MenuMobile from "./MenuMobile";
+import MenuSocial from "./MenuSocial";
 import styles from "./Navbar.module.css";
+import MenuLinks from "./MenuLinks";
 
 export function Navbar() {
   return (
@@ -20,7 +21,11 @@ export function Navbar() {
           />
         </Link>
         <span className={styles.desktop}>
-          <Menu />
+          <div className={styles.menu}>
+            <MenuLinks />
+            <span className={styles.divider} />
+            <MenuSocial />
+          </div>
         </span>
         <span className={styles.mobile}>
           <MenuMobile />
