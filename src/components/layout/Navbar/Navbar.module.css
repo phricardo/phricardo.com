@@ -6,9 +6,6 @@
 
   height: 4rem;
   color: #f3f3f3;
-
-  /* background: #111111;
-  border-bottom: 0.1rem solid #343232; */
 }
 
 .navbar .navbar_wrapper {
@@ -17,14 +14,10 @@
   justify-content: space-between;
 }
 
-.branding {
-  display: flex;
-  align-items: center;
-}
-
-.branding h1 {
-  font-weight: 600;
-  font-family: var(--type-second);
+.logo {
+  position: relative;
+  height: 100%;
+  width: 12rem;
 }
 
 .menu {

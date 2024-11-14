@@ -1,6 +1,6 @@
 .header {
   color: #fafafa;
-  background: linear-gradient(to top, transparent, #003b1e);
+  /* background: linear-gradient(to top, transparent, #003b1e); */
 }
 
 .header .header_wrapper {
@@ -67,9 +67,9 @@
   border-radius: 0.4rem;
   font-size: 4rem;
 
-  border: 0.1rem solid #343232;
+  border: 0.1rem solid #777373;
 
-  animation: float 3s ease-in-out infinite, rotate3D 4s linear infinite;
+  animation: float 1s ease-in-out infinite, rotate3D 2s linear infinite;
   perspective: 1000px;
 }
 
