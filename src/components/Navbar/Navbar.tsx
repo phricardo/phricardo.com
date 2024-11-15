@@ -3,10 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import MenuLinks from "./MenuLinks";
 import MenuMobile from "./MenuMobile";
 import MenuSocial from "./MenuSocial";
 import styles from "./Navbar.module.css";
-import MenuLinks from "./MenuLinks";
 
 export function Navbar() {
   return (

@@ -3,10 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import { Navbar } from "../Navbar/Navbar";
-import DeveloperBadge from "@/components/global/DeveloperBadge/DeveloperBadge";
-import TypingEffect from "@/components/global/TypingEffect/TypingEffect";
-import styles from "./Header.module.css";
+import TypingEffect from "../TypingEffect/TypingEffect";
+import DeveloperBadge from "../DeveloperBadge/DeveloperBadge";
 import { LogosAngular, LogosJava, LogosReact, LogosTypescript } from "../Icons";
+import styles from "./Header.module.css";
 
 export default function Header() {
   const intervalSeconds = 10;

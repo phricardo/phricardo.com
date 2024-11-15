@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { GithubLine } from "../../layout/Icons";
+import { GithubLine } from "../Icons";
 import { SkeletonLoading } from "../SkeletonLoading/SkeletonLoading";
 import { fetchGitHubUser, IGitHubUser } from "@/app/functions/fetchGitHubUser";
 import styles from "./DeveloperBadge.module.css";

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import DeveloperBadge from "../../global/DeveloperBadge/DeveloperBadge";
+import DeveloperBadge from "../DeveloperBadge/DeveloperBadge";
 import {
   InstagramLine,
   MingcuteFoldersLine,

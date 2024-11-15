@@ -37,12 +37,11 @@ const OPTIONS: EmblaOptionsType = { align: "start" };
 
 export default function ProjectsSection() {
   return (
-    <section className={styles.section} id="projects">
-      <div className={`${styles.section_wrapper} container`}>
+    <section className={styles.projects} id="projects">
+      <div className="container">
         <h1 className={`title`}>
           <MingcuteFoldersLine /> Projetos
         </h1>
-
         <ProjectsCarousel slides={SLIDES} options={OPTIONS} />
       </div>
     </section>
