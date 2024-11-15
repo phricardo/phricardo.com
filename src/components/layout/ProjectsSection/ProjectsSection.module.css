@@ -16,10 +16,6 @@
   flex-direction: column;
 
   gap: 1rem;
-
-  background: #212121;
-
-  min-width: 400px;
 }
 
 .xp div img {

@@ -9,25 +9,25 @@ import styles from "./ProjectsSection.module.css";
 const SLIDES = [
   {
     title: "PetLoveTag!",
-    thumbnail: "/assets/images/01.webp",
+    thumbnail: "/assets/images/projects/p1.webp",
     build: "https://petlovetag.com/",
     repo: "",
   },
   {
     title: "integra.cefetrj",
-    thumbnail: "/assets/images/01.webp",
+    thumbnail: "/assets/images/projects/p2.webp",
     build: "https://integra-cefetrj.phricardo.com/",
     repo: "https://github.com/phricardo/integra.cefetrj",
   },
   {
     title: "ListVideo",
-    thumbnail: "/assets/images/01.webp",
+    thumbnail: "/assets/images/projects/p3.webp",
     build: "http://listvideo.phricardo.com/",
     repo: "",
   },
   {
     title: "MockEcomm API",
-    thumbnail: "/assets/images/01.webp",
+    thumbnail: "/assets/images/projects/p4.webp",
     build: "",
     repo: "https://github.com/phricardo/mockecomm-api",
   },
