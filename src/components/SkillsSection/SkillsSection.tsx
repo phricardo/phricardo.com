@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Motion } from "../motion";
 import styles from "./SkillsSection.module.css";
 import {
   MingcuteTerminalLine,
@@ -17,7 +18,15 @@ import {
 
 export default function SkillsSection() {
   return (
-    <section id="skills">
+    <Motion
+      as="section"
+      id="skills"
+      className={styles.projects}
+      initial={{ opacity: 0, y: -50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 0.2 }}
+    >
       <div className="container">
         <h1 className={`title`}>
           <MingcuteTerminalLine /> Habilidades
@@ -74,6 +83,6 @@ export default function SkillsSection() {
           </div>
         </div>
       </div>
-    </section>
+    </Motion>
   );
 }

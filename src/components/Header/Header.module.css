@@ -52,25 +52,38 @@
 }
 
 .floatSkill {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  --border-radius: 0.4rem;
+
+  flex: 1 1 400px;
+  backdrop-filter: blur(50px);
+  border-radius: var(--border-radius);
+  animation: rotation 5s linear 0s infinite normal forwards;
+  background: linear-gradient(var(--gradient-angle), #303030, rgb(0, 0, 0));
 
   height: 5rem;
   width: 5rem;
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.3);
-
   position: absolute;
-  border-radius: 0.4rem;
-  font-size: 4rem;
 
-  border: 0.1rem solid #777373;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  animation: float 1s ease-in-out infinite, rotate3D 2s linear infinite;
-  perspective: 1000px;
+  padding: 0.1rem;
+}
+
+.floatSkill .contentCard {
+  height: 100%;
+  width: 100%;
+
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+
+  backdrop-filter: blur(200px);
+  background-color: #000000;
+  border-radius: var(--border-radius);
 }
 
 .floatSkill:nth-child(1) {
@@ -159,5 +172,20 @@
     font-size: 4rem;
     line-height: 3.5rem;
     width: 80%;
+  }
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
   }
 }

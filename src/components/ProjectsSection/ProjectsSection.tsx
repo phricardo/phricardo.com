@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Motion } from "../motion";
 import { MingcuteFoldersLine } from "../Icons";
 import { EmblaOptionsType } from "embla-carousel";
 import ProjectsCarousel from "../ProjectsCarousel/ProjectsCarousel";
@@ -37,13 +38,21 @@ const OPTIONS: EmblaOptionsType = { align: "start" };
 
 export default function ProjectsSection() {
   return (
-    <section className={styles.projects} id="projects">
+    <Motion
+      as="section"
+      id="projects"
+      className={styles.projects}
+      initial={{ opacity: 0, y: -50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 0.2 }}
+    >
       <div className="container">
         <h1 className={`title`}>
           <MingcuteFoldersLine /> Projetos
         </h1>
         <ProjectsCarousel slides={SLIDES} options={OPTIONS} />
       </div>
-    </section>
+    </Motion>
   );
 }

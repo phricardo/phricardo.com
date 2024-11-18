@@ -3,6 +3,7 @@
 import React from "react";
 import { MingcuteTrophyLine } from "../Icons";
 import styles from "./ExperiencesSection.module.css";
+import { Motion } from "../motion";
 
 const experiences = [
   {
@@ -52,7 +53,7 @@ const formatExperiencePeriod = (
   months: number
 ): string => {
   let period = `${startYear} - o momento`;
-  if (end) period = `${startYear} - ${startYear}`;
+  if (end) period = `${startYear} - ${end}`;
 
   const yearPart = years > 0 ? `${years} ano${years > 1 ? "s" : ""}` : "";
   const monthPart =
@@ -73,7 +74,13 @@ export default function ExperiencesSection() {
   return (
     <section id="xp">
       <div className={`container`}>
-        <div>
+        <Motion
+          as="div"
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          transition={{ duration: 0.2 }}
+        >
           <h1 className={`title`}>
             <MingcuteTrophyLine /> Experiências
           </h1>
@@ -87,10 +94,10 @@ export default function ExperiencesSection() {
             integração. Aptidão com diversas tecnologias, como React, Angular,
             Javascript, Typescript, Java, Spring Boot, Next.js e NestJS.
           </p>
-        </div>
+        </Motion>
 
         <div className={styles.xps}>
-          {experiences.map((xp) => {
+          {experiences.map((xp, index) => {
             const { years, months } = calculateExperienceDuration(
               xp.start,
               xp.end
@@ -104,18 +111,28 @@ export default function ExperiencesSection() {
             );
 
             return (
-              <div key={xp.id} className={styles.xp}>
-                <div>
-                  <img src={xp.logo} alt={`${xp.company} logo`} />
-                  <p className={styles.period}>{period}</p>
-                </div>
+              <Motion
+                as="div"
+                key={xp.id}
+                className={styles.xp}
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3, delay: 0.1 * index }}
+              >
+                <div className={styles.contentCard}>
+                  <div>
+                    <img src={xp.logo} alt={`${xp.company} logo`} />
+                    <p className={styles.period}>{period}</p>
+                  </div>
 
-                <div className={styles.skills}>
-                  {(xp.skills || "").split(", ").map((skill, index) => (
-                    <span key={index}>{skill}</span>
-                  ))}
+                  <div className={styles.skills}>
+                    {(xp.skills || "").split(", ").map((skill, index) => (
+                      <span key={index}>{skill}</span>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </Motion>
             );
           })}
         </div>
