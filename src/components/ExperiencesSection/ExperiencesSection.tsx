@@ -72,10 +72,17 @@ const formatExperiencePeriod = (
 
 export default function ExperiencesSection() {
   return (
-    <section id="xp">
-      <div className={`container`}>
+    <Motion
+      as="section"
+      id="xp"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <div className={`${styles.xpWrapper} container`}>
         <Motion
           as="div"
+          className={styles.title}
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -50 }}
@@ -137,6 +144,6 @@ export default function ExperiencesSection() {
           })}
         </div>
       </div>
-    </section>
+    </Motion>
   );
 }

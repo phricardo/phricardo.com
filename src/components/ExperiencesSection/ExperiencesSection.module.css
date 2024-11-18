@@ -5,52 +5,49 @@
   width: 100%;
 
   flex-wrap: wrap;
+}
 
-  margin-top: 2rem;
+.xpWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+
+  padding: 2rem;
+  border-radius: 0.4rem;
+
+  background: #111111;
+  border: 0.1rem solid #343232;
+}
+
+.xpWrapper .title {
+  width: 800px;
 }
 
 .xp {
   --border-radius: 0.4rem;
-  flex: 1 1 400px;
+
+  flex-grow: 1;
   padding: 0.1rem;
-  backdrop-filter: blur(50px);
+  flex: 1 1 400px;
+  background: #111111;
+  border: 0.1rem solid #343232;
   border-radius: var(--border-radius);
-  animation: rotation 5s linear 0s infinite normal forwards;
-  background: linear-gradient(var(--gradient-angle), #303030, rgb(0, 0, 0));
 }
 
 .xp .contentCard {
-  margin: auto;
   height: 100%;
   width: 100%;
 
-  transition: all 0.2s;
-  backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
 
   padding: 1.5rem;
-  background-color: #000000;
+  background-color: transparent;
   border-radius: var(--border-radius);
 
   display: flex;
   gap: 1.5rem;
   flex-direction: column;
-}
-
-@property --gradient-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes rotation {
-  0% {
-    --gradient-angle: 0deg;
-  }
-  100% {
-    --gradient-angle: 360deg;
-  }
 }
 
 .xp div img {
@@ -90,5 +87,13 @@
 @media (max-width: 1000px) {
   .xp {
     height: auto;
+  }
+  .xpWrapper {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+
+  .xpWrapper .title {
+    width: 100%;
   }
 }
