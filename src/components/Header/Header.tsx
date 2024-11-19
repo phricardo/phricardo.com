@@ -9,6 +9,25 @@ import DeveloperBadge from "../DeveloperBadge/DeveloperBadge";
 import { LogosAngular, LogosJava, LogosReact, LogosTypescript } from "../Icons";
 import styles from "./Header.module.css";
 
+const skills = [
+  {
+    name: "Java",
+    icon: <LogosJava />,
+  },
+  {
+    name: "React Js",
+    icon: <LogosReact />,
+  },
+  {
+    name: "TypeScript",
+    icon: <LogosTypescript />,
+  },
+  {
+    name: "Angular 2+",
+    icon: <LogosAngular />,
+  },
+];
+
 export default function Header() {
   const intervalSeconds = 10;
   const texts = [
@@ -27,26 +46,21 @@ export default function Header() {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <div className={`container ${styles.header_wrapper}`}>
-          <div className={styles.floatSkill}>
-            <div className={styles.contentCard}>
-              <LogosJava />
-            </div>
-          </div>
-          <div className={styles.floatSkill}>
-            <div className={styles.contentCard}>
-              <LogosReact />
-            </div>
-          </div>
-          <div className={styles.floatSkill}>
-            <div className={styles.contentCard}>
-              <LogosAngular />
-            </div>
-          </div>
-          <div className={styles.floatSkill}>
-            <div className={styles.contentCard}>
-              <LogosTypescript />
-            </div>
-          </div>
+          {skills.map((skill, index) => (
+            <Motion
+              as="div"
+              className={styles.floatSkill}
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.1,
+              }}
+            >
+              <div className={styles.contentCard}>{skill.icon}</div>
+            </Motion>
+          ))}
 
           <div className={styles.highlight}>
             <DeveloperBadge github="phricardo" />

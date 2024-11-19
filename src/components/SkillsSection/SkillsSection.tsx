@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Motion } from "../motion";
-import styles from "./SkillsSection.module.css";
 import {
   MingcuteTerminalLine,
   MingcuteCheckCircleFill,
@@ -15,6 +14,7 @@ import {
   LogosNodeJs,
   LogosAngular,
 } from "../Icons";
+import styles from "./SkillsSection.module.css";
 
 const skills = [
   {
