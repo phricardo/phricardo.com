@@ -27,7 +27,7 @@ export default function MenuLinks({
           </Link>
         </li>
         <li>
-          <Link href="#projects" onClick={onClickLink}>
+          <Link href="#skills" onClick={onClickLink}>
             <MingcuteTerminalLine /> Habilidades
           </Link>
         </li>

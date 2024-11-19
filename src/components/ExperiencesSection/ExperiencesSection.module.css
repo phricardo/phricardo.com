@@ -119,11 +119,10 @@
   .xp {
     height: auto;
   }
-  .xpWrapper {
+  .xpWrapperContent {
     flex-direction: column;
     padding: 2rem 1rem;
   }
-
   .xpWrapper .title {
     width: 100%;
   }
