@@ -80,68 +80,70 @@ export default function ExperiencesSection() {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className={`${styles.xpWrapper} container`}>
-        <Motion
-          as="div"
-          className={styles.title}
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -50 }}
-          transition={{ duration: 0.2 }}
-        >
-          <h1 className={`title`}>
-            <MingcuteTrophyLine /> Experiências
-          </h1>
+        <div className={styles.xpWrapperContent}>
+          <Motion
+            as="div"
+            className={styles.title}
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.2 }}
+          >
+            <h1 className={`title`}>
+              <MingcuteTrophyLine /> Experiências
+            </h1>
 
-          <p>
-            Desenvolvedor Backend Java com mais de 4 anos de experiência.
-            Trabalho com aplicações distribuídas em Arquitetura de
-            Microsserviços utilizando “message brokers” como o Kafka e RabbitMQ.
-            Conhecimento e prática em Banco de Dados relacionais e não
-            relacionais, como também conhecimento de testes unitários e de
-            integração. Aptidão com diversas tecnologias, como React, Angular,
-            Javascript, Typescript, Java, Spring Boot, Next.js e NestJS.
-          </p>
-        </Motion>
+            <p>
+              Desenvolvedor Backend Java com mais de 4 anos de experiência.
+              Trabalho com aplicações distribuídas em Arquitetura de
+              Microsserviços utilizando “message brokers” como o Kafka e
+              RabbitMQ. Conhecimento e prática em Banco de Dados relacionais e
+              não relacionais, como também conhecimento de testes unitários e de
+              integração. Aptidão com diversas tecnologias, como React, Angular,
+              Javascript, Typescript, Java, Spring Boot, Next.js e NestJS.
+            </p>
+          </Motion>
 
-        <div className={styles.xps}>
-          {experiences.map((xp, index) => {
-            const { years, months } = calculateExperienceDuration(
-              xp.start,
-              xp.end
-            );
-            const startYear = new Date(xp.start).getFullYear();
-            const period = formatExperiencePeriod(
-              startYear,
-              xp.end,
-              years,
-              months
-            );
+          <div className={styles.xps}>
+            {experiences.map((xp, index) => {
+              const { years, months } = calculateExperienceDuration(
+                xp.start,
+                xp.end
+              );
+              const startYear = new Date(xp.start).getFullYear();
+              const period = formatExperiencePeriod(
+                startYear,
+                xp.end,
+                years,
+                months
+              );
 
-            return (
-              <Motion
-                as="div"
-                key={xp.id}
-                className={styles.xp}
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3, delay: 0.1 * index }}
-              >
-                <div className={styles.contentCard}>
-                  <div>
-                    <img src={xp.logo} alt={`${xp.company} logo`} />
-                    <p className={styles.period}>{period}</p>
+              return (
+                <Motion
+                  as="div"
+                  key={xp.id}
+                  className={styles.xp}
+                  initial={{ opacity: 0, y: -20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, delay: 0.1 * index }}
+                >
+                  <div className={styles.contentCard}>
+                    <div>
+                      <img src={xp.logo} alt={`${xp.company} logo`} />
+                      <p className={styles.period}>{period}</p>
+                    </div>
+
+                    <div className={styles.skills}>
+                      {(xp.skills || "").split(", ").map((skill, index) => (
+                        <span key={index}>{skill}</span>
+                      ))}
+                    </div>
                   </div>
-
-                  <div className={styles.skills}>
-                    {(xp.skills || "").split(", ").map((skill, index) => (
-                      <span key={index}>{skill}</span>
-                    ))}
-                  </div>
-                </div>
-              </Motion>
-            );
-          })}
+                </Motion>
+              );
+            })}
+          </div>
         </div>
       </div>
     </Motion>

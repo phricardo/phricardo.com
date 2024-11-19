@@ -16,6 +16,49 @@ import {
   LogosAngular,
 } from "../Icons";
 
+const skills = [
+  {
+    name: "TypeScript",
+    icon: <LogosTypescript />,
+    isTopSkill: true,
+  },
+  {
+    name: "Java",
+    icon: <LogosJava />,
+    isTopSkill: true,
+  },
+  {
+    name: "React Js",
+    icon: <LogosReact />,
+    isTopSkill: true,
+  },
+  {
+    name: "Node.js",
+    icon: <LogosNodeJs />,
+    isTopSkill: false,
+  },
+  {
+    name: "Angular 2+",
+    icon: <LogosAngular />,
+    isTopSkill: false,
+  },
+  {
+    name: "JavaScript",
+    icon: <LogosJavascript />,
+    isTopSkill: true,
+  },
+  {
+    name: "HTML 5",
+    icon: <LogosHtml5 />,
+    isTopSkill: false,
+  },
+  {
+    name: "CSS",
+    icon: <LogosCss3 />,
+    isTopSkill: false,
+  },
+];
+
 export default function SkillsSection() {
   return (
     <Motion
@@ -33,54 +76,28 @@ export default function SkillsSection() {
         </h1>
 
         <div className={styles.cardGroup}>
-          <div>
-            <div className={styles.topSkill}>
-              <span className={styles.infoHover}>Top Skill</span>
-              <MingcuteCheckCircleFill />
-            </div>
-            <span className={styles.languageName}>TypeScript</span>
-            <LogosTypescript />
-          </div>
-          <div>
-            <div className={styles.topSkill}>
-              <span className={styles.infoHover}>Top Skill</span>
-              <MingcuteCheckCircleFill />
-            </div>
-            <span className={styles.languageName}>Java</span>
-            <LogosJava />
-          </div>
-          <div>
-            <div className={styles.topSkill}>
-              <span className={styles.infoHover}>Top Skill</span>
-              <MingcuteCheckCircleFill />
-            </div>
-            <span className={styles.languageName}>React Js</span>
-            <LogosReact />
-          </div>
-          <div>
-            <span className={styles.languageName}>Node.js</span>
-            <LogosNodeJs />
-          </div>
-          <div>
-            <span className={styles.languageName}>Angular 2+</span>
-            <LogosAngular />
-          </div>
-          <div>
-            <div className={styles.topSkill}>
-              <span className={styles.infoHover}>Top Skill</span>
-              <MingcuteCheckCircleFill />
-            </div>
-            <span className={styles.languageName}>JavaScript</span>
-            <LogosJavascript />
-          </div>
-          <div>
-            <span className={styles.languageName}>HTML 5</span>
-            <LogosHtml5 />
-          </div>
-          <div>
-            <span className={styles.languageName}>CSS</span>
-            <LogosCss3 />
-          </div>
+          {skills.map((skill, index) => (
+            <Motion
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.1,
+              }}
+            >
+              <div>
+                {skill.isTopSkill && (
+                  <div className={styles.topSkill}>
+                    <span className={styles.infoHover}>Top Skill</span>
+                    <MingcuteCheckCircleFill />
+                  </div>
+                )}
+                <span className={styles.languageName}>{skill.name}</span>
+                {skill.icon}
+              </div>
+            </Motion>
+          ))}
         </div>
       </div>
     </Motion>

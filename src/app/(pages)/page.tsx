@@ -10,7 +10,7 @@ export default function Home() {
       <Header />
       <main>
         <ExperiencesSection />
-        <ProjectsSection />
+        {/* <ProjectsSection /> */}
         <SkillsSection />
       </main>
       <Footer />
