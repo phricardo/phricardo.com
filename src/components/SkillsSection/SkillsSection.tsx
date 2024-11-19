@@ -78,6 +78,8 @@ export default function SkillsSection() {
         <div className={styles.cardGroup}>
           {skills.map((skill, index) => (
             <Motion
+              as="div"
+              className={styles.card}
               key={index}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -86,16 +88,14 @@ export default function SkillsSection() {
                 delay: index * 0.1,
               }}
             >
-              <div>
-                {skill.isTopSkill && (
-                  <div className={styles.topSkill}>
-                    <span className={styles.infoHover}>Top Skill</span>
-                    <MingcuteCheckCircleFill />
-                  </div>
-                )}
-                <span className={styles.languageName}>{skill.name}</span>
-                {skill.icon}
-              </div>
+              {skill.isTopSkill && (
+                <div className={styles.topSkill}>
+                  <span className={styles.infoHover}>Top Skill</span>
+                  <MingcuteCheckCircleFill />
+                </div>
+              )}
+              {skill.icon}
+              <span className={styles.languageName}>{skill.name}</span>
             </Motion>
           ))}
         </div>
