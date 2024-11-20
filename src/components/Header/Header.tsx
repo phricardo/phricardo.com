@@ -10,22 +10,10 @@ import { LogosAngular, LogosJava, LogosReact, LogosTypescript } from "../Icons";
 import styles from "./Header.module.css";
 
 const skills = [
-  {
-    name: "Java",
-    icon: <LogosJava />,
-  },
-  {
-    name: "React Js",
-    icon: <LogosReact />,
-  },
-  {
-    name: "TypeScript",
-    icon: <LogosTypescript />,
-  },
-  {
-    name: "Angular 2+",
-    icon: <LogosAngular />,
-  },
+  { name: "Java", icon: <LogosJava /> },
+  { name: "React Js", icon: <LogosReact /> },
+  { name: "TypeScript", icon: <LogosTypescript /> },
+  { name: "Angular 2+", icon: <LogosAngular /> },
 ];
 
 export default function Header() {
@@ -93,6 +81,19 @@ export default function Header() {
               </p>
             </div>
           </div>
+
+          {/* Stars */}
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className={styles.star}
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+              }}
+            />
+          ))}
         </div>
       </Motion>
     </header>

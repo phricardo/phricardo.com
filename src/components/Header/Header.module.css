@@ -1,6 +1,24 @@
 .header {
   color: #fafafa;
-  /* background: linear-gradient(to top, transparent, #003b1e); */
+
+  background: linear-gradient(to bottom, #003b1e, transparent),
+    linear-gradient(to top, #000000, transparent),
+    url("/assets/images/grid.svg");
+  background-blend-mode: overlay;
+  background-position: center;
+  background-size: cover;
+}
+
+.star {
+  position: absolute;
+  background-color: #aca4a4;
+
+  opacity: 0;
+  border-radius: 50%;
+  animation: blink 2s infinite ease-in-out;
+
+  height: 0.2rem !important;
+  width: 0.2rem !important;
 }
 
 .header .header_wrapper {
@@ -40,6 +58,10 @@
   line-height: 4.2rem;
   font-weight: 600;
   width: 25rem;
+
+  /* background: -webkit-linear-gradient(#137e4a, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
 }
 
 .highlight .title span {
@@ -55,10 +77,11 @@
   --border-radius: 0.4rem;
 
   flex: 1 1 400px;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(150px);
   border-radius: var(--border-radius);
   animation: rotation 5s linear 0s infinite normal forwards;
-  background: linear-gradient(var(--gradient-angle), #303030, rgb(0, 0, 0));
+  background: linear-gradient(var(--gradient-angle), #003b1e, rgb(0, 0, 0));
+  border: 0.0125rem solid #000000;
 
   height: 5rem;
   width: 5rem;
@@ -69,7 +92,7 @@
   align-items: center;
   justify-content: center;
 
-  padding: 0.1rem;
+  padding: 0.25rem;
 }
 
 .floatSkill .contentCard {
@@ -82,7 +105,7 @@
   font-size: 3.5rem;
 
   backdrop-filter: blur(200px);
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius);
 }
 
@@ -119,7 +142,7 @@
     transform: translateY(0px) rotateX(0deg) rotateY(0deg);
   }
   50% {
-    transform: translateY(-10px) rotateX(10deg) rotateY(10deg);
+    transform: translateY(-20px) rotateX(50deg) rotateY(50deg);
   }
   100% {
     transform: translateY(0px) rotateX(0deg) rotateY(0deg);
@@ -187,5 +210,17 @@
   }
   100% {
     --gradient-angle: 360deg;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
