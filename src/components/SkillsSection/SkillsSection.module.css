@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .cardGroup .card {
@@ -14,7 +14,7 @@
   border-radius: 0.625rem;
   min-width: 12.5rem;
   min-height: 12.5rem;
-  flex: 1 1 10rem;
+  flex: 1;
   color: #ffffff;
   font-size: 4.6875rem;
   display: flex;
@@ -89,6 +89,9 @@
 }
 
 @media (max-width: 462px) {
+  .cardGroup {
+    gap: 0.2rem;
+  }
   .cardGroup > div {
     min-width: 7.5rem;
   }
