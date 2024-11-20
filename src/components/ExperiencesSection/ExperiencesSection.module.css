@@ -1,46 +1,15 @@
 .xps {
   display: flex;
-
   gap: 1rem;
   width: 100%;
-
   flex-wrap: wrap;
-}
-
-.xpWrapper {
-  padding: 0.1rem 0.115rem;
-  border-radius: 0.4rem;
-
-  background: #111111;
-  border: 0.1rem solid #343232;
-
-  /* --border-radius: 0.4rem;
-  backdrop-filter: blur(50px);
-  border-radius: var(--border-radius);
-  animation: rotation 5s linear 0s infinite normal forwards;
-  background: linear-gradient(var(--gradient-angle), #04cc61, rgb(0, 0, 0)); */
-}
-
-.xpWrapper .xpWrapperContent {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-
-  padding: 1.5rem 1.5rem;
-  background: #000000;
-  border-radius: var(--border-radius);
-}
-
-.xpWrapper .title {
-  width: 800px;
 }
 
 .xp {
   --border-radius: 0.4rem;
 
-  flex-grow: 1;
   padding: 0.1rem;
-  flex: 1 1 400px;
+  flex: 0 0 50%;  
   border: 0.1rem solid #343232;
   background: #111111;
   border-radius: var(--border-radius);
@@ -50,32 +19,27 @@
     url("/assets/images/grid.svg");
 }
 
-@property --gradient-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
+.xpWrapper .xpWrapperContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 1.5rem 1.5rem;
+  background: #000000;
+  border-radius: var(--border-radius);
 }
 
-@keyframes rotation {
-  0% {
-    --gradient-angle: 0deg;
-  }
-  100% {
-    --gradient-angle: 360deg;
-  }
+.xpWrapper .title {
+  width: 800px;
 }
 
 .xp .contentCard {
   height: 100%;
   width: 100%;
-
   display: flex;
   flex-direction: column;
-
   padding: 1.5rem;
   background-color: transparent;
   border-radius: var(--border-radius);
-
   display: flex;
   gap: 1.5rem;
   flex-direction: column;
@@ -102,7 +66,6 @@
 .xp .skills {
   display: flex;
   flex-wrap: wrap;
-
   gap: 0.5rem;
 }
 
@@ -118,12 +81,21 @@
 @media (max-width: 1000px) {
   .xp {
     height: auto;
+    flex: 0 0 50%;  
   }
+
   .xpWrapperContent {
     flex-direction: column;
     padding: 2rem 1rem;
   }
+  
   .xpWrapper .title {
     width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .xps {
+    gap: 0.2rem;  
   }
 }
