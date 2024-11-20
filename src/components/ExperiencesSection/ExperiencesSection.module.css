@@ -13,12 +13,6 @@
 
   background: #111111;
   border: 0.1rem solid #343232;
-
-  /* --border-radius: 0.4rem;
-  backdrop-filter: blur(50px);
-  border-radius: var(--border-radius);
-  animation: rotation 5s linear 0s infinite normal forwards;
-  background: linear-gradient(var(--gradient-angle), #04cc61, rgb(0, 0, 0)); */
 }
 
 .xpWrapper .xpWrapperContent {
@@ -107,12 +101,14 @@
 }
 
 .xp .skills span {
-  padding: 0.2rem 0.5rem;
-  background: #383838;
+  padding: 0.1rem 0.5rem;
+  background: transparent;
+  border: 0.225rem solid #343232;
   font-weight: 600;
   color: #f3f3f3;
   border-radius: 0.8rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  text-align: start;
 }
 
 @media (max-width: 1000px) {
