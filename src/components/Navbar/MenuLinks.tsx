@@ -21,11 +21,11 @@ export default function MenuLinks({
             <MingcuteTrophyLine /> Experiências
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link href="#projects" onClick={onClickLink}>
             <MingcuteFoldersLine /> Projetos
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link href="#skills" onClick={onClickLink}>
             <MingcuteTerminalLine /> Habilidades

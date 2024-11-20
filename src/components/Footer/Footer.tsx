@@ -30,11 +30,11 @@ export default function Footer() {
                     <MingcuteTrophyLine /> Experiências
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="#projects">
                     <MingcuteFoldersLine /> Projetos
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link href="#skills">
                     <MingcuteTerminalLine /> Habilidades
