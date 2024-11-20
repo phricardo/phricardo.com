@@ -48,12 +48,12 @@ const calculateExperienceDuration = (
 
 const formatExperiencePeriod = (
   startYear: number,
-  end: string | null,
   years: number,
-  months: number
+  months: number,
+  endYear?: number
 ): string => {
   let period = `${startYear} - o momento`;
-  if (end) period = `${startYear} - ${end}`;
+  if (endYear) period = `${startYear} - ${endYear}`;
 
   const yearPart = years > 0 ? `${years} ano${years > 1 ? "s" : ""}` : "";
   const monthPart =
@@ -111,11 +111,14 @@ export default function ExperiencesSection() {
                 xp.end
               );
               const startYear = new Date(xp.start).getFullYear();
+              const endYear = xp.end
+                ? new Date(xp.end).getFullYear()
+                : undefined;
               const period = formatExperiencePeriod(
                 startYear,
-                xp.end,
                 years,
-                months
+                months,
+                endYear
               );
 
               return (
