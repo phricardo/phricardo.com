@@ -14,12 +14,13 @@
 
 .menu_wrapper .menu ul {
   width: 12.5rem;
-  background: #0e0e0f;
-  border: 0.1rem solid #343232;
 
   overflow: hidden;
+  z-index: 9999;
+
+  background: #000000;
+  box-shadow: 0 0 20px #000000;
   border-radius: 0.4rem;
-  z-index: 999;
 }
 
 .menu_wrapper .menu ul li a {

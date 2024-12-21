@@ -83,7 +83,7 @@ export default function ExperiencesSection() {
         <div className={styles.xpWrapperContent}>
           <Motion
             as="div"
-            className={styles.title}
+            className={styles.content}
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
@@ -93,15 +93,27 @@ export default function ExperiencesSection() {
               <MingcuteTrophyLine /> Experiências
             </h1>
 
-            <p>
-              Desenvolvedor Backend Java com mais de 4 anos de experiência.
-              Trabalho com aplicações distribuídas em Arquitetura de
-              Microsserviços utilizando “message brokers” como o Kafka e
-              RabbitMQ. Conhecimento e prática em Banco de Dados relacionais e
-              não relacionais, como também conhecimento de testes unitários e de
-              integração. Aptidão com diversas tecnologias, como React, Angular,
-              Javascript, Typescript, Java, Spring Boot, Next.js e NestJS.
-            </p>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.8rem",
+              }}
+            >
+              <p>
+                Desenvolvedor Backend Java com mais de 4 anos de experiência.
+                Trabalho com aplicações distribuídas em Arquitetura de
+                Microsserviços utilizando “message brokers” como o Kafka e
+                RabbitMQ.
+              </p>
+              <p>
+                Conhecimento e prática em Banco de Dados relacionais e não
+                relacionais, como também conhecimento de testes unitários e de
+                integração. Aptidão com diversas tecnologias, como React,
+                Angular, Javascript, Typescript, Java, Spring Boot, Next.js e
+                NestJS.
+              </p>
+            </div>
           </Motion>
 
           <div className={styles.xps}>
