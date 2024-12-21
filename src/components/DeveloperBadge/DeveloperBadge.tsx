@@ -4,38 +4,21 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { GithubLine } from "../Icons";
-import { SkeletonLoading } from "../SkeletonLoading/SkeletonLoading";
-import { fetchGitHubUser, IGitHubUser } from "@/app/functions/fetchGitHubUser";
+import { IGitHubUser } from "@/functions/fetchGitHubUser";
 import styles from "./DeveloperBadge.module.css";
 
 export default function DeveloperBadge({
-  github,
+  user,
   hexColor,
 }: {
-  github: string;
+  user?: IGitHubUser | null;
   hexColor?: string;
 }) {
-  const [user, setUser] = React.useState<IGitHubUser | null>(null);
-
-  React.useEffect(() => {
-    const loadUser = async () => {
-      const data = await fetchGitHubUser(github);
-      setUser(data);
-    };
-    loadUser();
-  }, [github]);
-
-  if (!user)
-    return (
-      <div className={styles.badge}>
-        <SkeletonLoading />
-      </div>
-    );
-
+  if (!user) return <h1>User não encontrado</h1>;
   return (
     <Link
       className={styles.badge}
-      href={`https://github.com/${github}`}
+      href={`https://github.com/${user.login}`}
       target="_blank"
       style={{ color: hexColor }}
     >

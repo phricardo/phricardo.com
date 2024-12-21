@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { IGitHubUser } from "@/functions/fetchGitHubUser";
 import DeveloperBadge from "../DeveloperBadge/DeveloperBadge";
 import {
   InstagramLine,
-  MingcuteFoldersLine,
   MingcuteTrophyLine,
   LinkedinLine,
   MingcuteTerminalLine,
@@ -12,12 +12,12 @@ import {
 } from "../Icons";
 import styles from "./Footer.module.css";
 
-export default function Footer() {
+export default function Footer({ user }: { user?: IGitHubUser | null }) {
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.footer_wrapper}`}>
         <div className={styles.brand}>
-          <DeveloperBadge github="phricardo" />
+          <DeveloperBadge user={user} />
         </div>
 
         <div className={styles.footer_links}>

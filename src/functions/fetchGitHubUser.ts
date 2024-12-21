@@ -8,7 +8,9 @@ export async function fetchGitHubUser(
   username: string
 ): Promise<IGitHubUser | null> {
   try {
-    const response = await fetch(`https://api.github.com/users/${username}`);
+    const response = await fetch(`https://api.github.com/users/${username}`, {
+      next: { revalidate: 86400 }, // 24 h
+    });
     if (!response.ok) throw new Error("Failed to fetch user data");
     const data: IGitHubUser = await response.json();
     return data;

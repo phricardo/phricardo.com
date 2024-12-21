@@ -8,6 +8,7 @@ import TypingEffect from "../TypingEffect/TypingEffect";
 import DeveloperBadge from "../DeveloperBadge/DeveloperBadge";
 import { LogosAngular, LogosJava, LogosReact, LogosTypescript } from "../Icons";
 import styles from "./Header.module.css";
+import { IGitHubUser } from "@/functions/fetchGitHubUser";
 
 const skills = [
   { name: "Java", icon: <LogosJava /> },
@@ -16,7 +17,11 @@ const skills = [
   { name: "Angular 2+", icon: <LogosAngular /> },
 ];
 
-export default function Header() {
+export default function Header({
+  user,
+}: {
+  user: IGitHubUser | null | undefined;
+}) {
   const intervalSeconds = 10;
   const texts = [
     "Brazilian Software Developer",
@@ -51,7 +56,7 @@ export default function Header() {
           ))}
 
           <div className={styles.highlight}>
-            <DeveloperBadge github="phricardo" />
+            <DeveloperBadge user={user} />
             <div>
               <h1 className={styles.title}>
                 <Motion
