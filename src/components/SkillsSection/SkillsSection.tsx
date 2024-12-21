@@ -15,6 +15,9 @@ import {
   LogosAngular,
 } from "../Icons";
 import styles from "./SkillsSection.module.css";
+import { LogosMongoDB } from "../Icons/brands/LogosMongoDB";
+import { LogosPostgreSQL } from "../Icons/brands/LogosPostgreSQL";
+import { LogosNestjs } from "../Icons/brands/LogosNestjs";
 
 const skills = [
   {
@@ -38,6 +41,21 @@ const skills = [
     isTopSkill: false,
   },
   {
+    name: "NestJS",
+    icon: <LogosNestjs />,
+    isTopSkill: false,
+  },
+  {
+    name: "Mongo DB",
+    icon: <LogosMongoDB />,
+    isTopSkill: false,
+  },
+  {
+    name: "PostgreSQL",
+    icon: <LogosPostgreSQL />,
+    isTopSkill: false,
+  },
+  {
     name: "Angular 2+",
     icon: <LogosAngular />,
     isTopSkill: false,
@@ -47,16 +65,16 @@ const skills = [
     icon: <LogosJavascript />,
     isTopSkill: true,
   },
-  {
-    name: "HTML 5",
-    icon: <LogosHtml5 />,
-    isTopSkill: false,
-  },
-  {
-    name: "CSS",
-    icon: <LogosCss3 />,
-    isTopSkill: false,
-  },
+  // {
+  //   name: "HTML 5",
+  //   icon: <LogosHtml5 />,
+  //   isTopSkill: false,
+  // },
+  // {
+  //   name: "CSS",
+  //   icon: <LogosCss3 />,
+  //   isTopSkill: false,
+  // },
 ];
 
 export default function SkillsSection() {
