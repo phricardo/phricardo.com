@@ -1,6 +1,6 @@
 {
-  "title": "Pedro Ricardo - phricardo.com",
-  "description": "",
+  "title": "Pedro Ricardo - Desenvolvedor Full Stack",
+  "description": "Portfólio de Pedro Ricardo (@phricardo / @phricardorj)",
   "icons": {
     "icon": [
       {
@@ -23,22 +23,22 @@
     ]
   },
   "openGraph": {
-    "url": "https://www.opengraph.xyz/",
+    "url": "https://www.phricardo.com/",
     "type": "website",
-    "title": "OpenGraph - Preview Social Media Share and Generate Metatags",
-    "description": "OpenGraph is the easiest way to preview and generate open graph meta tags for any website.",
+    "title": "Pedro Ricardo - Desenvolvedor Full Stack",
+    "description": "Explore o portfólio e descubra os projetos, experiências e soluções desenvolvidos por Pedro Ricardo (phricardo / phricardorj).",
     "images": [
       {
-        "url": "https://www.opengraph.xyz/og-opengraph-v2.png",
-        "alt": "OpenGraph logo"
+        "url": "https://www.phricardo.com/assets/images/banner_opengraph.png",
+        "alt": "Banner do portfólio de Pedro Ricardo (phricardo / phricardorj)"
       }
     ]
   },
   "twitter": {
     "card": "summary_large_image",
     "site": "@your_twitter_handle",
-    "title": "OpenGraph - Preview Social Media Share and Generate Metatags",
-    "description": "OpenGraph is the easiest way to preview and generate open graph meta tags for any website.",
-    "images": ["https://www.opengraph.xyz/og-opengraph-v2.png"]
+    "title": "Pedro Ricardo - Desenvolvedor Full Stack",
+    "description": "Explore o portfólio e descubra os projetos, experiências e soluções desenvolvidos por Pedro Ricardo (phricardo / phricardorj).",
+    "images": ["https://www.phricardo.com/assets/images/banner_opengraph.png"]
   }
 }
