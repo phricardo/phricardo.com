@@ -4,11 +4,11 @@ import React from "react";
 import Image from "next/image";
 import { Motion } from "../motion";
 import { Navbar } from "../Navbar/Navbar";
+import { IGitHubUser } from "@/functions/fetchGitHubUser";
 import TypingEffect from "../TypingEffect/TypingEffect";
 import DeveloperBadge from "../DeveloperBadge/DeveloperBadge";
 import { LogosAngular, LogosJava, LogosReact, LogosTypescript } from "../Icons";
 import styles from "./Header.module.css";
-import { IGitHubUser } from "@/functions/fetchGitHubUser";
 
 const skills = [
   { name: "Java", icon: <LogosJava /> },

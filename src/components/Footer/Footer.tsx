@@ -11,6 +11,7 @@ import {
   GithubLine,
 } from "../Icons";
 import styles from "./Footer.module.css";
+import { SponsorGithubButton } from "../sponsor";
 
 export default function Footer({ user }: { user?: IGitHubUser | null }) {
   return (
@@ -18,6 +19,7 @@ export default function Footer({ user }: { user?: IGitHubUser | null }) {
       <div className={`container ${styles.footer_wrapper}`}>
         <div className={styles.brand}>
           <DeveloperBadge user={user} />
+          <SponsorGithubButton />
         </div>
 
         <div className={styles.footer_links}>
