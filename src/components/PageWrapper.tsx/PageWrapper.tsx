@@ -7,5 +7,9 @@ export default function PageWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  return <React.Fragment>{children}</React.Fragment>;
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "5rem" }}>
+      {children}
+    </div>
+  );
 }
