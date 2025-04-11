@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { MingcuteExternalLinkLine } from "../Icons";
@@ -20,8 +20,8 @@ interface Project {
 }
 
 const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const sliderRef = React.useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
 
   const projects: Project[] = [
@@ -72,7 +72,7 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
     },
   ];
 
-  useEffect(() => {
+  React.useEffect(() => {
     const interval = setInterval(() => {
       slideNext();
     }, 5000);
@@ -80,7 +80,7 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
     return () => clearInterval(interval);
   }, [currentIndex]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!isMobile || !sliderRef.current) return;
 
     let startX = 0;
@@ -126,10 +126,6 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
     setCurrentIndex((prevIndex) =>
       prevIndex === projects.length - 1 ? 0 : prevIndex + 1
     );
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
   };
 
   return (
@@ -201,21 +197,21 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
             </div>
           </div>
 
-          {!isMobile && (
+          {/* {!isMobile && (
             <div className={styles.navButtons}>
               <button onClick={slidePrev} className={styles.navButton}>
                 <ChevronLeft size={24} />
-                <span>Previous</span>
+                <span>Anterior</span>
               </button>
 
               <button onClick={slideNext} className={styles.navButton}>
-                <span>Next</span>
+                <span>Próximo</span>
                 <ChevronRight size={24} />
               </button>
             </div>
-          )}
+          )} */}
 
-          <div className={styles.dots}>
+          {/* <div className={styles.dots}>
             {projects.map((_, index) => (
               <button
                 key={index}
@@ -225,7 +221,7 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
                 }`}
               />
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

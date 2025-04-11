@@ -17,6 +17,14 @@
 
 .slide {
   flex: 0 0 100%;
+
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+    linear-gradient(to bottom, #000000, transparent),
+    url("/assets/images/grid.svg");
+
+  border: 0.1rem solid #343232;
+  border-radius: 0.625rem;
+  overflow: hidden;
 }
 
 .slideContent {
@@ -26,7 +34,6 @@
 }
 
 .slideText {
-  background-color: #ffffff;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -37,11 +44,11 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #1f2937;
+  color: #fff;
 }
 
 .projectDescription {
-  color: #6b7280;
+  color: #eee;
   margin-bottom: 1.5rem;
 }
 
@@ -53,11 +60,15 @@
 }
 
 .tag {
-  padding: 0.25rem 0.75rem;
-  background-color: #e0f2f1;
-  color: #00695c;
-  font-size: 0.875rem;
-  border-radius: 9999px;
+  padding: 0.1rem 0.5rem;
+  background: transparent;
+  border: 0.1rem solid #e1e1e5;
+  font-weight: 600;
+  color: #e1e1e5;
+  border-radius: 0.8rem;
+  font-size: 0.9rem;
+  text-align: start;
+  text-transform: uppercase;
 }
 
 .projectLinks {
@@ -68,13 +79,13 @@
 .link {
   display: flex;
   align-items: center;
-  color: #00695c;
+  color: #d2cfcf;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .link:hover {
-  color: #004d40;
+  color: #ffffff;
 }
 
 .icon {
@@ -91,6 +102,7 @@
   object-fit: cover;
 }
 
+/*
 .navButtons {
   display: flex;
   justify-content: center;
@@ -112,11 +124,7 @@
   transition: color 0.3s ease;
 }
 
-.navButton:hover {
-  color: #00695c;
-}
-
-.dots {
+ .dots {
   display: flex;
   justify-content: center;
   margin-top: 1.5rem;
@@ -135,7 +143,7 @@
 
 .dotActive {
   background-color: #00695c;
-}
+} */
 
 @media (max-width: 768px) {
   .slideContent {
