@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "framer-motion": "^11.11.9",
+    "lucide-react": "^0.487.0",
     "next": "15.0.1",
     "phricardo.com": "file:",
     "react": "^18",
