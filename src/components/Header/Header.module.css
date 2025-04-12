@@ -12,14 +12,14 @@
 
 .star {
   position: absolute;
-  background-color: #aca4a4;
+  background-color: #fff;
 
   opacity: 0;
   border-radius: 50%;
   animation: blink 2s infinite ease-in-out;
 
-  height: 0.2rem !important;
-  width: 0.2rem !important;
+  height: 0.25rem !important;
+  width: 0.25rem !important;
 }
 
 .header .header_wrapper {
@@ -77,7 +77,7 @@
   --border-radius: 0.4rem;
 
   flex: 1 1 400px;
-  background: #000000;
+  background: #000;
   border: 0.1rem solid #343232;
   border-radius: var(--border-radius);
 
@@ -89,6 +89,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
 }
 
 .floatSkill .contentCard {
@@ -103,28 +104,28 @@
 
 .floatSkill:nth-child(1) {
   top: 5vh;
-  left: 18vw;
+  left: 14vw;
   animation-delay: 0s, 0s;
   transform-origin: 50% 50%;
 }
 
 .floatSkill:nth-child(2) {
   top: 5vh;
-  right: 18vw;
+  right: 14vw;
   animation-delay: 0.5s, 0.5s;
   transform-origin: 50% 50%;
 }
 
 .floatSkill:nth-child(3) {
   bottom: 8vh;
-  right: 15vw;
+  right: 12vw;
   animation-delay: 1s, 1s;
   transform-origin: 50% 50%;
 }
 
 .floatSkill:nth-child(4) {
   bottom: 8vh;
-  left: 15vw;
+  left: 12vw;
   animation-delay: 1.5s, 1.5s;
   transform-origin: 50% 50%;
 }
