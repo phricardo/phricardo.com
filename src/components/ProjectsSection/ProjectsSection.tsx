@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { MingcuteExternalLinkLine } from "../Icons";
 import styles from "./ProjectsSection.module.css";
@@ -15,8 +15,8 @@ interface Project {
   description: string;
   image: string;
   tags: string[];
-  liveUrl: string;
-  githubUrl: string;
+  liveUrl?: string;
+  githubUrl?: string;
 }
 
 const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
@@ -26,49 +26,29 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
 
   const projects: Project[] = [
     {
-      title: "E-Commerce Website",
+      title: "Daily English Words",
       description:
-        "A full-featured online store with product listings, shopping cart, and secure checkout.",
-      image: "https://placehold.co/600x400/e4e4e7/666?text=E-Commerce+Project",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
-      liveUrl: "https://project1.example.com",
-      githubUrl: "https://github.com/yourusername/project1",
+        "Aprenda uma nova palavra em inglês todos os dias com este projeto interativo, que facilita a prática diária do idioma e enriquece seu vocabulário.",
+      image: "/assets/images/projects/01.png",
+      tags: ["Tailwind CSS", "Javascript"],
+      liveUrl: "https://englishdaily.phricardo.com/",
+      githubUrl: "https://github.com/phricardo/daily-english-words",
     },
     {
-      title: "Personal Finance Dashboard",
+      title: "História da Democracia: Mundo e Brasil",
       description:
-        "An application to track expenses, income, and financial goals with interactive charts.",
-      image: "https://placehold.co/600x400/e4e4e7/666?text=Finance+Dashboard",
-      tags: ["React", "TypeScript", "Firebase", "Chart.js"],
-      liveUrl: "https://project2.example.com",
-      githubUrl: "https://github.com/yourusername/project2",
+        "Explore a evolução da democracia no mundo e no Brasil, conhecendo os principais marcos históricos e os contextos políticos que moldaram nossa sociedade.",
+      image: "/assets/images/projects/02.png",
+      tags: ["Javascript", "HTML", "CSS"],
+      liveUrl: "https://hdmb.phricardo.com/",
     },
     {
-      title: "Social Media Platform",
+      title: "ListVideo - Plataforma EduTech",
       description:
-        "A platform for connecting users, sharing content, and real-time messaging.",
-      image: "https://placehold.co/600x400/e4e4e7/666?text=Social+Media+App",
-      tags: ["React", "Redux", "Node.js", "Socket.io"],
-      liveUrl: "https://project3.example.com",
-      githubUrl: "https://github.com/yourusername/project3",
-    },
-    {
-      title: "Weather Application",
-      description:
-        "A weather forecast app with geolocation, daily and hourly forecasts, and animated visualizations.",
-      image: "https://placehold.co/600x400/e4e4e7/666?text=Weather+App",
-      tags: ["React", "OpenWeather API", "GeoLocation"],
-      liveUrl: "https://project4.example.com",
-      githubUrl: "https://github.com/yourusername/project4",
-    },
-    {
-      title: "Task Management Tool",
-      description:
-        "A productivity application with task creation, organization, and progress tracking.",
-      image: "https://placehold.co/600x400/e4e4e7/666?text=Task+Manager",
-      tags: ["React", "TypeScript", "Firebase"],
-      liveUrl: "https://project5.example.com",
-      githubUrl: "https://github.com/yourusername/project5",
+        "Descubra a ListVideo, uma plataforma inovadora de EduTech que integra recursos multimídia para aprimorar o processo de ensino e aprendizado.",
+      image: "/assets/images/projects/03.png",
+      tags: ["React", "Redux", "Java/Spring Boot"],
+      liveUrl: "https://listvideo.phricardo.com/",
     },
   ];
 
@@ -128,6 +108,10 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
     );
   };
 
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <section
       id="projects"
@@ -164,24 +148,28 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
                         </div>
                       </div>
                       <div className={styles.projectLinks}>
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.link}
-                        >
-                          <ExternalLink size={18} className={styles.icon} />{" "}
-                          Live Demo
-                        </a>
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.link}
-                        >
-                          <Github size={18} className={styles.icon} /> Source
-                          Code
-                        </a>
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.link}
+                          >
+                            <ExternalLink size={18} className={styles.icon} />{" "}
+                            Acessar Online
+                          </a>
+                        )}
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.link}
+                          >
+                            <Github size={18} className={styles.icon} />
+                            Código Fonte
+                          </a>
+                        )}
                       </div>
                     </div>
                     <div className={styles.slideImageWrapper}>
@@ -197,7 +185,7 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
             </div>
           </div>
 
-          {/* {!isMobile && (
+          {!isMobile && (
             <div className={styles.navButtons}>
               <button onClick={slidePrev} className={styles.navButton}>
                 <ChevronLeft size={24} />
@@ -209,9 +197,9 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
                 <ChevronRight size={24} />
               </button>
             </div>
-          )} */}
+          )}
 
-          {/* <div className={styles.dots}>
+          <div className={styles.dots}>
             {projects.map((_, index) => (
               <button
                 key={index}
@@ -221,7 +209,7 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ className }) => {
                 }`}
               />
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
     </section>

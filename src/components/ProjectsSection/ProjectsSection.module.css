@@ -45,6 +45,7 @@
   font-weight: 600;
   margin-bottom: 1rem;
   color: #fff;
+  text-align: start;
 }
 
 .projectDescription {
@@ -102,7 +103,6 @@
   object-fit: cover;
 }
 
-/*
 .navButtons {
   display: flex;
   justify-content: center;
@@ -114,17 +114,17 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: #ffffff;
+  color: #d2cfcf;
+  background-color: #212121;
   padding: 0.5rem 1rem;
   border-radius: 9999px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  color: #1f2937;
   border: none;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
- .dots {
+.dots {
   display: flex;
   justify-content: center;
   margin-top: 1.5rem;
@@ -135,15 +135,15 @@
   width: 0.75rem;
   height: 0.75rem;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: #333;
   border: none;
   cursor: pointer;
   transition: width 0.3s ease, background-color 0.3s ease;
 }
 
 .dotActive {
-  background-color: #00695c;
-} */
+  background-color: #555;
+}
 
 @media (max-width: 768px) {
   .slideContent {
