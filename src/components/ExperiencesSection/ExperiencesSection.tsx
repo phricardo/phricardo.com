@@ -37,13 +37,18 @@ const calculateExperienceDuration = (
   const startDate = new Date(start);
   const endDate = end ? new Date(end) : new Date();
 
-  let years = endDate.getFullYear() - startDate.getFullYear();
-  let months = endDate.getMonth() - startDate.getMonth();
+  let totalMonths =
+    (endDate.getFullYear() - startDate.getFullYear()) * 12 +
+    (endDate.getMonth() - startDate.getMonth());
 
-  return {
-    years,
-    months,
-  };
+  if (endDate.getDate() >= startDate.getDate()) {
+    totalMonths += 1;
+  }
+
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+
+  return { years, months };
 };
 
 const formatExperiencePeriod = (
