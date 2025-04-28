@@ -1,7 +1,6 @@
 import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Card, CardContent } from "@/components/ui/card";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Calendar } from "lucide-react";
 import cefetRjSrc from "../assets/images/logos/cefetrj.png";
 
 interface FormationItem {
@@ -44,46 +43,48 @@ const formationData: FormationItem[] = [
 
 const AcademicFormation: React.FC = () => {
   const { language } = useLanguage();
-
   const sectionTitle =
     language === "en" ? "Academic Formation" : "Formação Acadêmica";
 
   return (
-    <section className="mb-8 animate-fade-in">
-      <div className="flex items-center gap-2 mb-6">
-        <h2 className="text-2xl font-bold text-white">{sectionTitle}</h2>
-      </div>
-      <div className="space-y-4">
-        {formationData.map((item) => (
-          <Card
-            key={item.id}
-            className="bg-github-secondary border-github-border overflow-hidden"
+    <section className="py-8 md:py-12">
+      <h2 className="text-xl md:text-2xl font-semibold text-white mb-4 md:mb-6">
+        {sectionTitle}
+      </h2>
+      <div className="space-y-4 md:space-y-8">
+        {formationData.map((data) => (
+          <div
+            key={data.id}
+            className="bg-github-secondary border border-github-border rounded-lg p-4 md:p-6"
           >
-            <CardContent className="p-0">
-              <div className="grid grid-cols-1 md:grid-cols-6 gap-4 p-4">
-                <div className="w-full max-w-[120px] mx-auto md:mx-0">
-                  <AspectRatio ratio={1}>
-                    <img
-                      src={item.imageSrc}
-                      alt={item.imageAlt[language]}
-                      className="rounded-lg w-full h-full object-cover border border-github-border"
-                    />
-                  </AspectRatio>
-                </div>
-                <div className="md:col-span-5 space-y-2">
-                  <h3 className="text-lg font-semibold text-white">
-                    {item.title[language]}
-                  </h3>
-                  {item.period && (
-                    <p className="text-sm text-github-text">{item.period}</p>
-                  )}
-                  <p className="text-sm text-github-text">
-                    {item.description[language]}
-                  </p>
-                </div>
+            <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+              <div className="w-16 h-16 md:w-24 md:h-24 flex-shrink-0 rounded-lg overflow-hidden mx-auto md:mx-0">
+                <img
+                  src={data.imageSrc}
+                  alt={data.imageAlt[language]}
+                  className="w-full h-full object-cover"
+                />
               </div>
-            </CardContent>
-          </Card>
+              <div className="flex-grow">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 md:gap-4 mb-3 md:mb-4">
+                  <h3 className="text-lg font-medium text-white text-center md:text-left">
+                    {data.title[language]}
+                  </h3>
+                  {data.period && (
+                    <div className="flex items-center justify-center md:justify-start gap-2 text-github-text">
+                      <Calendar className="w-4 h-4" />
+                      <span className="text-sm md:text-base">
+                        {data.period}
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <p className="text-github-text text-sm md:text-base text-center md:text-left">
+                  {data.description[language]}
+                </p>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </section>
