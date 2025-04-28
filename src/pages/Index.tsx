@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Profile from "@/components/Profile";
 import TechStack from "@/components/TechStack";
@@ -6,6 +5,7 @@ import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import MainLanguages from "@/components/MainLanguages";
 import Footer from "@/components/Footer";
+import AcademicFormation from "@/components/AcademicFormation";
 
 const Index = () => {
   return (
@@ -17,6 +17,7 @@ const Index = () => {
           <TechStack />
           <MainLanguages />
           <Experience />
+          <AcademicFormation />
           <Projects />
         </div>
       </main>
