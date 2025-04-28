@@ -8,7 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-
+import { useIsMobile } from "@/hooks/use-mobile";
 import convidarMeSrc from "../assets/images/projects/convidar.me.png";
 import englishdailySrc from "../assets/images/projects/englishdaily.png";
 import integraCefetRjSrc from "../assets/images/projects/integra-cefetrj.png";
@@ -23,7 +23,10 @@ type Project = {
 };
 
 const Projects = () => {
+  const isMobile = useIsMobile();
   const { t, language } = useLanguage();
+
+  const title = language === "en" ? "Featured Projects" : "Projetos Destacados";
 
   const projects: Project[] = [
     {
@@ -62,81 +65,82 @@ const Projects = () => {
 
   return (
     <section id="projects" className="my-12">
-      <h2 className="text-xl font-semibold text-white mb-6">
-        {t("featuredProjects")}
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <h2 className="text-xl font-semibold text-white mb-6">{title}</h2>
+      <div className="grid grid-cols-1 gap-6">
         {projects.map((project, index) => (
-          <Card
-            key={index}
-            className="flex flex-col h-full bg-github-secondary border border-github-border rounded-lg overflow-hidden"
-          >
-            <CardHeader className="px-6 pt-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl overflow-hidden bg-github-dark shadow-lg">
-                  <img
-                    src={project.logo}
-                    alt={`${project.title} logo`}
-                    className="w-full h-full object-cover"
-                  />
+          <div key={index} className="rounded-xl">
+            <Card className="border-0 bg-github-secondary border-github-border overflow-hidden">
+              <div className="p-4">
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                  <div className="flex-shrink-0 w-16 h-16 rounded-2xl overflow-hidden">
+                    <img
+                      src={project.logo}
+                      alt={`${project.title} icon`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex-grow min-w-0 flex flex-col items-center md:items-start text-center md:text-left">
+                    <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start gap-4">
+                      <div>
+                        <CardTitle className="text-white text-lg mb-2">
+                          {project.title}
+                        </CardTitle>
+                        <CardDescription className="text-github-text line-clamp-2 mb-4">
+                          {project.description}
+                        </CardDescription>
+                        <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
+                          {project.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="bg-[#238636] bg-opacity-20 text-[#7ee787] px-2 py-1 rounded-full text-xs font-medium border border-[#238636] border-opacity-30"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className={`flex gap-2 ${isMobile ? "mt-2" : ""}`}>
+                        {project.github && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="min-w-[100px] bg-github-dark border-github-border text-github-text"
+                            asChild
+                          >
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Github className="mr-1 h-4 w-4" />
+                              GitHub
+                            </a>
+                          </Button>
+                        )}
+                        {project.demo && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="min-w-[100px] bg-github-dark border-github-border text-github-text"
+                            asChild
+                          >
+                            <a
+                              href={project.demo}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <ExternalLink className="mr-1 h-4 w-4" />
+                              Demo
+                            </a>
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <CardTitle className="text-white text-lg">
-                  {project.title}
-                </CardTitle>
               </div>
-              <CardDescription className="text-github-text mt-3">
-                {project.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col flex-grow px-6 pt-4 pb-6">
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-[#238636] bg-opacity-20 text-[#7ee787] px-2 py-1 rounded-full text-sm font-medium border border-[#238636] border-opacity-30"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-auto flex flex-wrap gap-2">
-                {project.github && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex-1 bg-github-dark border-github-border text-github-text hover:bg-github-border hover:text-white transition-colors"
-                    asChild
-                  >
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full flex justify-center"
-                    >
-                      <Github className="mr-1" size={16} /> GitHub
-                    </a>
-                  </Button>
-                )}
-                {project.demo && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex-1 bg-github-dark border-github-border text-github-text hover:bg-github-border hover:text-white transition-colors"
-                    asChild
-                  >
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full flex justify-center"
-                    >
-                      <ExternalLink className="mr-1" size={16} /> Online
-                    </a>
-                  </Button>
-                )}
-              </div>
-            </CardContent>
-          </Card>
+            </Card>
+          </div>
         ))}
       </div>
     </section>
