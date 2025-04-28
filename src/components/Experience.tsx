@@ -71,35 +71,38 @@ const Experience = () => {
 
   const experiences: ExperienceItem[] = [
     {
-      company: "Tech Solutions Inc.",
-      role: "Senior Software Engineer",
+      company: "Magalu / Luizalabs",
+      role: "Desenvolvedor Backend Java",
       description:
         language === "en"
-          ? "Led development of enterprise-scale cloud applications, mentored junior developers, and implemented CI/CD pipelines improving deployment efficiency by 40%."
-          : "Liderou o desenvolvimento de aplicações em nuvem em escala empresarial, mentorou desenvolvedores juniores e implementou pipelines de CI/CD melhorando a eficiência de implantação em 40%.",
-      duration: language === "en" ? "2022 - Present" : "2022 - o momento",
+          ? "Develop APIs with Java (Spring Boot & Micronaut), design microservices, implement CI/CD pipelines, and manage Docker with Elasticsearch, MongoDB, ScyllaDB & PostgreSQL."
+          : "Desenvolvo APIs em Java (Spring Boot & Micronaut), projeto microserviços, implemento pipelines CI/CD e gerencio Docker com Elasticsearch, MongoDB, ScyllaDB & PostgreSQL.",
+      duration:
+        language === "en" ? "Jun 2022 - Present" : "Jun de 2022 - o momento",
       isCurrent: true,
       logo: MagaluLogo,
     },
     {
-      company: "Digital Innovations Ltd",
-      role: "Full Stack Developer",
+      company: "Santander Brasil",
+      role: "Desenvolvedor Backend Java Júnior",
       description:
         language === "en"
-          ? "Developed and maintained multiple client projects using React and Node.js, resulting in a 30% increase in user engagement."
-          : "Desenvolveu e manteve múltiplos projetos de clientes usando React e Node.js, resultando em um aumento de 30% no engajamento dos usuários.",
-      duration: "2020 - 2022",
+          ? "Built and maintained backend services using Java and Angular, enhancing system reliability and performance."
+          : "Desenvolvi e mantive serviços backend com Java e Angular, aprimorando confiabilidade e performance do sistema.",
+      duration:
+        language === "en" ? "Mar 2021 - May 2022" : "Mar de 2021 - Mai de 2022",
       isCurrent: false,
       logo: SantanderLogo,
     },
     {
-      company: "StartUp Hub",
-      role: "Frontend Developer",
+      company: "Upwork",
+      role: "Full-stack Developer",
       description:
         language === "en"
-          ? "Built responsive web applications and implemented modern UI/UX practices, improving user satisfaction scores by 25%."
-          : "Construiu aplicações web responsivas e implementou práticas modernas de UI/UX, melhorando as pontuações de satisfação do usuário em 25%.",
-      duration: "2018 - 2020",
+          ? "Delivered custom full-stack solutions with Java, PHP, React & Spring, alongside database management, boosting client satisfaction."
+          : "Entreguei soluções full-stack com Java, PHP, React & Spring, além de gestão de bancos, elevando a satisfação dos clientes.",
+      duration:
+        language === "en" ? "Jan 2019 - May 2022" : "Jan de 2019 - Mai de 2022",
       isCurrent: false,
       logo: UpWorkLogo,
     },

@@ -9,7 +9,10 @@ import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
 import { useState, useRef, MouseEvent } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import logoSrc from "../assets/images/projects/daily-english-words.png";
+
+import convidarMeSrc from "../assets/images/projects/convidar.me.png";
+import englishdailySrc from "../assets/images/projects/englishdaily.png";
+import integraCefetRjSrc from "../assets/images/projects/integra-cefetrj.png";
 
 type HoverState = {
   isHovered: boolean;
@@ -66,35 +69,35 @@ const Projects = () => {
 
   const projects = [
     {
+      title: "convidar.me",
+      description:
+        language === "en"
+          ? "A data-driven event manager that simplifies invites, RSVPs and reminders in real time."
+          : "EMS orientado a dados que simplifica convites, confirmações e lembretes em tempo real.",
+      tags: ["Java", "NextJs", "Typescript", "MongoDB"],
+      demo: "https://www.convidar.me/",
+      logo: convidarMeSrc,
+    },
+    {
       title: "English Daily",
       description:
         language === "en"
-          ? "Cloud infrastructure management platform with real-time monitoring and automated scaling capabilities."
-          : "Plataforma de gerenciamento de infraestrutura em nuvem com monitoramento em tempo real e capacidades de escalonamento automático.",
-      tags: ["Html", "Javascript", "CSS"],
+          ? "Daily curated vocabulary lists to build your English skills with quick lessons."
+          : "Listas diárias de vocabulário para aprimorar seu inglês com lições rápidas.",
+      tags: ["HTML", "CSS", "Javascript"],
       github: "https://github.com/phricardorj/daily-english-words",
-      demo: "https://englishdaily.phricardo.com/",
-      logo: logoSrc,
+      logo: englishdailySrc,
     },
     {
-      title: "E-commerce Platform",
+      title: "integra.Cefet/Rj",
       description:
         language === "en"
-          ? "Complete e-commerce solution with payment integration, inventory management and analytics dashboard."
-          : "Solução completa de e-commerce com integração de pagamentos, gerenciamento de estoque e painel analítico.",
-      tags: ["TypeScript", "Express", "PostgreSQL"],
-      github: "https://github.com/username/project-beta",
-      logo: logoSrc,
-    },
-    {
-      title: "Smart Health",
-      description:
-        language === "en"
-          ? "Healthcare management system with appointment scheduling and electronic medical records."
-          : "Sistema de gestão de saúde com agendamento de consultas e prontuário eletrônico.",
-      tags: ["Next.js", "GraphQL", "AWS"],
-      demo: "https://project-gamma.demo.com",
-      logo: logoSrc,
+          ? "Centralizes student IDs, schedules and grades on one easy-to-use platform."
+          : "Centraliza carteirinha, horários e notas em uma plataforma fácil de usar.",
+      tags: ["Next.js", "Typescript", "Web Scraping"],
+      github: "https://integra-cefetrj.phricardo.com/",
+      demo: "https://integra-cefetrj.phricardo.com/",
+      logo: integraCefetRjSrc,
     },
   ];
 
@@ -202,7 +205,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                       >
                         <ExternalLink className="mr-1" size={16} />
-                        Demo
+                        Online
                       </a>
                     </Button>
                   )}

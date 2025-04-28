@@ -6,8 +6,8 @@ const Profile = () => {
 
   const description =
     language === "en"
-      ? "Full-stack developer passionate about creating innovative solutions. Specialized in React, Node.js, and cloud technologies."
-      : "Desenvolvedor full-stack apaixonado por criar soluções inovadoras. Especializado em React, Node.js e tecnologias em nuvem.";
+      ? "Java Backend developer with 5+ years in microservices (Kafka, RabbitMQ), relational & NoSQL databases, unit/integration testing, and front-end frameworks like React, Angular, Next.js & NestJS."
+      : "Desenvolvedor Backend Java com mais de 5 anos em microserviços (Kafka, RabbitMQ), bancos relacionais e NoSQL, testes unitários/integrados e frameworks como React, Angular, Next.js & NestJS.";
 
   return (
     <div className="flex flex-col md:flex-row gap-8 items-start">
@@ -21,7 +21,7 @@ const Profile = () => {
       <div className="flex-1">
         <h1 className="text-3xl font-bold text-white mb-2">Pedro Ricardo</h1>
         <p className="text-github-text mb-4">
-          @phricardo • Full-stack Developer
+          @phricardo • Backend / Full-stack Developer
         </p>
         <p className="text-github-text mb-6">{description}</p>
         <div className="flex gap-4">
