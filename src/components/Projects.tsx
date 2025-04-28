@@ -43,6 +43,7 @@ const Projects = () => {
           ? "Daily curated vocabulary lists to build your English skills with quick lessons."
           : "Listas diárias de vocabulário para aprimorar seu inglês com lições rápidas.",
       tags: ["HTML", "CSS", "Javascript"],
+      demo: "https://englishdaily.phricardo.com/",
       github: "https://github.com/phricardorj/daily-english-words",
       logo: englishdailySrc,
     },
