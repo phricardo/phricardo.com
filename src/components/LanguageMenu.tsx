@@ -33,14 +33,14 @@ const LanguageMenu = () => {
       <Button
         variant="ghost"
         size="default"
-        className="bg-[#0D1117] text-github-text border-none flex items-center gap-2"
+        className="bg-[#161B22] hover:bg-[#30363D] text-github-text border-none flex items-center gap-2 px-3 py-1.5 rounded-md focus:outline-none"
       >
         <img
           src={currentFlagUrl}
           alt={currentAlt}
           className="w-5 h-3.5 object-cover mr-2"
         />
-        {languageNames[language]}
+        <span className="text-github-text">{languageNames[language]}</span>
       </Button>
     );
   }
@@ -51,27 +51,29 @@ const LanguageMenu = () => {
         <Button
           variant="ghost"
           size="default"
-          className="bg-[#0D1117] hover:bg-[#161B22] text-github-text border-none flex items-center gap-2 min-w-[140px] transition-colors px-3 py-1.5 rounded-md"
+          className="bg-[#161B22] hover:bg-[#30363D] text-github-text border-none flex items-center gap-2 min-w-[140px] px-3 py-1.5 rounded-md focus:outline-none"
         >
           <img
             src={currentFlagUrl}
             alt={currentAlt}
             className="w-5 h-3.5 object-cover"
           />
-          <span className="flex-1 text-left">{languageNames[language]}</span>
-          <ChevronDown className="h-4 w-4 opacity-50" />
+          <span className="flex-1 text-left text-github-text">
+            {languageNames[language]}
+          </span>
+          <ChevronDown className="h-4 w-4 opacity-50 text-github-text" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="bg-[#0D1117] border border-[#30363D] text-github-text min-w-[140px] p-1 rounded-md shadow-lg"
+        className="bg-[#161B22] border border-[#30363D] text-github-text min-w-[140px] p-1 rounded-md shadow-lg focus:outline-none"
       >
         <DropdownMenuItem
           onClick={() => setLanguage("en")}
-          className={`cursor-pointer px-3 py-1.5 text-sm rounded-sm ${
+          className={`cursor-pointer flex items-center bg-[#161B22] px-3 py-1.5 text-sm rounded-sm focus:outline-none transition-colors ${
             language === "en"
-              ? "bg-github-green text-[#c9d1d9]"
-              : "hover:bg-[#161B22] hover:text-[#8b949e] text-github-text"
+              ? "bg-[#30363D] text-github-text"
+              : "hover:bg-[#30363D] text-github-text"
           }`}
         >
           <img
@@ -79,14 +81,14 @@ const LanguageMenu = () => {
             alt="US Flag"
             className="w-5 h-3.5 object-cover mr-2"
           />
-          {languageNames["en"]}
+          <span>{languageNames["en"]}</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setLanguage("pt")}
-          className={`cursor-pointer px-3 py-1.5 text-sm rounded-sm ${
+          className={`cursor-pointer flex items-center bg-[#161B22] px-3 py-1.5 text-sm rounded-sm focus:outline-none transition-colors ${
             language === "pt"
-              ? "bg-github-green text-[#c9d1d9]"
-              : "hover:bg-[#161B22] hover:text-[#8b949e] text-github-text"
+              ? "bg-[#30363D] text-github-text"
+              : "hover:bg-[#30363D] text-github-text"
           }`}
         >
           <img
@@ -94,7 +96,7 @@ const LanguageMenu = () => {
             alt="Brazil Flag"
             className="w-5 h-3.5 object-cover mr-2"
           />
-          {languageNames["pt"]}
+          <span>{languageNames["pt"]}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
