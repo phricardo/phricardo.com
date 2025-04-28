@@ -1,5 +1,6 @@
 import { Github, Linkedin, Instagram, Twitter, BadgeCheck } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { BsTwitterX } from "react-icons/bs";
 
 const Profile = () => {
   const { language } = useLanguage();
@@ -58,7 +59,7 @@ const Profile = () => {
             rel="noopener noreferrer"
             className="text-github-text hover:text-white transition-colors"
           >
-            <Twitter size={24} />
+            <BsTwitterX size={24} />
           </a>
         </div>
       </div>

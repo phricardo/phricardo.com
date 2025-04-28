@@ -1,4 +1,5 @@
 import { Github, Linkedin, Instagram, Twitter } from "lucide-react";
+import { BsTwitterX } from "react-icons/bs";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -38,7 +39,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-github-text hover:text-white transition-colors"
             >
-              <Twitter size={24} />
+              <BsTwitterX size={24} />
             </a>
           </div>
           <p className="text-github-text text-sm">
