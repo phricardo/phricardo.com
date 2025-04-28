@@ -9,6 +9,7 @@ import {
   SiPostgresql,
   SiAngular,
   SiJavascript,
+  SiSpringboot,
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { Database } from "lucide-react";
@@ -24,6 +25,7 @@ const MainLanguages = () => {
   const languages: LanguageItem[] = [
     { name: "TypeScript", icon: SiTypescript },
     { name: "Java", icon: DiJava },
+    { name: "Spring Boot", icon: SiSpringboot },
     { name: "React Js", icon: SiReact },
     { name: "Node.js", icon: SiNodedotjs },
     { name: "NestJS", icon: SiNestjs },
