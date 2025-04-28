@@ -54,7 +54,7 @@ const Projects = () => {
           ? "Centralizes student IDs, schedules and grades on one easy-to-use platform."
           : "Centraliza carteirinha, horários e notas em uma plataforma fácil de usar.",
       tags: ["Next.js", "Typescript", "Web Scraping"],
-      github: "https://integra-cefetrj.phricardo.com/",
+      github: "https://github.com/phricardo/integra.cefetrj",
       demo: "https://integra-cefetrj.phricardo.com/",
       logo: integraCefetRjSrc,
     },
