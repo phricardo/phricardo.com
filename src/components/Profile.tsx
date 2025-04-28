@@ -1,4 +1,4 @@
-import { Github, Linkedin, Instagram, Twitter } from "lucide-react";
+import { Github, Linkedin, Instagram, Twitter, BadgeCheck } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Profile = () => {
@@ -19,7 +19,10 @@ const Profile = () => {
         />
       </div>
       <div className="flex-1">
-        <h1 className="text-3xl font-bold text-white mb-2">Pedro Ricardo</h1>
+        <div className="flex items-center gap-2 mb-2">
+          <h1 className="text-3xl font-bold text-white">Pedro Ricardo</h1>
+          <BadgeCheck className="text-github-green" size={28} />
+        </div>
         <p className="text-github-text mb-4">
           @phricardo • Backend / Full-stack Developer
         </p>
