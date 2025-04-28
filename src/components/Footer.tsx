@@ -1,6 +1,8 @@
 import { Github, Linkedin, Instagram, Twitter } from "lucide-react";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-github-secondary border-t border-github-border mt-24">
       <div className="max-w-[1100px] mx-auto px-4">
@@ -40,7 +42,7 @@ const Footer = () => {
             </a>
           </div>
           <p className="text-github-text text-sm">
-            © 2025 phricardo.com. All rights reserved.
+            © {currentYear} phricardo.com. All rights reserved.
           </p>
         </div>
       </div>
