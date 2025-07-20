@@ -5,6 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import MagaluLogo from "../assets/images/companies/magalu.png";
 import UpWorkLogo from "../assets/images/companies/upwork.png";
 import SantanderLogo from "../assets/images/companies/santander.png";
+import PicPayLogo from "../assets/images/companies/picpay.png";
 
 type ExperienceItem = {
   company: string;
@@ -20,6 +21,18 @@ const Experience = () => {
 
   const experiences: ExperienceItem[] = [
     {
+      company: "PicPay Bank",
+      role: "Desenvolvedor Backend Java Pleno",
+      description:
+        language === "en"
+          ? "Contribute to the development of scalable APIs using Java (Spring Boot & Micronaut), focusing on performance and resilience. Work on microservices architecture, integrations with MongoDB, PostgreSQL, ScyllaDB, and Elasticsearch, and manage CI/CD pipelines with Docker and GitHub Actions."
+          : "Participo da construção de APIs escaláveis com Java (Spring Boot e Micronaut), com foco em performance e resiliência. Atuo na arquitetura de microserviços, integração com bases como MongoDB, PostgreSQL, ScyllaDB e Elasticsearch, além de pipelines CI/CD com Docker e GitHub Actions.",
+      duration:
+        language === "en" ? "Aug 2025 - Present" : "ago de 2025 - o momento",
+      isCurrent: true,
+      logo: PicPayLogo,
+    },
+    {
       company: "Magalu / Luizalabs",
       role: "Desenvolvedor Backend Java",
       description:
@@ -27,8 +40,8 @@ const Experience = () => {
           ? "Develop APIs with Java (Spring Boot & Micronaut), design microservices, implement CI/CD pipelines, and manage Docker with Elasticsearch, MongoDB, ScyllaDB & PostgreSQL."
           : "Desenvolvo APIs em Java (Spring Boot & Micronaut), projeto microserviços, implemento pipelines CI/CD e gerencio Docker com Elasticsearch, MongoDB, ScyllaDB & PostgreSQL.",
       duration:
-        language === "en" ? "Jun 2022 - Present" : "Jun de 2022 - o momento",
-      isCurrent: true,
+        language === "en" ? "Jun 2022 - Jul 2025" : "jun de 2022 - jun de 2025",
+      isCurrent: false,
       logo: MagaluLogo,
     },
     {
@@ -39,7 +52,7 @@ const Experience = () => {
           ? "Built and maintained backend services using Java and Angular, enhancing system reliability and performance."
           : "Desenvolvi e mantive serviços backend com Java e Angular, aprimorando confiabilidade e performance do sistema.",
       duration:
-        language === "en" ? "Mar 2021 - May 2022" : "Mar de 2021 - Mai de 2022",
+        language === "en" ? "Mar 2021 - May 2022" : "mar de 2021 - mai de 2022",
       isCurrent: false,
       logo: SantanderLogo,
     },
@@ -51,7 +64,7 @@ const Experience = () => {
           ? "Delivered custom full-stack solutions with Java, PHP, React & Spring, alongside database management, boosting client satisfaction."
           : "Entreguei soluções full-stack com Java, PHP, React & Spring, além de gestão de bancos, elevando a satisfação dos clientes.",
       duration:
-        language === "en" ? "Jan 2019 - May 2022" : "Jan de 2019 - Mai de 2022",
+        language === "en" ? "Jan 2019 - May 2022" : "jan de 2019 - mai de 2022",
       isCurrent: false,
       logo: UpWorkLogo,
     },
