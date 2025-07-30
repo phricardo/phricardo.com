@@ -20,18 +20,18 @@ const Experience = () => {
   const { t, language } = useLanguage();
 
   const experiences: ExperienceItem[] = [
-    // {
-    //   company: "PicPay Bank",
-    //   role: "Desenvolvedor Backend Java Pleno",
-    //   description:
-    //     language === "en"
-    //       ? "Contribute to the development of scalable APIs using Java (Spring Boot & Micronaut), focusing on performance and resilience. Work on microservices architecture, integrations with MongoDB, PostgreSQL, ScyllaDB, and Elasticsearch, and manage CI/CD pipelines with Docker and GitHub Actions."
-    //       : "Participo da construção de APIs escaláveis com Java (Spring Boot e Micronaut), com foco em performance e resiliência. Atuo na arquitetura de microserviços, integração com bases como MongoDB, PostgreSQL, ScyllaDB e Elasticsearch, além de pipelines CI/CD com Docker e GitHub Actions.",
-    //   duration:
-    //     language === "en" ? "Aug 2025 - Present" : "ago de 2025 - o momento",
-    //   isCurrent: true,
-    //   logo: PicPayLogo,
-    // },
+    {
+      company: "PicPay Bank",
+      role: "Desenvolvedor Backend Java Pleno",
+      description:
+        language === "en"
+          ? "Contribute to the development of scalable APIs using Java (Spring Boot & Micronaut), focusing on performance and resilience. Work on microservices architecture, integrations with MongoDB, PostgreSQL, ScyllaDB, and Elasticsearch, and manage CI/CD pipelines with Docker and GitHub Actions."
+          : "Participo da construção de APIs escaláveis com Java (Spring Boot e Micronaut), com foco em performance e resiliência. Atuo na arquitetura de microserviços, integração com bases como MongoDB, PostgreSQL, ScyllaDB e Elasticsearch, além de pipelines CI/CD com Docker e GitHub Actions.",
+      duration:
+        language === "en" ? "Aug 2025 - Present" : "ago de 2025 - o momento",
+      isCurrent: true,
+      logo: PicPayLogo,
+    },
     {
       company: "Magalu / Luizalabs",
       role: "Desenvolvedor Backend Java",
