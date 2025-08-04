@@ -51,14 +51,14 @@ const Projects = () => {
       logo: englishdailySrc,
     },
     {
-      title: "integra.Cefet/Rj",
+      title: "alcateia.Cefet/Rj",
       description:
         language === "en"
           ? "Centralizes student IDs, schedules and grades on one easy-to-use platform."
           : "Centraliza carteirinha, horários e notas em uma plataforma fácil de usar.",
       tags: ["Next.js", "Typescript", "Web Scraping"],
-      github: "https://github.com/phricardo/id.cefetrj",
-      demo: "https://alunos-cefetrj.phricardo.com",
+      github: "https://github.com/phricardo/alcateia.cefetrj.app",
+      demo: "https://alcateia.phricardo.com/",
       logo: integraCefetRjSrc,
     },
   ];
