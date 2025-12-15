@@ -38,7 +38,7 @@ const MainLanguages = () => {
   ];
 
   return (
-    <div className="my-12">
+    <div className="my-24 md:my-28">
       <h2 className="text-2xl font-semibold text-white mb-8">
         {t("mainLanguages")}
       </h2>

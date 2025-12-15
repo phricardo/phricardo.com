@@ -123,7 +123,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
                   handleSetLanguage("en");
                   setShowModal(false);
                 }}
-                className="bg-github-green hover:bg-github-accent text-white"
+                className="bg-black hover:bg-[#121212] text-white border border-[#212121]"
               >
                 English
               </Button>
@@ -132,7 +132,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
                   handleSetLanguage("pt");
                   setShowModal(false);
                 }}
-                className="bg-github-green hover:bg-github-accent text-white"
+                className="bg-black hover:bg-[#121212] text-white border border-[#212121]"
               >
                 Português
               </Button>

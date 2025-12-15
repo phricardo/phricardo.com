@@ -104,4 +104,23 @@
   .card-hover {
     @apply bg-github-secondary border border-github-border transition duration-300 ease-out transform hover:-translate-y-1.5 hover:border-[#34eb64] hover:shadow-[0_12px_40px_rgba(52,235,100,0.16)];
   }
+
+  .marquee {
+    @apply relative overflow-hidden;
+  }
+
+  .marquee-track {
+    @apply flex items-center gap-8;
+    animation: marquee 18s linear infinite;
+    width: max-content;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
