@@ -1,16 +1,24 @@
 import { Github, Linkedin, Instagram, Youtube } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { BsTwitterX } from "react-icons/bs";
+import { useOnlineStatus } from "@/hooks/use-online-status";
 
 const Profile = () => {
   const { language } = useLanguage();
+  const isOnline = useOnlineStatus();
 
   const description =
     language === "en"
       ? "Java Backend developer with 5+ years in microservices (Kafka, RabbitMQ), relational and NoSQL databases, unit/integration testing, and front-end frameworks like React, Angular, Next.js and NestJS."
       : "Desenvolvedor Backend Java com mais de 5 anos em microservicos (Kafka, RabbitMQ), bancos relacionais e NoSQL, testes unitarios/integrados e frameworks como React, Angular, Next.js e NestJS.";
 
-  const onlineTitle = language === "pt" ? "On-line" : "Online";
+  const onlineTitle = isOnline
+    ? language === "pt"
+      ? "On-line"
+      : "Online"
+    : language === "pt"
+    ? "Offline"
+    : "Offline";
 
   return (
     <div className="flex flex-col md:flex-row gap-8 items-start">
@@ -24,10 +32,22 @@ const Profile = () => {
       <div className="flex-1">
         <div className="flex items-center gap-3 mb-2">
           <h1 className="text-3xl font-bold text-white">Pedro Ricardo</h1>
-          <div className="flex items-center gap-2 text-github-green">
+          <div
+            className={`flex items-center gap-2 ${
+              isOnline ? "text-github-green" : "text-[#ef4444]"
+            }`}
+          >
             <span className="relative inline-flex h-3 w-3">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-github-green opacity-60 animate-greenPulse" />
-              <span className="relative inline-flex h-3 w-3 rounded-full bg-github-green" />
+              <span
+                className={`absolute inline-flex h-full w-full rounded-full opacity-60 ${
+                  isOnline ? "bg-github-green animate-greenPulse" : "bg-[#ef4444] animate-redPulse"
+                }`}
+              />
+              <span
+                className={`relative inline-flex h-3 w-3 rounded-full ${
+                  isOnline ? "bg-github-green" : "bg-[#ef4444]"
+                }`}
+              />
             </span>
             <span className="text-xs font-semibold uppercase tracking-[0.08em]">
               {onlineTitle}
@@ -64,7 +84,7 @@ const Profile = () => {
             <Instagram size={24} />
           </a>
           <a
-            href="https://x.com/phricardorj"
+            href="https://x.com/phrcd"
             target="_blank"
             rel="noopener noreferrer"
             className="text-github-text hover:text-white transition-colors"

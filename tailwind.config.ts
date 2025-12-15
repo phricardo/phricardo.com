@@ -66,9 +66,15 @@ export default {
           "70%": { boxShadow: "0 0 0 12px rgba(52, 235, 100, 0)" },
           "100%": { boxShadow: "0 0 0 0 rgba(52, 235, 100, 0)" },
         },
+        redPulse: {
+          "0%": { boxShadow: "0 0 0 0 rgba(239, 68, 68, 0.35)" },
+          "70%": { boxShadow: "0 0 0 12px rgba(239, 68, 68, 0)" },
+          "100%": { boxShadow: "0 0 0 0 rgba(239, 68, 68, 0)" },
+        },
       },
       animation: {
         greenPulse: "greenPulse 2.4s ease-in-out infinite",
+        redPulse: "redPulse 2.4s ease-in-out infinite",
       },
     },
   },
