@@ -1,13 +1,11 @@
-
 import { useLanguage } from "@/contexts/LanguageContext";
 import icon01 from "../assets/images/companies/icons/01.svg";
 import icon02 from "../assets/images/companies/icons/02.svg";
 import icon03 from "../assets/images/companies/icons/03.svg";
-import icon04 from "../assets/images/companies/icons/04.svg";
 
 const TechStack = () => {
   const { t, language } = useLanguage();
-  
+
   const technologies = [
     t("frontendDevelopment"),
     t("backendDevelopment"),
@@ -22,7 +20,9 @@ const TechStack = () => {
   return (
     <div className="my-20 md:my-28 space-y-12">
       <div>
-        <h2 className="text-xl font-semibold text-white mb-4">{t('areasOfExpertise')}</h2>
+        <h2 className="text-xl font-semibold text-white mb-4">
+          {t("areasOfExpertise")}
+        </h2>
         <div className="flex flex-wrap gap-2">
           {technologies.map((tech) => (
             <span
@@ -43,7 +43,7 @@ const TechStack = () => {
         </h3>
         <div className="marquee border border-github-border rounded-lg bg-[#0f0f0f] py-4 px-3">
           <div className="marquee-track">
-            {[icon01, icon02, icon03, icon04, icon01, icon02, icon03, icon04].map(
+            {[icon01, icon02, icon03, icon01, icon02, icon03].map(
               (logo, idx) => (
                 <img
                   key={`logo-${idx}`}
@@ -53,7 +53,7 @@ const TechStack = () => {
                 />
               )
             )}
-            {[icon01, icon02, icon03, icon04, icon01, icon02, icon03, icon04].map(
+            {[icon01, icon02, icon03, icon01, icon02, icon03].map(
               (logo, idx) => (
                 <img
                   key={`logo-dup-${idx}`}
