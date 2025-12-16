@@ -20,66 +20,65 @@ type ExperienceItem = {
 const Experience = () => {
   const { t, language } = useLanguage();
 
-const experiences: ExperienceItem[] = [
-  {
-    company: "PicPay",
-    role:
-      language === "en"
-        ? "Mid-level Java Backend Developer"
-        : "Desenvolvedor Backend Java Pleno",
-    description:
-      language === "en"
-        ? "Contribute to the development of scalable APIs using Java (Spring Boot & Micronaut), focusing on performance and resilience. Work on microservices architecture, integrations with MongoDB, PostgreSQL, ScyllaDB, and Elasticsearch, and manage CI/CD pipelines with Docker and GitHub Actions."
-        : "Participo da construção de APIs escaláveis com Java (Spring Boot), com foco em performance e resiliência. Atuo na arquitetura de microserviços, integração com bases como MongoDB, PostgreSQL, ScyllaDB e Elasticsearch, além de pipelines CI/CD com Docker e GitHub Actions.",
-    duration: language === "en" ? "Aug 2025 - Present" : "ago de 2025 - o momento",
-    isCurrent: true,
-    logo: PicPayLogo,
-  },
-  {
-    company: "Magalu / Luizalabs",
-    role:
-      language === "en"
-        ? "Java Backend Developer"
-        : "Desenvolvedor Backend Java",
-    description:
-      language === "en"
-        ? "Develop APIs with Java (Spring Boot & Micronaut), design microservices, implement CI/CD pipelines, and manage Docker with Elasticsearch, MongoDB, ScyllaDB & PostgreSQL."
-        : "Desenvolvo APIs em Java (Spring Boot & Micronaut), projeto microserviços, implemento pipelines CI/CD e gerencio Docker com Elasticsearch, MongoDB, ScyllaDB & PostgreSQL.",
-    duration: language === "en" ? "Jun 2022 - Jul 2025" : "jun de 2022 - jun de 2025",
-    isCurrent: false,
-    logo: MagaluLogo,
-  },
-  {
-    company: "Santander Brasil",
-    role:
-      language === "en"
-        ? "Junior Java Backend Developer"
-        : "Desenvolvedor Backend Java Júnior",
-    description:
-      language === "en"
-        ? "Built and maintained backend services using Java and Angular, improving system reliability and performance."
-        : "Desenvolvi e mantive serviços backend com Java e Angular, aprimorando confiabilidade e performance do sistema.",
-    duration:
-      language === "en" ? "Mar 2021 - May 2022" : "mar de 2021 - mai de 2022",
-    isCurrent: false,
-    logo: SantanderLogo,
-  },
-  {
-    company: "Upwork",
-    role:
-      language === "en"
-        ? "Full-stack Developer"
-        : "Full-stack Developer",
-    description:
-      language === "en"
-        ? "Delivered custom full-stack solutions with Java, PHP, React & Spring, along with database management, boosting client satisfaction."
-        : "Entreguei soluções full-stack com Java, PHP, React & Spring, além de gestão de bancos, elevando a satisfação dos clientes.",
-    duration:
-      language === "en" ? "Jan 2019 - May 2022" : "jan de 2019 - mai de 2022",
-    isCurrent: false,
-    logo: UpWorkLogo,
-  },
-];
+  const experiences: ExperienceItem[] = [
+    {
+      company: "PicPay",
+      role:
+        language === "en"
+          ? "Mid-level Java Backend Developer"
+          : "Desenvolvedor Backend Java Pleno",
+      description:
+        language === "en"
+          ? "Backend Java Developer in the Retail Financial Services (PF) Business Unit, working on the Wallet & Banking domain, in integration with the Accounts and Segments Tribe, with a focus on the Banking Platform."
+          : "Desenvolvedor Backend Java na BU de Serviços Financeiros PF, atuando na frente de Wallet & Banking, em integração com a Tribo de Contas e Segmentos, com foco na Plataforma Banking. Atualmente, faço parte da squad de Rendimento de Conta, atuando como desenvolvedor Java, com experiência na elaboração de contratos, integração de sistemas, desenvolvimento de BFFs em Spring Boot e microserviços, além de participação ativa em reuniões e discussões estratégicas para alinhamento, definição de requisitos e estimativas técnicas.",
+      duration:
+        language === "en" ? "Aug 2025 - Present" : "ago de 2025 - o momento",
+      isCurrent: true,
+      logo: PicPayLogo,
+    },
+    {
+      company: "Magalu / Luizalabs",
+      role:
+        language === "en"
+          ? "Java Backend Developer"
+          : "Desenvolvedor Backend Java",
+      description:
+        language === "en"
+          ? "Develop APIs with Java (Spring Boot & Micronaut), design microservices, implement CI/CD pipelines, and manage Docker with Elasticsearch, MongoDB, ScyllaDB & PostgreSQL."
+          : "Desenvolvo APIs em Java (Spring Boot & Micronaut), projeto microserviços, implemento pipelines CI/CD e gerencio Docker com Elasticsearch, MongoDB, ScyllaDB & PostgreSQL.",
+      duration:
+        language === "en" ? "Jun 2022 - Jul 2025" : "jun de 2022 - jun de 2025",
+      isCurrent: false,
+      logo: MagaluLogo,
+    },
+    {
+      company: "Santander Brasil",
+      role:
+        language === "en"
+          ? "Junior Java Backend Developer"
+          : "Desenvolvedor Backend Java Júnior",
+      description:
+        language === "en"
+          ? "Built and maintained backend services using Java and Angular, improving system reliability and performance."
+          : "Desenvolvi e mantive serviços backend com Java e Angular, aprimorando confiabilidade e performance do sistema.",
+      duration:
+        language === "en" ? "Mar 2021 - May 2022" : "mar de 2021 - mai de 2022",
+      isCurrent: false,
+      logo: SantanderLogo,
+    },
+    {
+      company: "Upwork",
+      role: language === "en" ? "Full-stack Developer" : "Full-stack Developer",
+      description:
+        language === "en"
+          ? "Delivered custom full-stack solutions with Java, PHP, React & Spring, along with database management, boosting client satisfaction."
+          : "Entreguei soluções full-stack com Java, PHP, React & Spring, além de gestão de bancos, elevando a satisfação dos clientes.",
+      duration:
+        language === "en" ? "Jan 2019 - May 2022" : "jan de 2019 - mai de 2022",
+      isCurrent: false,
+      logo: UpWorkLogo,
+    },
+  ];
 
   return (
     <section className="py-8 md:py-12">
