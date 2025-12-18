@@ -22,11 +22,6 @@ const Header = () => {
         type: "internal" as const,
       },
       {
-        href: "/courses",
-        label: language === "pt" ? "Cursos" : "Courses",
-        type: "internal" as const,
-      },
-      {
         href: "/#projects",
         label: language === "pt" ? "Projetos" : "Projects",
         type: "anchor" as const,
