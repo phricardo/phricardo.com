@@ -14,7 +14,7 @@ import USA_FLAG_URL from "../assets/images/flags/united_states.svg";
 
 const languageNames = {
   en: "English",
-  pt: "PortuguǦs",
+  pt: "Português",
 } as const;
 
 const LanguageMenu = () => {
@@ -56,7 +56,6 @@ const LanguageMenu = () => {
     </Button>
   );
 
-  // MantǸm o mesmo tamanho/estilo no primeiro paint (mobile agradece)
   if (!mounted) {
     return triggerButton;
   }
