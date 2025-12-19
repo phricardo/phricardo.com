@@ -6,11 +6,11 @@ export const externalRoutes = {
     },
   ],
   dynamic: {
+    x: "https://x.com/phricardorj",
     github: "https://github.com/phricardo",
+    youtube: "https://www.youtube.com/@phricardorj",
+    instagram: "https://www.instagram.com/phricardorj/",
     linkedin: "https://www.linkedin.com/in/phricardorj/",
-    x: "https://x.com/phrcd",
-    instagram: "https://www.instagram.com/phrcd/",
-    youtube: "https://www.youtube.com/@phrcd",
   },
 } as const;
 
