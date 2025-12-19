@@ -54,8 +54,7 @@ const Header = () => {
       });
 
       const formatted = formatter.format(new Date());
-      const tzLabel =
-        language === "pt" ? "Horario Sao Paulo" : "Sao Paulo time";
+      const tzLabel = language === "pt" ? "Horário de Brasília" : "UTC−3 (BRT)";
 
       setFormattedDate(`${formatted} - ${tzLabel}`);
     };
