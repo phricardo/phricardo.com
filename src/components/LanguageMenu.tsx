@@ -14,53 +14,56 @@ import USA_FLAG_URL from "../assets/images/flags/united_states.svg";
 
 const languageNames = {
   en: "English",
-  pt: "Português",
+  pt: "PortuguǦs",
 } as const;
-
-const btnClass =
-  "bg-[#121212] hover:bg-[#212121] text-github-text border border-[#212121] flex items-center gap-2 px-3 py-1.5 rounded-md focus:outline-none min-w-[140px] shrink-0";
 
 const LanguageMenu = () => {
   const { language, setLanguage } = useLanguage();
   const [mounted, setMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   const currentFlagUrl = language === "en" ? USA_FLAG_URL : BRAZIL_FLAG_URL;
   const currentAlt = language === "en" ? "US Flag" : "Brazil Flag";
 
-  // Mantém o mesmo tamanho/estilo no primeiro paint (mobile agradece)
+  const baseTriggerClass =
+    "bg-[#121212] text-github-text border border-[#212121] rounded-md focus:outline-none transition-colors shrink-0 py-1.5 hover:text-white hover:border-[#2a2a2a] hover:bg-transparent flex items-center";
+  const triggerSpacingClass = isOpen
+    ? "px-3 gap-2 min-w-[140px]"
+    : "px-2 gap-0 min-w-0";
+  const triggerDesktopClass = "md:px-3 md:gap-2 md:min-w-[140px]";
+  const labelVisibilityClass = isOpen ? "inline" : "hidden md:inline";
+  const chevronVisibilityClass = isOpen
+    ? "h-4 w-4 opacity-60"
+    : "h-4 w-4 opacity-60 hidden md:inline";
+
+  const triggerButton = (
+    <Button
+      variant="ghost"
+      size="default"
+      className={`${baseTriggerClass} ${triggerSpacingClass} ${triggerDesktopClass}`}
+    >
+      <img
+        src={currentFlagUrl}
+        alt={currentAlt}
+        className="w-5 h-3.5 object-cover shrink-0"
+      />
+      <span className={`min-w-0 truncate text-left ${labelVisibilityClass}`}>
+        {languageNames[language as "en" | "pt"]}
+      </span>
+      <ChevronDown className={chevronVisibilityClass} />
+    </Button>
+  );
+
+  // MantǸm o mesmo tamanho/estilo no primeiro paint (mobile agradece)
   if (!mounted) {
-    return (
-      <Button variant="ghost" size="default" className={btnClass}>
-        <img
-          src={currentFlagUrl}
-          alt={currentAlt}
-          className="w-5 h-3.5 object-cover shrink-0"
-        />
-        <span className="min-w-0 truncate">
-          {languageNames[language as "en" | "pt"]}
-        </span>
-        <ChevronDown className="h-4 w-4 opacity-50" />
-      </Button>
-    );
+    return triggerButton;
   }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="default" className={btnClass}>
-          <img
-            src={currentFlagUrl}
-            alt={currentAlt}
-            className="w-5 h-3.5 object-cover shrink-0"
-          />
-          <span className="min-w-0 truncate text-left">
-            {languageNames[language as "en" | "pt"]}
-          </span>
-          <ChevronDown className="h-4 w-4 opacity-50" />
-        </Button>
-      </DropdownMenuTrigger>
+    <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
+      <DropdownMenuTrigger asChild>{triggerButton}</DropdownMenuTrigger>
 
       <DropdownMenuContent
         align="end"

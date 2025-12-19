@@ -54,7 +54,7 @@ const Header = () => {
       });
 
       const formatted = formatter.format(new Date());
-      const tzLabel = language === "pt" ? "Horário de Brasília" : "UTC−3 (BRT)";
+      const tzLabel = language === "pt" ? "Horário de Brasília" : "(BRT)";
 
       setFormattedDate(`${formatted} - ${tzLabel}`);
     };
@@ -94,7 +94,7 @@ const Header = () => {
           </Link>
 
           <div className="flex items-center gap-3">
-            <nav className="hidden md:flex items-center gap-1 bg-[#0d0d0d] border border-github-border rounded-full px-2 py-1">
+            <nav className="hidden md:flex items-center gap-2">
               {navItems.map((item) => {
                 const active = isActive(item.href);
                 const baseClasses =
