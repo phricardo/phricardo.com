@@ -1,17 +1,15 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-
-import { externalRoutes } from "@/config/externalRoutes";
+import { ExternalRouteKey, externalRoutes } from "@/config/externalRoutes";
 import NotFound from "@/pages/NotFound";
-
-type DynamicRouteKey = keyof typeof externalRoutes.dynamic;
 
 export function ExternalRedirectDynamic() {
   const { key } = useParams<{ key?: string }>();
 
-  const target = key
-    ? externalRoutes.dynamic[key as DynamicRouteKey]
-    : undefined;
+  const target =
+    key && key in externalRoutes.dynamic
+      ? externalRoutes.dynamic[key as ExternalRouteKey]
+      : undefined;
 
   useEffect(() => {
     if (target) {

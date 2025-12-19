@@ -2,6 +2,7 @@ import { Github, Linkedin, Instagram, Youtube } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { BsTwitterX } from "react-icons/bs";
 import { useOnlineStatus } from "@/hooks/use-online-status";
+import { getExternalRoutePath } from "@/config/externalRoutes";
 
 const Profile = () => {
   const { language } = useLanguage();
@@ -60,7 +61,7 @@ const Profile = () => {
         <p className="text-github-text mb-6">{description}</p>
         <div className="flex gap-4">
           <a
-            href="https://github.com/phricardo"
+            href={getExternalRoutePath("github")}
             target="_blank"
             rel="noopener noreferrer"
             className="text-github-text hover:text-white transition-colors"
@@ -68,7 +69,7 @@ const Profile = () => {
             <Github size={24} />
           </a>
           <a
-            href="https://www.linkedin.com/in/phricardorj/"
+            href={getExternalRoutePath("linkedin")}
             target="_blank"
             rel="noopener noreferrer"
             className="text-github-text hover:text-white transition-colors"
@@ -76,7 +77,7 @@ const Profile = () => {
             <Linkedin size={24} />
           </a>
           <a
-            href="https://www.instagram.com/phrcd/"
+            href={getExternalRoutePath("instagram")}
             target="_blank"
             rel="noopener noreferrer"
             className="text-github-text hover:text-white transition-colors"
@@ -84,7 +85,7 @@ const Profile = () => {
             <Instagram size={24} />
           </a>
           <a
-            href="https://x.com/phrcd"
+            href={getExternalRoutePath("x")}
             target="_blank"
             rel="noopener noreferrer"
             className="text-github-text hover:text-white transition-colors"
@@ -92,7 +93,7 @@ const Profile = () => {
             <BsTwitterX size={24} />
           </a>
           <a
-            href="https://www.youtube.com/@phrcd"
+            href={getExternalRoutePath("youtube")}
             target="_blank"
             rel="noopener noreferrer"
             className="text-github-text hover:text-white transition-colors"

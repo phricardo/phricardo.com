@@ -1,13 +1,19 @@
 export const externalRoutes = {
   fixed: [
     {
-      path: "/google",
-      url: "https://google.com",
+      path: "/alcateia",
+      url: "https://alcateia.phricardo.com",
     },
   ],
   dynamic: {
-    chatgpt: "https://chatgpt.com",
-    google: "https://google.com",
-    github: "https://github.com",
+    github: "https://github.com/phricardo",
+    linkedin: "https://www.linkedin.com/in/phricardorj/",
+    x: "https://x.com/phrcd",
+    instagram: "https://www.instagram.com/phrcd/",
+    youtube: "https://www.youtube.com/@phrcd",
   },
 } as const;
+
+export type ExternalRouteKey = keyof typeof externalRoutes.dynamic;
+
+export const getExternalRoutePath = (key: ExternalRouteKey) => `/go/${key}`;

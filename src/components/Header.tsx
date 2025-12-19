@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import LanguageMenu from "./LanguageMenu";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { getExternalRoutePath } from "@/config/externalRoutes";
 import logoSrc from "../assets/images/logos/phricardo.svg";
 
 const Header = () => {
@@ -27,7 +28,7 @@ const Header = () => {
         type: "anchor" as const,
       },
       {
-        href: "https://www.youtube.com/@phrcd",
+        href: getExternalRoutePath("youtube"),
         label: "YouTube",
         type: "external" as const,
       },

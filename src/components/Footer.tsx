@@ -1,5 +1,6 @@
-import { Github, Linkedin, Instagram, Twitter, Youtube } from "lucide-react";
+import { Github, Linkedin, Instagram, Youtube } from "lucide-react";
 import { BsTwitterX } from "react-icons/bs";
+import { getExternalRoutePath } from "@/config/externalRoutes";
 import logoSrc from "../assets/images/logos/phricardo.svg";
 
 const Footer = () => {
@@ -11,12 +12,12 @@ const Footer = () => {
         <div className="flex flex-col items-center py-8">
           <img
             src={logoSrc}
-            alt="PhRicardo Logo"
+            alt="phricardo Logo"
             className="h-7 w-auto mb-6 opacity-70"
           />
           <div className="flex gap-4 mb-6">
             <a
-              href="https://github.com/phricardo/"
+              href={getExternalRoutePath("github")}
               target="_blank"
               rel="noopener noreferrer"
               className="text-github-text hover:text-white transition-colors"
@@ -24,7 +25,7 @@ const Footer = () => {
               <Github size={24} />
             </a>
             <a
-              href="https://www.linkedin.com/in/phricardorj/"
+              href={getExternalRoutePath("linkedin")}
               target="_blank"
               rel="noopener noreferrer"
               className="text-github-text hover:text-white transition-colors"
@@ -32,7 +33,7 @@ const Footer = () => {
               <Linkedin size={24} />
             </a>
             <a
-              href="https://www.instagram.com/phrcd/"
+              href={getExternalRoutePath("instagram")}
               target="_blank"
               rel="noopener noreferrer"
               className="text-github-text hover:text-white transition-colors"
@@ -40,7 +41,7 @@ const Footer = () => {
               <Instagram size={24} />
             </a>
             <a
-              href="https://twitter.com/phricardorj"
+              href={getExternalRoutePath("x")}
               target="_blank"
               rel="noopener noreferrer"
               className="text-github-text hover:text-white transition-colors"
@@ -48,7 +49,7 @@ const Footer = () => {
               <BsTwitterX size={24} />
             </a>
             <a
-              href="https://www.youtube.com/@phrcd"
+              href={getExternalRoutePath("youtube")}
               target="_blank"
               rel="noopener noreferrer"
               className="text-github-text hover:text-white transition-colors"
