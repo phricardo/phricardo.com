@@ -9,38 +9,39 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import BRAZIL_FLAG_URL from "../assets/images/flags/brazil.svg";
+import USA_FLAG_URL from "../assets/images/flags/united_states.svg";
+
 const languageNames = {
   en: "English",
   pt: "Português",
-};
+} as const;
 
-import BRAZIL_FLAG_URL from "../assets/images/flags/brazil.svg";
-import USA_FLAG_URL from "../assets/images/flags/united_states.svg";
+const btnClass =
+  "bg-[#121212] hover:bg-[#212121] text-github-text border border-[#212121] flex items-center gap-2 px-3 py-1.5 rounded-md focus:outline-none min-w-[140px] shrink-0";
 
 const LanguageMenu = () => {
   const { language, setLanguage } = useLanguage();
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   const currentFlagUrl = language === "en" ? USA_FLAG_URL : BRAZIL_FLAG_URL;
   const currentAlt = language === "en" ? "US Flag" : "Brazil Flag";
 
+  // Mantém o mesmo tamanho/estilo no primeiro paint (mobile agradece)
   if (!mounted) {
     return (
-      <Button
-        variant="ghost"
-        size="default"
-        className="bg-[#121212] hover:bg-[#212121] text-github-text border border-[#212121] flex items-center gap-2 px-3 py-1.5 rounded-md focus:outline-none"
-      >
+      <Button variant="ghost" size="default" className={btnClass}>
         <img
           src={currentFlagUrl}
           alt={currentAlt}
-          className="w-5 h-3.5 object-cover mr-2"
+          className="w-5 h-3.5 object-cover shrink-0"
         />
-        <span className="text-github-text">{languageNames[language]}</span>
+        <span className="min-w-0 truncate">
+          {languageNames[language as "en" | "pt"]}
+        </span>
+        <ChevronDown className="h-4 w-4 opacity-50" />
       </Button>
     );
   }
@@ -48,22 +49,19 @@ const LanguageMenu = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          size="default"
-          className="bg-[#121212] hover:bg-[#212121] text-github-text border border-[#212121] flex items-center gap-2 min-w-[140px] px-3 py-1.5 rounded-md focus:outline-none"
-        >
+        <Button variant="ghost" size="default" className={btnClass}>
           <img
             src={currentFlagUrl}
             alt={currentAlt}
-            className="w-5 h-3.5 object-cover"
+            className="w-5 h-3.5 object-cover shrink-0"
           />
-          <span className="flex-1 text-left text-github-text">
-            {languageNames[language]}
+          <span className="min-w-0 truncate text-left">
+            {languageNames[language as "en" | "pt"]}
           </span>
-          <ChevronDown className="h-4 w-4 opacity-50 text-github-text" />
+          <ChevronDown className="h-4 w-4 opacity-50" />
         </Button>
       </DropdownMenuTrigger>
+
       <DropdownMenuContent
         align="end"
         className="bg-[#121212] border border-[#212121] text-github-text min-w-[140px] p-1 rounded-md shadow-lg focus:outline-none"
@@ -79,10 +77,11 @@ const LanguageMenu = () => {
           <img
             src={USA_FLAG_URL}
             alt="US Flag"
-            className="w-5 h-3.5 object-cover mr-2"
+            className="w-5 h-3.5 object-cover mr-2 shrink-0"
           />
-          <span>{languageNames["en"]}</span>
+          <span>{languageNames.en}</span>
         </DropdownMenuItem>
+
         <DropdownMenuItem
           onClick={() => setLanguage("pt")}
           className={`cursor-pointer flex items-center bg-[#121212] px-3 py-1.5 text-sm rounded-sm focus:outline-none transition-colors ${
@@ -94,9 +93,9 @@ const LanguageMenu = () => {
           <img
             src={BRAZIL_FLAG_URL}
             alt="Brazil Flag"
-            className="w-5 h-3.5 object-cover mr-2"
+            className="w-5 h-3.5 object-cover mr-2 shrink-0"
           />
-          <span>{languageNames["pt"]}</span>
+          <span>{languageNames.pt}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
