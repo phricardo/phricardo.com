@@ -12,7 +12,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-github-dark font-inter">
       <Header />
-      <main className="max-w-[1100px] mx-auto px-4 md:px-6 lg:px-8 pt-8 md:pt-12">
+      <main
+        id="home"
+        className="max-w-[1100px] mx-auto px-4 md:px-6 lg:px-8 pt-8 md:pt-12"
+      >
         <div className="space-y-12 md:space-y-16">
           <Profile />
           <TechStack />

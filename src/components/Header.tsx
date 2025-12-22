@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useMemo, useState, type MouseEvent } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import LanguageMenu from "./LanguageMenu";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -7,38 +7,98 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { getExternalRoutePath } from "@/config/externalRoutes";
 import logoSrc from "../assets/images/logos/phricardo.svg";
 
+type NavItem =
+  | {
+      href: string;
+      label: string;
+      type: "internal";
+      sectionId?: string;
+    }
+  | {
+      href: string;
+      label: string;
+      type: "anchor";
+      sectionId: string;
+    }
+  | {
+      href: string;
+      label: string;
+      type: "external";
+      sectionId?: string;
+    };
+
 const Header = () => {
   const { language } = useLanguage();
   const isMobile = useIsMobile();
   const location = useLocation();
+  const navigate = useNavigate();
   const [formattedDate, setFormattedDate] = useState("");
   const [showDate, setShowDate] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
-  const navItems = useMemo(
+  const navItems = useMemo<NavItem[]>(
     () => [
       {
         href: "/",
         label: language === "pt" ? "Início" : "Home",
-        type: "internal" as const,
+        type: "internal",
+        sectionId: "home",
       },
       {
         href: "/#projects",
         label: language === "pt" ? "Projetos" : "Projects",
-        type: "anchor" as const,
+        type: "anchor",
+        sectionId: "projects",
       },
       {
         href: getExternalRoutePath("youtube"),
         label: "YouTube",
-        type: "external" as const,
+        type: "external",
       },
     ],
     [language]
   );
 
-  const isActive = (href: string) => {
-    if (href === "/") return location.pathname === "/";
-    return location.pathname.startsWith(href.replace("#", ""));
+  const isActive = (item: NavItem) => {
+    if (item.sectionId && location.pathname === "/") {
+      return activeSection === item.sectionId;
+    }
+
+    if (item.type === "internal") {
+      return location.pathname === item.href;
+    }
+
+    return false;
+  };
+
+  const handleNavClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    item: NavItem
+  ) => {
+    if (item.type === "anchor" && item.sectionId) {
+      event.preventDefault();
+      const target = document.getElementById(item.sectionId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        setActiveSection(item.sectionId);
+      }
+      setIsMenuOpen(false);
+      return;
+    }
+
+    if (item.type === "internal" && item.sectionId === "home") {
+      event.preventDefault();
+      if (location.pathname !== item.href) {
+        navigate(item.href);
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection("home");
+      setIsMenuOpen(false);
+      return;
+    }
+
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {
@@ -66,14 +126,70 @@ const Header = () => {
   }, [language, isMobile]);
 
   useEffect(() => {
+    const hideOffset = 140;
+    const showOffset = 80;
+
     const handleScroll = () => {
-      setShowDate(window.scrollY < 8);
+      setShowDate((prev) => {
+        if (!prev && window.scrollY <= showOffset) return true;
+        if (prev && window.scrollY >= hideOffset) return false;
+        return prev;
+      });
     };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setActiveSection("home");
+      return;
+    }
+
+    const sectionIds = Array.from(
+      new Set([
+        "home",
+        ...navItems
+          .map((item) => item.sectionId)
+          .filter((id): id is string => Boolean(id)),
+      ])
+    );
+
+    const sections = sectionIds
+      .map((id) => {
+        const element = document.getElementById(id);
+        return element ? { id, element } : null;
+      })
+      .filter((section): section is { id: string; element: HTMLElement } => Boolean(section))
+      .sort((a, b) => a.element.offsetTop - b.element.offsetTop);
+
+    if (!sections.length) return;
+
+    const handleSectionChange = () => {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.25;
+      let currentId = "home";
+
+      for (let i = sections.length - 1; i >= 0; i -= 1) {
+        if (scrollPosition >= sections[i].element.offsetTop) {
+          currentId = sections[i].id;
+          break;
+        }
+      }
+
+      setActiveSection((prev) => (prev === currentId ? prev : currentId));
+    };
+
+    handleSectionChange();
+    window.addEventListener("scroll", handleSectionChange, { passive: true });
+    window.addEventListener("resize", handleSectionChange);
+
+    return () => {
+      window.removeEventListener("scroll", handleSectionChange);
+      window.removeEventListener("resize", handleSectionChange);
+    };
+  }, [location.pathname, navItems]);
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -96,7 +212,7 @@ const Header = () => {
           <div className="flex items-center gap-3">
             <nav className="hidden md:flex items-center gap-2">
               {navItems.map((item) => {
-                const active = isActive(item.href);
+                const active = isActive(item);
                 const baseClasses =
                   "px-3 py-2 rounded-full text-sm font-medium transition-colors";
 
@@ -107,6 +223,7 @@ const Header = () => {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => setIsMenuOpen(false)}
                       className={`${baseClasses} ${
                         active
                           ? "bg-[#0f2718] text-[#34eb64] border border-[#34eb64]/60"
@@ -123,6 +240,7 @@ const Header = () => {
                     <a
                       key={item.href}
                       href={item.href}
+                      onClick={(event) => handleNavClick(event, item)}
                       className={`${baseClasses} ${
                         active
                           ? "bg-[#0f2718] text-[#34eb64] border border-[#34eb64]/60"
@@ -138,6 +256,7 @@ const Header = () => {
                   <Link
                     key={item.href}
                     to={item.href}
+                    onClick={(event) => handleNavClick(event, item)}
                     className={`${baseClasses} ${
                       active
                         ? "bg-[#0f2718] text-[#34eb64] border border-[#34eb64]/60"
@@ -180,7 +299,7 @@ const Header = () => {
           <div className="md:hidden border border-github-border bg-[#0d0d0d] rounded-2xl overflow-hidden shadow-lg">
             <nav className="flex flex-col divide-y divide-github-border">
               {navItems.map((item) => {
-                const active = isActive(item.href);
+                const active = isActive(item);
                 const baseClasses =
                   "px-4 py-3 text-sm font-medium flex items-center justify-between";
 
@@ -191,6 +310,7 @@ const Header = () => {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => setIsMenuOpen(false)}
                       className={`${baseClasses} ${
                         active
                           ? "bg-[#0f2718] text-[#34eb64]"
@@ -210,6 +330,7 @@ const Header = () => {
                     <a
                       key={item.href}
                       href={item.href}
+                      onClick={(event) => handleNavClick(event, item)}
                       className={`${baseClasses} ${
                         active
                           ? "bg-[#0f2718] text-[#34eb64]"
@@ -225,6 +346,7 @@ const Header = () => {
                   <Link
                     key={item.href}
                     to={item.href}
+                    onClick={(event) => handleNavClick(event, item)}
                     className={`${baseClasses} ${
                       active
                         ? "bg-[#0f2718] text-[#34eb64]"
