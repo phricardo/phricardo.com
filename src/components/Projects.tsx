@@ -30,16 +30,16 @@ const Projects = () => {
   const title = language === "en" ? "Featured Projects" : "Projetos Destacados";
 
   const projects: Project[] = [
-    {
-      title: "convidar.me",
-      description:
-        language === "en"
-          ? "A data-driven event manager that simplifies invites, RSVPs and reminders in real time."
-          : "EMS orientado a dados que simplifica convites, confirmações e lembretes em tempo real.",
-      tags: ["Java", "NextJs", "Typescript", "MongoDB"],
-      demo: "https://www.convidar.me/",
-      logo: convidarMeSrc,
-    },
+    // {
+    //   title: "convidar.me",
+    //   description:
+    //     language === "en"
+    //       ? "A data-driven event manager that simplifies invites, RSVPs and reminders in real time."
+    //       : "EMS orientado a dados que simplifica convites, confirmações e lembretes em tempo real.",
+    //   tags: ["Java", "NextJs", "Typescript", "MongoDB"],
+    //   demo: "https://www.convidar.me/",
+    //   logo: convidarMeSrc,
+    // },
     // {
     //   title: "English Daily",
     //   description:
