@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import LanguageMenu from "./LanguageMenu";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { getExternalRoutePath } from "@/config/externalRoutes";
+// import { getExternalRoutePath } from "@/config/externalRoutes";
 import logoSrc from "../assets/images/logos/phricardo.svg";
 // import iconSrc from "../assets/images/logos/icon.svg";
 
@@ -63,12 +63,7 @@ const Header = () => {
         label: language === "pt" ? "Projetos" : "Projects",
         type: "anchor",
         sectionId: "projects",
-      },
-      {
-        href: getExternalRoutePath("youtube"),
-        label: "YouTube",
-        type: "external",
-      },
+      }
     ],
     [language]
   );
