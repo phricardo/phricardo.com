@@ -6,6 +6,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getExternalRoutePath } from "@/config/externalRoutes";
 import logoSrc from "../assets/images/logos/phricardo.svg";
+// import iconSrc from "../assets/images/logos/icon.svg";
 
 type NavItem =
   | {
@@ -44,6 +45,18 @@ const Header = () => {
         label: language === "pt" ? "Início" : "Home",
         type: "internal",
         sectionId: "home",
+      },
+      {
+        href: "/#experience",
+        label: language === "pt" ? "Experiência" : "Experience",
+        type: "anchor",
+        sectionId: "experience",
+      },
+      {
+        href: "/#academic",
+        label: language === "pt" ? "Acadêmico" : "Academic",
+        type: "anchor",
+        sectionId: "academic",
       },
       {
         href: "/#projects",
@@ -114,9 +127,8 @@ const Header = () => {
       });
 
       const formatted = formatter.format(new Date());
-      const tzLabel = language === "pt" ? "Horário de Brasília" : "(BRT)";
 
-      setFormattedDate(`${formatted} - ${tzLabel}`);
+      setFormattedDate(`${formatted}`);
     };
 
     updateDate();
@@ -157,37 +169,40 @@ const Header = () => {
       ])
     );
 
-    const sections = sectionIds
+    const elements = sectionIds
       .map((id) => {
         const element = document.getElementById(id);
         return element ? { id, element } : null;
       })
-      .filter((section): section is { id: string; element: HTMLElement } => Boolean(section))
-      .sort((a, b) => a.element.offsetTop - b.element.offsetTop);
+      .filter((section): section is { id: string; element: HTMLElement } =>
+        Boolean(section)
+      );
 
-    if (!sections.length) return;
+    if (!elements.length) return;
 
-    const handleSectionChange = () => {
-      const scrollPosition = window.scrollY + window.innerHeight * 0.25;
-      let currentId = "home";
+    const updateActiveSection = () => {
+      const viewportCenter = window.scrollY + window.innerHeight * 0.45;
 
-      for (let i = sections.length - 1; i >= 0; i -= 1) {
-        if (scrollPosition >= sections[i].element.offsetTop) {
-          currentId = sections[i].id;
-          break;
-        }
+      const closest = elements
+        .map(({ id, element }) => {
+          const rect = element.getBoundingClientRect();
+          const center = rect.top + window.scrollY + rect.height / 2;
+          return { id, distance: Math.abs(center - viewportCenter) };
+        })
+        .sort((a, b) => a.distance - b.distance)[0];
+
+      if (closest) {
+        setActiveSection((prev) => (prev === closest.id ? prev : closest.id));
       }
-
-      setActiveSection((prev) => (prev === currentId ? prev : currentId));
     };
 
-    handleSectionChange();
-    window.addEventListener("scroll", handleSectionChange, { passive: true });
-    window.addEventListener("resize", handleSectionChange);
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
 
     return () => {
-      window.removeEventListener("scroll", handleSectionChange);
-      window.removeEventListener("resize", handleSectionChange);
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
     };
   }, [location.pathname, navItems]);
 

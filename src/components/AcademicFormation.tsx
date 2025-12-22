@@ -48,7 +48,7 @@ const AcademicFormation: React.FC = () => {
     language === "en" ? "Academic Formation" : "Formação Acadêmica";
 
   return (
-    <section className="py-8 md:py-12">
+    <section id="academic" className="py-8 md:py-12">
       <h2 className="text-xl md:text-2xl font-semibold text-white mb-4 md:mb-6">
         {sectionTitle}
       </h2>

@@ -81,7 +81,7 @@ const Experience = () => {
   ];
 
   return (
-    <section className="py-8 md:py-12">
+    <section id="experience" className="py-8 md:py-12">
       <h2 className="text-xl md:text-2xl font-semibold text-white mb-4 md:mb-6">
         {t("workExperience")}
       </h2>
