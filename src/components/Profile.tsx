@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Confetti from "react-confetti";
 import { Github, Linkedin, Instagram, Youtube } from "lucide-react";
 import { BsTwitterX } from "react-icons/bs";
@@ -11,11 +11,30 @@ import { getExternalRoutePath } from "@/config/externalRoutes";
 import profile from "../assets/images/profiles/profile.png";
 import profileChristmas from "../assets/images/profiles/profile_natal.png";
 
+function isChristmasSeason(date = new Date(), timeZone = "America/Sao_Paulo") {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+
+  const month = Number(parts.find((p) => p.type === "month")?.value);
+  const day = Number(parts.find((p) => p.type === "day")?.value);
+
+  // Dezembro inteiro
+  if (month === 12) return true;
+
+  // Até 6 de janeiro
+  if (month === 1 && day <= 6) return true;
+
+  return false;
+}
+
 const Profile = () => {
   const { language } = useLanguage();
   const isOnline = useOnlineStatus();
 
-  const isChristmas = true;
+  const isChristmas = useMemo(() => isChristmasSeason(), []);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [showConfetti, setShowConfetti] = useState(false);
 
