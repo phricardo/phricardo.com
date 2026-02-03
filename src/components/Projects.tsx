@@ -12,6 +12,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
 import convidarMeSrc from "../assets/images/projects/convidar.me.png";
 import englishdailySrc from "../assets/images/projects/englishdaily.png";
+import vejabemSrc from "../assets/images/projects/vejabem.png";
 import integraCefetRjSrc from "../assets/images/projects/integra-cefetrj.png";
 
 type Project = {
@@ -51,6 +52,16 @@ const Projects = () => {
     //   github: "https://github.com/phricardorj/daily-english-words",
     //   logo: englishdailySrc,
     // },
+    {
+      title: "Projeto Veja Bem",
+      description:
+        language === "en"
+          ? "Raises awareness about digital accessibility, showing how technology can be inclusive and how software engineering can open paths for young people."
+          : "Promove a conscientização sobre acessibilidade no mundo digital, mostrando como a tecnologia pode — e deve — ser inclusiva, além de apresentar a engenharia de software como possibilidade para jovens.",
+      tags: ["Acessibilidade Digital", "Tecnologia Inclusiva", "Educação", "Software"],
+      demo: "https://vejabem.org/",
+      logo: vejabemSrc,
+    },
     {
       title: "alcateia.Cefet/Rj",
       description:
