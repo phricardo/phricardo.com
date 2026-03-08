@@ -1,0 +1,91 @@
+.markdown {
+  color: hsl(0 0% 92%);
+  line-height: 1.7;
+}
+
+.markdown h1 {
+  margin: 2rem 0 1rem;
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.markdown h2 {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.markdown h3 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.markdown p {
+  margin: 0 0 1rem;
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0 0 1rem;
+  padding-left: 1.5rem;
+}
+
+.markdown ul {
+  list-style: disc;
+}
+
+.markdown ol {
+  list-style: decimal;
+}
+
+.markdown li {
+  margin-bottom: 0.25rem;
+}
+
+.markdown blockquote {
+  margin: 1rem 0;
+  border-left: 2px solid #34eb64;
+  padding-left: 1rem;
+  color: hsl(0 0% 70%);
+  font-style: italic;
+}
+
+.markdown pre {
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+.markdown a {
+  color: #34eb64;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.markdown a:hover {
+  color: #5efb87;
+}
+
+.markdown hr {
+  margin: 1.5rem 0;
+  border: 0;
+  border-top: 1px solid hsl(0 0% 13%);
+}
+
+.markdown strong {
+  font-weight: 700;
+  color: hsl(0 0% 96%);
+}
+
+.markdown iframe {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  border-radius: 0.75rem;
+  margin: 1rem 0;
+  box-shadow: 0 0 18px rgba(52, 235, 100, 0.45),
+    0 0 40px rgba(52, 235, 100, 0.22);
+}

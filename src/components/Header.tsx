@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import LanguageMenu from "./LanguageMenu";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { usePublicArticlesAvailability } from "@/hooks/usePublicArticlesAvailability";
 // import { getExternalRoutePath } from "@/config/externalRoutes";
 import logoSrc from "../assets/images/logos/phricardo.svg";
 // import iconSrc from "../assets/images/logos/icon.svg";
@@ -37,6 +38,7 @@ const Header = () => {
   const [showDate, setShowDate] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const { hasArticles } = usePublicArticlesAvailability();
 
   const navItems = useMemo<NavItem[]>(
     () => [
@@ -63,9 +65,18 @@ const Header = () => {
         label: language === "pt" ? "Projetos" : "Projects",
         type: "anchor",
         sectionId: "projects",
-      }
+      },
+      ...(hasArticles
+        ? [
+            {
+              href: "/articles",
+              label: language === "pt" ? "Artigos" : "Articles",
+              type: "internal" as const,
+            },
+          ]
+        : []),
     ],
-    [language]
+    [hasArticles, language]
   );
 
   const isActive = (item: NavItem) => {
@@ -85,6 +96,11 @@ const Header = () => {
     item: NavItem
   ) => {
     if (item.type === "anchor" && item.sectionId) {
+      if (location.pathname !== "/") {
+        setIsMenuOpen(false);
+        return;
+      }
+
       event.preventDefault();
       const target = document.getElementById(item.sectionId);
       if (target) {
