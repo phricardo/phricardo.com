@@ -80,7 +80,10 @@ const ArticleDetail = () => {
                   {formatPublishedInfo(data.createdAt, data.updatedAt)}
                 </p>
                 <p className="text-github-text text-sm mb-4">
-                  Por {data.author?.name || data.author?.username || "Autor"}
+                  Por{" "}
+                  <strong>
+                    {data.author?.name || data.author?.username || "Autor"}
+                  </strong>
                 </p>
                 {data.tags.length > 0 && (
                   <div className="flex flex-wrap items-center justify-center gap-2 mb-2">
