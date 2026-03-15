@@ -21,6 +21,24 @@
   font-weight: 600;
 }
 
+.markdown h4 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.markdown h5 {
+  margin: 0.875rem 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.markdown h6 {
+  margin: 0.75rem 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
 .markdown p {
   margin: 0 0 1rem;
 }

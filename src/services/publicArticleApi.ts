@@ -3,6 +3,7 @@ import { request } from "@/lib/apiClient";
 export interface PublicArticleAuthor {
   name: string;
   username: string;
+  description?: string;
 }
 
 export interface PublicArticle {

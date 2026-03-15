@@ -56,6 +56,15 @@ const formatPublishedInfo = (createdAt: string, updatedAt: string) => {
   return `${base} - Atualizado há ${roundedHours} ${label}`;
 };
 
+const buildGithubAvatarUrl = (username?: string) => {
+  const normalized = (username || "").trim();
+  if (!normalized) {
+    return "";
+  }
+
+  return `https://github.com/${encodeURIComponent(normalized)}.png`;
+};
+
 const ArticleDetail = () => {
   const { slug = "" } = useParams();
   const [isPresentationMode, setIsPresentationMode] = useState(false);
@@ -149,6 +158,40 @@ const ArticleDetail = () => {
               <MarkdownRenderer
                 content={transformCustomDirectives(data.content || "")}
               />
+
+              <footer className="mt-10 pt-6 border-t border-[#1f1f1f]">
+                <h2 className="text-lg font-semibold text-white mb-4">
+                  Sobre o autor
+                </h2>
+                <div className="rounded-xl border border-[#252525] bg-[#101010] p-4 md:p-5 flex items-start gap-4">
+                  {data.author?.username ? (
+                    <img
+                      src={buildGithubAvatarUrl(data.author.username)}
+                      alt={`Avatar de ${data.author.username}`}
+                      loading="lazy"
+                      className="h-14 w-14 rounded-full border border-[#2d2d2d] object-cover"
+                    />
+                  ) : (
+                    <div className="h-14 w-14 rounded-full border border-[#2d2d2d] bg-[#1a1a1a]" />
+                  )}
+
+                  <div className="min-w-0">
+                    <p className="text-white font-semibold leading-tight">
+                      {data.author?.name || data.author?.username || "Autor"}
+                    </p>
+                    {data.author?.username ? (
+                      <p className="text-sm text-[#9ca3af] mt-1">
+                        @{data.author.username}
+                      </p>
+                    ) : null}
+                    {data.author?.description ? (
+                      <p className="text-sm text-github-text mt-3">
+                        {data.author.description}
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+              </footer>
             </article>
           )}
         </main>
