@@ -1,11 +1,28 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Maximize2, Minimize2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { getPublicArticleBySlug } from "@/services/publicArticleApi";
 import { transformCustomDirectives } from "@/lib/customDirectives";
+
+const estimateReadingTime = (content: string) => {
+  const plainText = content
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/`[^`]*`/g, " ")
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, " ")
+    .replace(/\[[^\]]*\]\([^)]+\)/g, " ")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/[*_~>-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const wordCount = plainText ? plainText.split(" ").length : 0;
+  const minutes = Math.max(1, Math.ceil(wordCount / 200));
+  return `${minutes} min de leitura`;
+};
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString("pt-BR", {
@@ -41,6 +58,7 @@ const formatPublishedInfo = (createdAt: string, updatedAt: string) => {
 
 const ArticleDetail = () => {
   const { slug = "" } = useParams();
+  const [isPresentationMode, setIsPresentationMode] = useState(false);
   const { data, isLoading, isError } = useQuery({
     queryKey: ["public-article", slug],
     queryFn: () => getPublicArticleBySlug(slug),
@@ -49,10 +67,16 @@ const ArticleDetail = () => {
 
   return (
     <div className="min-h-screen bg-github-dark font-inter flex flex-col [&>footer]:mt-0">
-      <Header />
+      {!isPresentationMode ? <Header /> : null}
       <div className="flex-1 flex">
-        <main className="w-full max-w-[760px] mx-auto border-x border-[#1b1b1b] px-4 md:px-6 pt-4 md:pt-6 pb-40">
-          <div className="mb-6">
+        <main
+          className={`w-full mx-auto px-4 md:px-6 pt-4 md:pt-6 pb-40 ${
+            isPresentationMode
+              ? "max-w-[860px]"
+              : "max-w-[760px] border-x border-[#1b1b1b]"
+          }`}
+        >
+          <div className="mb-6 flex items-center justify-between gap-3">
             <Link
               to="/articles"
               className="inline-flex items-center gap-2 rounded-lg border border-[#252525] bg-[#0f0f0f] px-3 py-1.5 text-sm font-medium text-[#bbbbbb] transition-colors hover:text-white hover:border-[#3a3a3a]"
@@ -60,6 +84,28 @@ const ArticleDetail = () => {
               <ArrowLeft className="h-4 w-4" />
               Voltar para artigos
             </Link>
+
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#252525] bg-[#0f0f0f] text-[#bbbbbb] transition-colors hover:border-[#3a3a3a] hover:text-white"
+              onClick={() => setIsPresentationMode((prev) => !prev)}
+              aria-label={
+                isPresentationMode
+                  ? "Sair do modo de apresentação"
+                  : "Entrar no modo de apresentação"
+              }
+              title={
+                isPresentationMode
+                  ? "Sair do modo de apresentação"
+                  : "Modo de apresentação"
+              }
+            >
+              {isPresentationMode ? (
+                <Minimize2 className="h-4 w-4" />
+              ) : (
+                <Maximize2 className="h-4 w-4" />
+              )}
+            </button>
           </div>
 
           {isLoading ? (
@@ -73,12 +119,13 @@ const ArticleDetail = () => {
           ) : (
             <article className="p-0 md:p-0">
               <header className="mb-8 flex flex-col items-center text-center">
+                <div className="mb-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-github-text">
+                  <p>{formatPublishedInfo(data.createdAt, data.updatedAt)}</p>
+                  <p>{estimateReadingTime(data.content || "")}</p>
+                </div>
                 <h1 className="text-center text-3xl md:text-4xl font-bold text-[#34eb64] mb-3">
                   {data.title}
                 </h1>
-                <p className="text-github-text text-sm mb-4">
-                  {formatPublishedInfo(data.createdAt, data.updatedAt)}
-                </p>
                 <p className="text-github-text text-sm mb-4">
                   Por{" "}
                   <strong>
@@ -107,7 +154,7 @@ const ArticleDetail = () => {
         </main>
       </div>
 
-      <Footer />
+      {!isPresentationMode ? <Footer /> : null}
     </div>
   );
 };
