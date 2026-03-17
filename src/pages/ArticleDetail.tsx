@@ -183,27 +183,28 @@ const ArticleDetail = () => {
                   </p>
                 </div>
                 <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+                  <span className="text-xs md:text-sm text-[#8b949e]">
+                    Compartilhar em:
+                  </span>
                   <a
                     href={linkedinShareUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-lg border border-[#252525] bg-[#0f0f0f] px-3 py-1.5 text-sm text-github-text transition-colors hover:border-[#3a3a3a] hover:text-white"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#252525] bg-[#0f0f0f] text-github-text transition-colors hover:border-[#3a3a3a] hover:text-white"
                     aria-label="Compartilhar no LinkedIn"
                     title="Compartilhar no LinkedIn"
                   >
                     <Linkedin className="h-4 w-4" />
-                    <span>LinkedIn</span>
                   </a>
                   <a
                     href={xShareUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-lg border border-[#252525] bg-[#0f0f0f] px-3 py-1.5 text-sm text-github-text transition-colors hover:border-[#3a3a3a] hover:text-white"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#252525] bg-[#0f0f0f] text-github-text transition-colors hover:border-[#3a3a3a] hover:text-white"
                     aria-label="Compartilhar no X"
                     title="Compartilhar no X"
                   >
                     <BsTwitterX className="h-4 w-4" />
-                    <span>X</span>
                   </a>
                 </div>
                 {data.tags.length > 0 && (
