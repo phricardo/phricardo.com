@@ -324,7 +324,7 @@ const ArticleDetail = () => {
                 <h1 className="text-center text-3xl md:text-4xl font-bold text-[#34eb64] mb-3">
                   {data.title}
                 </h1>
-                <div className="mb-4 flex items-center justify-center gap-2 text-github-text text-sm">
+                <div className="mb-4 flex flex-wrap items-center justify-center gap-2 text-github-text text-sm">
                   {data.author?.username ? (
                     <img
                       src={buildGithubAvatarUrl(data.author.username)}
@@ -335,16 +335,24 @@ const ArticleDetail = () => {
                   ) : (
                     <div className="h-7 w-7 rounded-full border border-[#2d2d2d] bg-[#1a1a1a]" />
                   )}
-                  <p>
+                  <p className="whitespace-nowrap">
                     Por{" "}
                     <strong>
                       {data.author?.name || data.author?.username || "Autor"}
                     </strong>
                   </p>
-                </div>
-                <div className="mb-4 flex items-center justify-center gap-1.5 text-xs text-[#8b949e]">
-                  <Eye className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span>{formatTotalViews(data.totalViews || 0)}</span>
+                  <span
+                    className="text-[#8b949e]"
+                    aria-hidden="true"
+                  >
+                    |
+                  </span>
+                  <div className="flex items-center gap-1.5 text-xs text-[#8b949e]">
+                    <Eye className="h-3.5 w-3.5" aria-hidden="true" />
+                    <span className="whitespace-nowrap">
+                      Visualizações: {formatTotalViews(data.totalViews || 0)}
+                    </span>
+                  </div>
                 </div>
                 <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
                   <span className="text-xs md:text-sm text-[#8b949e]">
