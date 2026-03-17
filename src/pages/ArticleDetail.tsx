@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -12,6 +12,7 @@ import { BsTwitterX } from "react-icons/bs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
+import { Skeleton } from "@/components/ui/skeleton";
 import { getPublicArticleByIdentifier } from "@/services/publicArticleApi";
 import { transformCustomDirectives } from "@/lib/customDirectives";
 
@@ -95,10 +96,79 @@ const buildLinkedinShareUrl = (url: string) =>
 const buildXShareUrl = (url: string, title?: string) =>
   `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title || "")}`;
 
+const ArticleDetailSkeleton = () => (
+  <article className="p-0 md:p-0">
+    <header className="mb-8 flex flex-col items-center text-center">
+      <div className="mb-4 flex flex-wrap items-center justify-center gap-3">
+        <Skeleton className="h-4 w-56 bg-[#1f2733]" />
+        <Skeleton className="h-4 w-24 bg-[#1f2733]" />
+      </div>
+
+      <div className="mb-4 w-full max-w-[640px] space-y-3">
+        <Skeleton className="h-12 w-full bg-[#123224]" />
+        <Skeleton className="h-12 w-5/6 mx-auto bg-[#123224]" />
+      </div>
+
+      <div className="mb-4 flex items-center justify-center gap-2">
+        <Skeleton className="h-7 w-7 rounded-full bg-[#1f2733]" />
+        <Skeleton className="h-5 w-44 bg-[#1f2733]" />
+      </div>
+
+      <div className="mb-4 flex items-center justify-center gap-2">
+        <Skeleton className="h-4 w-28 bg-[#1f2733]" />
+        <Skeleton className="h-9 w-36 rounded-lg bg-[#171b22]" />
+        <Skeleton className="h-9 w-9 rounded-lg bg-[#171b22]" />
+        <Skeleton className="h-9 w-9 rounded-lg bg-[#171b22]" />
+      </div>
+
+      <div className="mb-2 flex flex-wrap items-center justify-center gap-2">
+        <Skeleton className="h-7 w-14 rounded-[0.6rem] bg-[#123224]" />
+        <Skeleton className="h-7 w-16 rounded-[0.6rem] bg-[#123224]" />
+        <Skeleton className="h-7 w-20 rounded-[0.6rem] bg-[#123224]" />
+        <Skeleton className="h-7 w-24 rounded-[0.6rem] bg-[#123224]" />
+      </div>
+    </header>
+
+    <section className="space-y-4">
+      <Skeleton className="h-6 w-full bg-[#1a212b]" />
+      <Skeleton className="h-6 w-[96%] bg-[#1a212b]" />
+      <Skeleton className="h-6 w-[92%] bg-[#1a212b]" />
+      <Skeleton className="h-6 w-[90%] bg-[#1a212b]" />
+      <Skeleton className="h-6 w-[97%] bg-[#1a212b]" />
+      <Skeleton className="h-6 w-[70%] bg-[#1a212b]" />
+
+      <div className="pt-4">
+        <Skeleton className="h-px w-full bg-[#1f2733]" />
+      </div>
+
+      <Skeleton className="h-10 w-[74%] bg-[#1f2733]" />
+      <Skeleton className="h-8 w-[32%] bg-[#1f2733]" />
+      <Skeleton className="h-6 w-full bg-[#1a212b]" />
+      <Skeleton className="h-6 w-[95%] bg-[#1a212b]" />
+      <Skeleton className="h-6 w-[88%] bg-[#1a212b]" />
+    </section>
+
+    <footer className="mt-10 pt-8 border-t border-[#1f1f1f]">
+      <div className="flex flex-col items-center text-center">
+        <Skeleton className="h-7 w-40 mb-5 bg-[#1f2733]" />
+        <Skeleton className="h-20 w-20 rounded-full mb-4 bg-[#1f2733]" />
+        <Skeleton className="h-6 w-48 mb-2 bg-[#1f2733]" />
+        <Skeleton className="h-4 w-28 mb-4 bg-[#1f2733]" />
+        <div className="w-full max-w-[720px] space-y-2">
+          <Skeleton className="h-4 w-full bg-[#1f2733]" />
+          <Skeleton className="h-4 w-[92%] mx-auto bg-[#1f2733]" />
+          <Skeleton className="h-4 w-[85%] mx-auto bg-[#1f2733]" />
+        </div>
+      </div>
+    </footer>
+  </article>
+);
+
 const ArticleDetail = () => {
   const { slug = "" } = useParams();
   const [isPresentationMode, setIsPresentationMode] = useState(false);
-  const [copyTitle, setCopyTitle] = useState("Copiar link do artigo");
+  const [copyLabel, setCopyLabel] = useState("Copiar Link");
+  const copyResetTimeoutRef = useRef<number | null>(null);
   const { data, isLoading, isError } = useQuery({
     queryKey: ["public-article", slug],
     queryFn: () => getPublicArticleByIdentifier(slug),
@@ -109,6 +179,14 @@ const ArticleDetail = () => {
   const shortArticleUrl = buildShortArticleUrl(data?.shortCode, data?.slug);
   const linkedinShareUrl = buildLinkedinShareUrl(shortArticleUrl);
   const xShareUrl = buildXShareUrl(shortArticleUrl, data?.title);
+
+  useEffect(() => {
+    return () => {
+      if (copyResetTimeoutRef.current) {
+        window.clearTimeout(copyResetTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleCopyShortLink = async () => {
     try {
@@ -122,11 +200,21 @@ const ArticleDetail = () => {
         document.execCommand("copy");
         document.body.removeChild(tempInput);
       }
-      setCopyTitle("Link copiado");
-      window.setTimeout(() => setCopyTitle("Copiar link do artigo"), 1800);
+      setCopyLabel("Copiado com sucesso!");
+      if (copyResetTimeoutRef.current) {
+        window.clearTimeout(copyResetTimeoutRef.current);
+      }
+      copyResetTimeoutRef.current = window.setTimeout(() => {
+        setCopyLabel("Copiar Link");
+      }, 3000);
     } catch {
-      setCopyTitle("Nao foi possivel copiar");
-      window.setTimeout(() => setCopyTitle("Copiar link do artigo"), 1800);
+      setCopyLabel("Nao foi possivel copiar");
+      if (copyResetTimeoutRef.current) {
+        window.clearTimeout(copyResetTimeoutRef.current);
+      }
+      copyResetTimeoutRef.current = window.setTimeout(() => {
+        setCopyLabel("Copiar Link");
+      }, 3000);
     }
   };
 
@@ -174,9 +262,7 @@ const ArticleDetail = () => {
           </div>
 
           {isLoading ? (
-            <div className="rounded-2xl border border-github-border bg-github-secondary p-6 text-github-text">
-              Carregando artigo...
-            </div>
+            <ArticleDetailSkeleton />
           ) : isError || !data ? (
             <div className="rounded-2xl border border-github-border bg-github-secondary p-6 text-github-text">
               Artigo nao encontrado.
@@ -236,11 +322,12 @@ const ArticleDetail = () => {
                   <button
                     type="button"
                     onClick={handleCopyShortLink}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#252525] bg-[#0f0f0f] text-github-text transition-colors hover:border-[#3a3a3a] hover:text-white"
+                    className="inline-flex h-9 items-center justify-center gap-2 rounded-lg border border-[#252525] bg-[#0f0f0f] px-3 text-github-text transition-colors hover:border-[#3a3a3a] hover:text-white"
                     aria-label="Copiar link curto do artigo"
-                    title={copyTitle}
+                    title={copyLabel}
                   >
                     <Copy className="h-4 w-4" />
+                    <span className="text-xs md:text-sm">{copyLabel}</span>
                   </button>
                 </div>
                 {data.tags.length > 0 && (
@@ -261,24 +348,24 @@ const ArticleDetail = () => {
                 content={transformCustomDirectives(data.content || "")}
               />
 
-              <footer className="mt-10 pt-6 border-t border-[#1f1f1f]">
-                <h2 className="text-lg font-semibold text-white mb-4">
+              <footer className="mt-10 pt-8 border-t border-[#1f1f1f]">
+                <h2 className="text-lg font-semibold text-white mb-5 text-center">
                   Sobre o autor
                 </h2>
-                <div className="rounded-xl border border-[#252525] bg-[#101010] p-4 md:p-5 flex items-start gap-4">
+                <div className="flex flex-col items-center text-center">
                   {data.author?.username ? (
                     <img
                       src={buildGithubAvatarUrl(data.author.username)}
                       alt={`Avatar de ${data.author.username}`}
                       loading="lazy"
-                      className="h-14 w-14 rounded-full border border-[#2d2d2d] object-cover"
+                      className="h-20 w-20 rounded-full border border-[#2d2d2d] object-cover mb-4"
                     />
                   ) : (
-                    <div className="h-14 w-14 rounded-full border border-[#2d2d2d] bg-[#1a1a1a]" />
+                    <div className="h-20 w-20 rounded-full border border-[#2d2d2d] bg-[#1a1a1a] mb-4" />
                   )}
 
-                  <div className="min-w-0">
-                    <p className="text-white font-semibold leading-tight">
+                  <div className="min-w-0 flex flex-col items-center text-center">
+                    <p className="text-white font-semibold leading-tight text-xl">
                       {data.author?.name || data.author?.username || "Autor"}
                     </p>
                     {data.author?.username ? (
@@ -287,7 +374,7 @@ const ArticleDetail = () => {
                       </p>
                     ) : null}
                     {data.author?.description ? (
-                      <p className="text-sm text-github-text mt-3">
+                      <p className="text-sm text-github-text mt-4 max-w-[720px] leading-relaxed">
                         {data.author.description}
                       </p>
                     ) : null}

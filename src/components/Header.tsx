@@ -39,6 +39,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const { hasArticles } = usePublicArticlesAvailability();
+  const shouldShowArticles = language === "pt" && hasArticles;
 
   const navItems = useMemo<NavItem[]>(
     () => [
@@ -66,7 +67,7 @@ const Header = () => {
         type: "anchor",
         sectionId: "projects",
       },
-      ...(hasArticles
+      ...(shouldShowArticles
         ? [
             {
               href: "/articles",
@@ -76,7 +77,7 @@ const Header = () => {
           ]
         : []),
     ],
-    [hasArticles, language]
+    [shouldShowArticles, language]
   );
 
   const isActive = (item: NavItem) => {

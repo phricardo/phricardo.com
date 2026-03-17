@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import { Plus } from "lucide-react";
 import PublicArticleList from "@/components/PublicArticleList";
 import { usePublicArticlesAvailability } from "@/hooks/usePublicArticlesAvailability";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HomeArticlesSection = () => {
+  const { language } = useLanguage();
   const { firstPage, isLoading, hasArticles } = usePublicArticlesAvailability();
 
-  if (isLoading || !firstPage || !hasArticles) {
+  if (language !== "pt" || isLoading || !firstPage || !hasArticles) {
     return null;
   }
 
