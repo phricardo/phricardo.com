@@ -13,6 +13,7 @@ export interface PublicArticle {
   content: string;
   tags: string[];
   author: PublicArticleAuthor;
+  totalViews: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -43,3 +44,6 @@ export const getPublicArticleByIdentifier = (identifier: string) =>
 
 export const getPublicArticleBySlug = (slug: string) =>
   getPublicArticleByIdentifier(slug);
+
+export const registerPublishedArticleView = (identifier: string) =>
+  request<void>(`/v1/public/articles/${identifier}/views`, { method: "POST" });

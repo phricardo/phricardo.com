@@ -13,7 +13,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getPublicArticleByIdentifier } from "@/services/publicArticleApi";
+import {
+  getPublicArticleByIdentifier,
+  registerPublishedArticleView,
+} from "@/services/publicArticleApi";
 import { transformCustomDirectives } from "@/lib/customDirectives";
 
 const estimateReadingTime = (content: string) => {
@@ -62,6 +65,32 @@ const formatPublishedInfo = (createdAt: string, updatedAt: string) => {
   const roundedHours = Math.max(1, Math.floor(hours));
   const label = roundedHours === 1 ? "hora" : "horas";
   return `${base} - Atualizado há ${roundedHours} ${label}`;
+};
+
+const formatTotalViews = (views: number) => {
+  if (!Number.isFinite(views) || views <= 0) {
+    return "0";
+  }
+
+  if (views >= 1_000_000) {
+    const value = views / 1_000_000;
+    const formatted =
+      value >= 10
+        ? Math.round(value).toString()
+        : value.toFixed(1).replace(/\.0$/, "");
+    return `${formatted}MM`;
+  }
+
+  if (views >= 1_000) {
+    const value = views / 1_000;
+    const formatted =
+      value >= 10
+        ? Math.round(value).toString()
+        : value.toFixed(1).replace(/\.0$/, "");
+    return `${formatted}k`;
+  }
+
+  return String(Math.round(views));
 };
 
 const buildGithubAvatarUrl = (username?: string) => {
@@ -169,7 +198,8 @@ const ArticleDetail = () => {
   const [isPresentationMode, setIsPresentationMode] = useState(false);
   const [copyLabel, setCopyLabel] = useState("Copiar Link");
   const copyResetTimeoutRef = useRef<number | null>(null);
-  const { data, isLoading, isError } = useQuery({
+  const registeredViewIdentifierRef = useRef<string | null>(null);
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["public-article", slug],
     queryFn: () => getPublicArticleByIdentifier(slug),
     enabled: Boolean(slug),
@@ -187,6 +217,22 @@ const ArticleDetail = () => {
       }
     };
   }, []);
+
+  useEffect(() => {
+    const identifier = data?.slug || data?.shortCode || slug;
+    if (!identifier) {
+      return;
+    }
+
+    if (registeredViewIdentifierRef.current === identifier) {
+      return;
+    }
+
+    registeredViewIdentifierRef.current = identifier;
+    void registerPublishedArticleView(identifier)
+      .then(() => refetch())
+      .catch(() => undefined);
+  }, [data?.shortCode, data?.slug, refetch, slug]);
 
   const handleCopyShortLink = async () => {
     try {
@@ -273,6 +319,7 @@ const ArticleDetail = () => {
                 <div className="mb-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-github-text">
                   <p>{formatPublishedInfo(data.createdAt, data.updatedAt)}</p>
                   <p>{estimateReadingTime(data.content || "")}</p>
+                  <p>Visualizacoes: {formatTotalViews(data.totalViews || 0)}</p>
                 </div>
                 <h1 className="text-center text-3xl md:text-4xl font-bold text-[#34eb64] mb-3">
                   {data.title}

@@ -37,6 +37,7 @@ export const request = async <T>(
     response = await fetch(`${API_BASE_URL}${path}`, {
       ...rest,
       signal: controller?.signal ?? rest.signal,
+      credentials: rest.credentials ?? "include",
       headers: {
         ...(body !== undefined ? { "Content-Type": "application/json" } : {}),
         ...headers,
