@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, Maximize2, Minimize2 } from "lucide-react";
+import { ArrowLeft, Linkedin, Maximize2, Minimize2 } from "lucide-react";
+import { BsTwitterX } from "react-icons/bs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
@@ -65,6 +66,29 @@ const buildGithubAvatarUrl = (username?: string) => {
   return `https://github.com/${encodeURIComponent(normalized)}.png`;
 };
 
+const buildShortArticleUrl = (shortCode?: string, slug?: string) => {
+  const baseUrl =
+    typeof window !== "undefined"
+      ? window.location.origin
+      : "https://www.phricardo.com";
+
+  if (shortCode?.trim()) {
+    return `${baseUrl}/a/${encodeURIComponent(shortCode.trim())}`;
+  }
+
+  if (slug?.trim()) {
+    return `${baseUrl}/articles/${encodeURIComponent(slug.trim())}`;
+  }
+
+  return baseUrl;
+};
+
+const buildLinkedinShareUrl = (url: string) =>
+  `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+
+const buildXShareUrl = (url: string, title?: string) =>
+  `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title || "")}`;
+
 const ArticleDetail = () => {
   const { slug = "" } = useParams();
   const [isPresentationMode, setIsPresentationMode] = useState(false);
@@ -74,6 +98,10 @@ const ArticleDetail = () => {
     enabled: Boolean(slug),
     staleTime: 5 * 60 * 1000,
   });
+
+  const shortArticleUrl = buildShortArticleUrl(data?.shortCode, data?.slug);
+  const linkedinShareUrl = buildLinkedinShareUrl(shortArticleUrl);
+  const xShareUrl = buildXShareUrl(shortArticleUrl, data?.title);
 
   return (
     <div className="min-h-screen bg-github-dark font-inter flex flex-col [&>footer]:mt-0">
@@ -136,12 +164,48 @@ const ArticleDetail = () => {
                 <h1 className="text-center text-3xl md:text-4xl font-bold text-[#34eb64] mb-3">
                   {data.title}
                 </h1>
-                <p className="text-github-text text-sm mb-4">
-                  Por{" "}
-                  <strong>
-                    {data.author?.name || data.author?.username || "Autor"}
-                  </strong>
-                </p>
+                <div className="mb-4 flex items-center justify-center gap-2 text-github-text text-sm">
+                  {data.author?.username ? (
+                    <img
+                      src={buildGithubAvatarUrl(data.author.username)}
+                      alt={`Avatar de ${data.author.username}`}
+                      loading="lazy"
+                      className="h-7 w-7 rounded-full border border-[#2d2d2d] object-cover"
+                    />
+                  ) : (
+                    <div className="h-7 w-7 rounded-full border border-[#2d2d2d] bg-[#1a1a1a]" />
+                  )}
+                  <p>
+                    Por{" "}
+                    <strong>
+                      {data.author?.name || data.author?.username || "Autor"}
+                    </strong>
+                  </p>
+                </div>
+                <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+                  <a
+                    href={linkedinShareUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-lg border border-[#252525] bg-[#0f0f0f] px-3 py-1.5 text-sm text-github-text transition-colors hover:border-[#3a3a3a] hover:text-white"
+                    aria-label="Compartilhar no LinkedIn"
+                    title="Compartilhar no LinkedIn"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                    <span>LinkedIn</span>
+                  </a>
+                  <a
+                    href={xShareUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-lg border border-[#252525] bg-[#0f0f0f] px-3 py-1.5 text-sm text-github-text transition-colors hover:border-[#3a3a3a] hover:text-white"
+                    aria-label="Compartilhar no X"
+                    title="Compartilhar no X"
+                  >
+                    <BsTwitterX className="h-4 w-4" />
+                    <span>X</span>
+                  </a>
+                </div>
                 {data.tags.length > 0 && (
                   <div className="flex flex-wrap items-center justify-center gap-2 mb-2">
                     {data.tags.map((tag) => (
