@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, Linkedin, Maximize2, Minimize2 } from "lucide-react";
+import {
+  ArrowLeft,
+  Copy,
+  Linkedin,
+  Maximize2,
+  Minimize2,
+} from "lucide-react";
 import { BsTwitterX } from "react-icons/bs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -92,6 +98,7 @@ const buildXShareUrl = (url: string, title?: string) =>
 const ArticleDetail = () => {
   const { slug = "" } = useParams();
   const [isPresentationMode, setIsPresentationMode] = useState(false);
+  const [copyTitle, setCopyTitle] = useState("Copiar link do artigo");
   const { data, isLoading, isError } = useQuery({
     queryKey: ["public-article", slug],
     queryFn: () => getPublicArticleByIdentifier(slug),
@@ -102,6 +109,26 @@ const ArticleDetail = () => {
   const shortArticleUrl = buildShortArticleUrl(data?.shortCode, data?.slug);
   const linkedinShareUrl = buildLinkedinShareUrl(shortArticleUrl);
   const xShareUrl = buildXShareUrl(shortArticleUrl, data?.title);
+
+  const handleCopyShortLink = async () => {
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(shortArticleUrl);
+      } else {
+        const tempInput = document.createElement("input");
+        tempInput.value = shortArticleUrl;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+      }
+      setCopyTitle("Link copiado");
+      window.setTimeout(() => setCopyTitle("Copiar link do artigo"), 1800);
+    } catch {
+      setCopyTitle("Nao foi possivel copiar");
+      window.setTimeout(() => setCopyTitle("Copiar link do artigo"), 1800);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-github-dark font-inter flex flex-col [&>footer]:mt-0">
@@ -206,6 +233,15 @@ const ArticleDetail = () => {
                   >
                     <BsTwitterX className="h-4 w-4" />
                   </a>
+                  <button
+                    type="button"
+                    onClick={handleCopyShortLink}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#252525] bg-[#0f0f0f] text-github-text transition-colors hover:border-[#3a3a3a] hover:text-white"
+                    aria-label="Copiar link curto do artigo"
+                    title={copyTitle}
+                  >
+                    <Copy className="h-4 w-4" />
+                  </button>
                 </div>
                 {data.tags.length > 0 && (
                   <div className="flex flex-wrap items-center justify-center gap-2 mb-2">
