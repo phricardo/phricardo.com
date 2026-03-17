@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
   ArrowLeft,
   Copy,
+  Eye,
   Linkedin,
   Maximize2,
   Minimize2,
@@ -319,7 +320,6 @@ const ArticleDetail = () => {
                 <div className="mb-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-github-text">
                   <p>{formatPublishedInfo(data.createdAt, data.updatedAt)}</p>
                   <p>{estimateReadingTime(data.content || "")}</p>
-                  <p>Visualizacoes: {formatTotalViews(data.totalViews || 0)}</p>
                 </div>
                 <h1 className="text-center text-3xl md:text-4xl font-bold text-[#34eb64] mb-3">
                   {data.title}
@@ -341,6 +341,10 @@ const ArticleDetail = () => {
                       {data.author?.name || data.author?.username || "Autor"}
                     </strong>
                   </p>
+                </div>
+                <div className="mb-4 flex items-center justify-center gap-1.5 text-xs text-[#8b949e]">
+                  <Eye className="h-3.5 w-3.5" aria-hidden="true" />
+                  <span>{formatTotalViews(data.totalViews || 0)}</span>
                 </div>
                 <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
                   <span className="text-xs md:text-sm text-[#8b949e]">
