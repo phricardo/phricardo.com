@@ -5,7 +5,7 @@ import { ArrowLeft, Maximize2, Minimize2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
-import { getPublicArticleBySlug } from "@/services/publicArticleApi";
+import { getPublicArticleByIdentifier } from "@/services/publicArticleApi";
 import { transformCustomDirectives } from "@/lib/customDirectives";
 
 const estimateReadingTime = (content: string) => {
@@ -70,8 +70,9 @@ const ArticleDetail = () => {
   const [isPresentationMode, setIsPresentationMode] = useState(false);
   const { data, isLoading, isError } = useQuery({
     queryKey: ["public-article", slug],
-    queryFn: () => getPublicArticleBySlug(slug),
+    queryFn: () => getPublicArticleByIdentifier(slug),
     enabled: Boolean(slug),
+    staleTime: 5 * 60 * 1000,
   });
 
   return (

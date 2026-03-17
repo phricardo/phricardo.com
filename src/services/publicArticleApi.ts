@@ -9,6 +9,7 @@ export interface PublicArticleAuthor {
 export interface PublicArticle {
   title: string;
   slug: string;
+  shortCode: string;
   content: string;
   tags: string[];
   author: PublicArticleAuthor;
@@ -37,5 +38,8 @@ export const listPublicArticlesByPage = (page: number, timeoutMs?: number) =>
     timeoutMs,
   });
 
+export const getPublicArticleByIdentifier = (identifier: string) =>
+  request<PublicArticle>(`/v1/public/articles/${identifier}`, { method: "GET" });
+
 export const getPublicArticleBySlug = (slug: string) =>
-  request<PublicArticle>(`/v1/public/articles/${slug}`, { method: "GET" });
+  getPublicArticleByIdentifier(slug);
