@@ -17,12 +17,15 @@ const TechStack = () => {
     t("projectManagement"),
   ];
 
+  const logos = [icon01, icon02, icon03, icon01, icon02, icon03];
+
   return (
     <div className="my-20 md:my-28 space-y-12">
       <div>
         <h2 className="text-xl font-semibold text-white mb-4">
           {t("areasOfExpertise")}
         </h2>
+
         <div className="flex flex-wrap gap-2">
           {technologies.map((tech) => (
             <span
@@ -41,29 +44,21 @@ const TechStack = () => {
             ? "Empresas que confiaram no meu trabalho"
             : "Companies that trusted my work"}
         </h3>
-        <div className="marquee border border-github-border rounded-lg bg-[#0f0f0f] py-4 px-3">
-          <div className="marquee-track">
-            {[icon01, icon02, icon03, icon01, icon02, icon03].map(
-              (logo, idx) => (
-                <img
-                  key={`logo-${idx}`}
-                  src={logo}
-                  alt={`Company logo ${idx + 1}`}
-                  className="h-10 w-auto opacity-80"
-                />
-              )
-            )}
-            {[icon01, icon02, icon03, icon01, icon02, icon03].map(
-              (logo, idx) => (
-                <img
-                  key={`logo-dup-${idx}`}
-                  src={logo}
-                  alt={`Company logo ${idx + 1}`}
-                  className="h-10 w-auto opacity-80"
-                />
-              )
-            )}
+
+        <div className="relative overflow-hidden py-4">
+          <div className="flex w-max animate-marquee items-center gap-14">
+            {[...logos, ...logos].map((logo, idx) => (
+              <img
+                key={`logo-${idx}`}
+                src={logo}
+                alt={`Company logo ${idx + 1}`}
+                className="h-10 w-auto shrink-0 opacity-80"
+              />
+            ))}
           </div>
+
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0a0a0a] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0a0a0a] to-transparent" />
         </div>
       </div>
     </div>
