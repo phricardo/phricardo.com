@@ -2,6 +2,13 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import icon01 from "../assets/images/companies/icons/01.svg";
 import icon02 from "../assets/images/companies/icons/02.svg";
 import icon03 from "../assets/images/companies/icons/03.svg";
+import icon04 from "../assets/images/companies/icons/04.svg";
+
+type CompanyLogo = {
+  src: string;
+  alt: string;
+  className: string;
+};
 
 const TechStack = () => {
   const { t, language } = useLanguage();
@@ -17,12 +24,53 @@ const TechStack = () => {
     t("projectManagement"),
   ];
 
-  const logos = [icon01, icon02, icon03, icon01, icon02, icon03];
+  const logos: CompanyLogo[] = [
+    {
+      src: icon01,
+      alt: "Santander logo",
+      className: "h-10 md:h-11 max-w-[220px] md:max-w-[250px]",
+    },
+    {
+      src: icon02,
+      alt: "PicPay logo",
+      className: "h-10 md:h-11 max-w-[145px] md:max-w-[165px]",
+    },
+    {
+      src: icon03,
+      alt: "Magalu logo",
+      className: "h-10 md:h-11 max-w-[145px] md:max-w-[165px]",
+    },
+    {
+      src: icon04,
+      alt: "Company logo 4",
+      className: "h-10 md:h-11 max-w-[170px] md:max-w-[195px]",
+    },
+    {
+      src: icon01,
+      alt: "Santander logo",
+      className: "h-10 md:h-11 max-w-[220px] md:max-w-[250px]",
+    },
+    {
+      src: icon02,
+      alt: "PicPay logo",
+      className: "h-10 md:h-11 max-w-[145px] md:max-w-[165px]",
+    },
+    {
+      src: icon03,
+      alt: "Magalu logo",
+      className: "h-10 md:h-11 max-w-[145px] md:max-w-[165px]",
+    },
+    {
+      src: icon04,
+      alt: "Company logo 4",
+      className: "h-10 md:h-11 max-w-[170px] md:max-w-[195px]",
+    },
+  ];
 
   return (
-    <section className="tech-stack-section my-20 overflow-hidden rounded-[2rem] border border-[#1f1f1f] px-6 py-8 shadow-[0_24px_80px_rgba(0,0,0,0.28)] md:my-28 md:px-8 md:py-10">
+    <section className="space-y-12 md:space-y-16">
       <div>
-        <h2 className="text-xl font-semibold text-white mb-4">
+        <h2 className="section-title text-xl mb-4">
           {t("areasOfExpertise")}
         </h2>
 
@@ -39,10 +87,10 @@ const TechStack = () => {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xl font-semibold text-white">
+        <h3 className="section-title text-xl">
           {language === "pt"
-            ? "Empresas que confiaram no meu trabalho"
-            : "Companies that trusted my work"}
+            ? "Organizações que já contaram com meu trabalho"
+            : "Organizations I have supported"}
         </h3>
 
         <div className="tech-stack-marquee relative overflow-hidden py-4">
@@ -56,9 +104,9 @@ const TechStack = () => {
                 {logos.map((logo, idx) => (
                   <img
                     key={`logo-${copy}-${idx}`}
-                    src={logo}
-                    alt={`Company logo ${idx + 1}`}
-                    className="h-10 w-auto shrink-0 opacity-80"
+                    src={logo.src}
+                    alt={logo.alt}
+                    className={`${logo.className} w-auto shrink-0 object-contain opacity-80`}
                   />
                 ))}
               </div>

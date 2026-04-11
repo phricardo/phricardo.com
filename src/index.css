@@ -101,14 +101,12 @@
 }
 
 @layer components {
-  .card-hover {
-    @apply bg-github-secondary border border-github-border transition duration-300 ease-out transform hover:-translate-y-1.5 hover:border-[#34eb64] hover:shadow-[0_12px_40px_rgba(52,235,100,0.16)];
+  .section-title {
+    @apply font-semibold text-[#d7ddd9];
   }
 
-  .tech-stack-section {
-    background:
-      radial-gradient(circle at top right, rgba(52, 235, 100, 0.16), transparent 30%),
-      linear-gradient(135deg, #000000 0%, #041109 45%, #000000 100%);
+  .card-hover {
+    @apply bg-github-secondary border border-github-border transition duration-300 ease-out transform hover:-translate-y-1.5 hover:border-[#34eb64] hover:shadow-[0_12px_40px_rgba(52,235,100,0.16)];
   }
 
   .tech-stack-marquee {
