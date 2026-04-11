@@ -20,7 +20,7 @@ const TechStack = () => {
   const logos = [icon01, icon02, icon03, icon01, icon02, icon03];
 
   return (
-    <div className="my-20 md:my-28 space-y-12">
+    <section className="tech-stack-section my-20 overflow-hidden rounded-[2rem] border border-[#1f1f1f] px-6 py-8 shadow-[0_24px_80px_rgba(0,0,0,0.28)] md:my-28 md:px-8 md:py-10">
       <div>
         <h2 className="text-xl font-semibold text-white mb-4">
           {t("areasOfExpertise")}
@@ -45,23 +45,31 @@ const TechStack = () => {
             : "Companies that trusted my work"}
         </h3>
 
-        <div className="relative overflow-hidden py-4">
-          <div className="flex w-max animate-marquee items-center gap-14">
-            {[...logos, ...logos].map((logo, idx) => (
-              <img
-                key={`logo-${idx}`}
-                src={logo}
-                alt={`Company logo ${idx + 1}`}
-                className="h-10 w-auto shrink-0 opacity-80"
-              />
+        <div className="tech-stack-marquee relative overflow-hidden py-4">
+          <div className="tech-stack-marquee-track">
+            {[0, 1].map((copy) => (
+              <div
+                key={`logo-copy-${copy}`}
+                className="tech-stack-marquee-group"
+                aria-hidden={copy === 1}
+              >
+                {logos.map((logo, idx) => (
+                  <img
+                    key={`logo-${copy}-${idx}`}
+                    src={logo}
+                    alt={`Company logo ${idx + 1}`}
+                    className="h-10 w-auto shrink-0 opacity-80"
+                  />
+                ))}
+              </div>
             ))}
           </div>
 
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0a0a0a] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0a0a0a] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-github-dark via-github-dark/80 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-github-dark via-github-dark/80 to-transparent" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

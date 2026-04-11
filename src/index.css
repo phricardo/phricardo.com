@@ -105,18 +105,34 @@
     @apply bg-github-secondary border border-github-border transition duration-300 ease-out transform hover:-translate-y-1.5 hover:border-[#34eb64] hover:shadow-[0_12px_40px_rgba(52,235,100,0.16)];
   }
 
-  .marquee {
+  .tech-stack-section {
+    background:
+      radial-gradient(circle at top right, rgba(52, 235, 100, 0.16), transparent 30%),
+      linear-gradient(135deg, #000000 0%, #041109 45%, #000000 100%);
+  }
+
+  .tech-stack-marquee {
     @apply relative overflow-hidden;
   }
 
-  .marquee-track {
-    @apply flex items-center gap-8;
-    animation: marquee 18s linear infinite;
-    width: max-content;
+  .tech-stack-marquee-track {
+    @apply flex w-max items-center;
+    animation: tech-stack-marquee 18s linear infinite;
+    will-change: transform;
+  }
+
+  .tech-stack-marquee-group {
+    @apply flex shrink-0 items-center gap-14 pr-14;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tech-stack-marquee-track {
+      animation: none;
+    }
   }
 }
 
-@keyframes marquee {
+@keyframes tech-stack-marquee {
   0% {
     transform: translateX(0);
   }
