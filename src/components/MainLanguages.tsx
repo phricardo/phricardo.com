@@ -39,7 +39,7 @@ const MainLanguages = () => {
 
   return (
     <div className="my-24 md:my-28">
-      <h2 className="section-title text-2xl mb-8">
+      <h2 className="section-title section-heading">
         {t("mainLanguages")}
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-4">

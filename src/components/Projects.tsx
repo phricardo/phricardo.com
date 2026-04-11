@@ -77,7 +77,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="my-12">
-      <h2 className="section-title text-xl mb-6">{title}</h2>
+      <h2 className="section-title section-heading">{title}</h2>
       <div className="grid grid-cols-1 gap-6">
         {projects.map((project, index) => (
           <motion.div

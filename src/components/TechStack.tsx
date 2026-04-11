@@ -70,7 +70,7 @@ const TechStack = () => {
   return (
     <section className="space-y-12 md:space-y-16">
       <div>
-        <h2 className="section-title text-xl mb-4">
+        <h2 className="section-title section-heading">
           {t("areasOfExpertise")}
         </h2>
 
@@ -86,8 +86,8 @@ const TechStack = () => {
         </div>
       </div>
 
-      <div className="space-y-4">
-        <h3 className="section-title text-xl">
+      <div>
+        <h3 className="section-title section-heading">
           {language === "pt"
             ? "Organizações que já contaram com meu trabalho"
             : "Organizations I have supported"}
