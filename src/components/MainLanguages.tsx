@@ -10,6 +10,7 @@ import {
   SiAngular,
   SiJavascript,
   SiSpringboot,
+  SiKotlin,
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { Database } from "lucide-react";
@@ -26,6 +27,7 @@ const MainLanguages = () => {
   const languages: LanguageItem[] = [
     { name: "TypeScript", icon: SiTypescript },
     { name: "Java", icon: DiJava },
+    { name: "Kotlin", icon: SiKotlin },
     { name: "Spring Boot", icon: SiSpringboot },
     { name: "React Js", icon: SiReact },
     { name: "Node.js", icon: SiNodedotjs },
@@ -42,9 +44,11 @@ const MainLanguages = () => {
       <h2 className="section-title section-heading">
         {t("mainLanguages")}
       </h2>
+
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-4">
         {languages.map((lang) => {
           const Icon = lang.icon;
+
           return (
             <motion.div
               key={lang.name}
@@ -56,6 +60,7 @@ const MainLanguages = () => {
               <Card className="card-hover p-4 sm:p-6">
                 <div className="flex flex-col items-center gap-3 sm:gap-4">
                   <Icon className="w-8 h-8 sm:w-12 sm:h-12 text-github-text" />
+
                   <span className="text-white font-medium text-sm sm:text-base">
                     {lang.name}
                   </span>
