@@ -12,7 +12,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
 import convidarMeSrc from "../assets/images/projects/convidar.me.png";
 import englishdailySrc from "../assets/images/projects/englishdaily.png";
-import vejabemSrc from "../assets/images/projects/vejabem.png";
+import gitIdentityManagerSrc from "../assets/images/projects/git-identity-manager.png";
 import integraCefetRjSrc from "../assets/images/projects/integra-cefetrj.png";
 
 type Project = {
@@ -53,14 +53,15 @@ const Projects = () => {
     //   logo: englishdailySrc,
     // },
     {
-      title: "Projeto Veja Bem",
+      title: "Git Identity Manager",
       description:
         language === "en"
-          ? "Raises awareness about digital accessibility, showing how technology can be inclusive and how software engineering can open paths for young people."
-          : "Promove a conscientização sobre acessibilidade no mundo digital, mostrando como a tecnologia pode — e deve — ser inclusiva, além de apresentar a engenharia de software como possibilidade para jovens.",
-      tags: ["Acessibilidade Digital", "Tecnologia Inclusiva", "Educação", "Software"],
-      demo: "https://vejabem.org/",
-      logo: vejabemSrc,
+          ? "Cross-platform desktop app for managing multiple Git identities, user profiles, repository rules and credentials in one place."
+          : "Aplicativo desktop multiplataforma para gerenciar múltiplas identidades Git, perfis de usuário, regras por repositório e credenciais em um só lugar.",
+      tags: ["Tauri", "React", "Rust"],
+      github: "https://github.com/phricardo/Git-Identity-Manager",
+      demo: "https://git-identity-manager.phricardo.com/",
+      logo: gitIdentityManagerSrc,
     },
     {
       title: "alcateia.Cefet/Rj",
@@ -149,7 +150,7 @@ const Projects = () => {
                               rel="noopener noreferrer"
                             >
                               <ExternalLink className="mr-1 h-4 w-4" />
-                              Demo
+                              {language === "en" ? "Open" : "Acessar"}
                             </a>
                           </Button>
                         )}
