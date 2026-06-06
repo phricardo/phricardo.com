@@ -64,6 +64,7 @@ const translations: Translations = {
 
 type LanguageContextType = {
   language: Language;
+  hasConfirmedLanguageSelection: boolean;
   setLanguage: (lang: Language) => void;
   t: (key: keyof (typeof translations)["en"]) => string;
 };
@@ -76,6 +77,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>("en");
   const [showModal, setShowModal] = useState<boolean>(true);
   const [mounted, setMounted] = useState<boolean>(false);
+  const [hasConfirmedLanguageSelection, setHasConfirmedLanguageSelection] =
+    useState<boolean>(false);
 
   useEffect(() => {
     setMounted(true);
@@ -86,6 +89,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (storedLang && (storedLang === "en" || storedLang === "pt")) {
       setLanguage(storedLang);
       setShowModal(false);
+      setHasConfirmedLanguageSelection(true);
     } else {
       const browserLang = navigator.language.toLowerCase();
       const defaultLang: Language = browserLang.startsWith("pt") ? "pt" : "en";
@@ -96,6 +100,16 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
     localStorage.setItem("preferredLanguage", lang);
+    setHasConfirmedLanguageSelection(true);
+  };
+
+  const handleLanguageModalChange = (open: boolean) => {
+    setShowModal(open);
+
+    if (!open) {
+      localStorage.setItem("preferredLanguage", language);
+      setHasConfirmedLanguageSelection(true);
+    }
   };
 
   const t = (key: keyof (typeof translations)["en"]) => {
@@ -104,10 +118,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <LanguageContext.Provider
-      value={{ language, setLanguage: handleSetLanguage, t }}
+      value={{
+        language,
+        hasConfirmedLanguageSelection,
+        setLanguage: handleSetLanguage,
+        t,
+      }}
     >
       {mounted && (
-        <Dialog open={showModal} onOpenChange={setShowModal}>
+        <Dialog open={showModal} onOpenChange={handleLanguageModalChange}>
           <DialogContent className="bg-github-secondary border-github-border text-github-text">
             <DialogHeader>
               <DialogTitle className="text-white">
@@ -123,7 +142,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
                   handleSetLanguage("en");
                   setShowModal(false);
                 }}
-                className="bg-black hover:bg-[#121212] text-white border border-[#212121]"
+                className={`text-white border ${
+                  language === "en"
+                    ? "bg-[#17251c] border-[#34eb64] hover:bg-[#1d3024]"
+                    : "bg-black border-[#212121] hover:bg-[#121212]"
+                }`}
               >
                 English
               </Button>
@@ -132,7 +155,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
                   handleSetLanguage("pt");
                   setShowModal(false);
                 }}
-                className="bg-black hover:bg-[#121212] text-white border border-[#212121]"
+                className={`text-white border ${
+                  language === "pt"
+                    ? "bg-[#17251c] border-[#34eb64] hover:bg-[#1d3024]"
+                    : "bg-black border-[#212121] hover:bg-[#121212]"
+                }`}
               >
                 Português
               </Button>

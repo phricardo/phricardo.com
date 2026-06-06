@@ -8,6 +8,7 @@ import {
 } from "react";
 import { Check, Cookie, X } from "lucide-react";
 import { ensureViewerCookie } from "@/services/publicArticleApi";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   ACCEPTED_VALUE,
   VIEWER_COOKIE_OPT_IN_KEY,
@@ -15,11 +16,37 @@ import {
   hasStoredViewerCookieConsent,
 } from "@/contexts/viewerCookieConsent";
 
+type CookieConsentBannerText = {
+  title: string;
+  body: string;
+  decline: string;
+  accept: string;
+  saving: string;
+};
+
+const cookieConsentCopy: Record<"en" | "pt", CookieConsentBannerText> = {
+  en: {
+    title: "View cookies",
+    body: "I use an anonymous cookie to count article views anonymously.",
+    decline: "Decline",
+    accept: "Accept cookies",
+    saving: "Saving...",
+  },
+  pt: {
+    title: "Cookies de visualização",
+    body: "Uso um cookie anônimo para contabilizar visualizações de forma anônima.",
+    decline: "Não aceitar",
+    accept: "Aceitar cookies",
+    saving: "Salvando...",
+  },
+};
+
 export const ViewerCookieConsentProvider = ({
   children,
 }: {
   children: ReactNode;
 }) => {
+  const { language, hasConfirmedLanguageSelection } = useLanguage();
   const [isInitialized, setIsInitialized] = useState(false);
   const [hasAcceptedViewerCookies, setHasAcceptedViewerCookies] = useState(false);
   const [hasAnsweredCookieConsent, setHasAnsweredCookieConsent] = useState(false);
@@ -79,8 +106,9 @@ export const ViewerCookieConsentProvider = ({
   return (
     <ViewerCookieConsentContext.Provider value={value}>
       {children}
-      {isInitialized && !hasAnsweredCookieConsent ? (
+      {isInitialized && hasConfirmedLanguageSelection && !hasAnsweredCookieConsent ? (
         <CookieConsentBanner
+          language={language}
           onAccept={acceptViewerCookies}
           onDecline={declineViewerCookies}
         />
@@ -90,13 +118,16 @@ export const ViewerCookieConsentProvider = ({
 };
 
 const CookieConsentBanner = ({
+  language,
   onAccept,
   onDecline,
 }: {
+  language: "en" | "pt";
   onAccept: () => Promise<void>;
   onDecline: () => void;
 }) => {
   const [isAccepting, setIsAccepting] = useState(false);
+  const text = cookieConsentCopy[language];
 
   const handleAccept = async () => {
     setIsAccepting(true);
@@ -111,12 +142,9 @@ const CookieConsentBanner = ({
             <Cookie className="h-5 w-5" aria-hidden="true" />
           </div>
           <div className="space-y-1">
-            <p className="text-sm font-semibold text-white">
-              Cookies de visualização
-            </p>
+            <p className="text-sm font-semibold text-white">{text.title}</p>
             <p className="max-w-[620px] text-sm leading-relaxed text-[#b8b8b8]">
-              Uso um cookie anônimo para contabilizar visualizações de forma
-              anônima.
+              {text.body}
             </p>
           </div>
         </div>
@@ -128,7 +156,7 @@ const CookieConsentBanner = ({
             onClick={onDecline}
           >
             <X className="h-4 w-4" aria-hidden="true" />
-            Não aceitar
+            {text.decline}
           </button>
           <button
             type="button"
@@ -137,7 +165,7 @@ const CookieConsentBanner = ({
             disabled={isAccepting}
           >
             <Check className="h-4 w-4" aria-hidden="true" />
-            {isAccepting ? "Salvando..." : "Aceitar cookies"}
+            {isAccepting ? text.saving : text.accept}
           </button>
         </div>
       </div>
