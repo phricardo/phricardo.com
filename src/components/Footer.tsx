@@ -1,5 +1,4 @@
 import { Github, Instagram, Linkedin, Youtube } from "lucide-react";
-import { BsTwitterX } from "react-icons/bs";
 import { getExternalRoutePath } from "@/config/externalRoutes";
 import logoSrc from "../assets/images/logos/phricardo.svg";
 
@@ -17,7 +16,6 @@ const Footer = () => {
       icon: Instagram,
       label: "Instagram",
     },
-    { href: getExternalRoutePath("x"), icon: BsTwitterX, label: "X" },
     {
       href: getExternalRoutePath("youtube"),
       icon: Youtube,

@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Confetti from "react-confetti";
 import { Github, Instagram, Linkedin, Youtube } from "lucide-react";
-import { BsTwitterX } from "react-icons/bs";
 import { motion } from "framer-motion";
 
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -201,16 +200,6 @@ const Profile = () => {
               aria-label="Instagram"
             >
               <Instagram size={23} />
-            </a>
-
-            <a
-              href={getExternalRoutePath("x")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={socialLinkClass}
-              aria-label="X"
-            >
-              <BsTwitterX size={23} />
             </a>
 
             <a

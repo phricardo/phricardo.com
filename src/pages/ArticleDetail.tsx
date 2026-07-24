@@ -9,7 +9,6 @@ import {
   Maximize2,
   Minimize2,
 } from "lucide-react";
-import { BsTwitterX } from "react-icons/bs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
@@ -101,9 +100,6 @@ const buildShortArticleUrl = (shortCode?: string, slug?: string) => {
 const buildLinkedinShareUrl = (url: string) =>
   `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
 
-const buildXShareUrl = (url: string, title?: string) =>
-  `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title || "")}`;
-
 const ArticleDetailSkeleton = () => (
   <article className="p-0 md:p-0">
     <header className="mb-8 flex flex-col items-center text-center">
@@ -189,7 +185,6 @@ const ArticleDetail = () => {
 
   const shortArticleUrl = buildShortArticleUrl(data?.shortCode, data?.slug);
   const linkedinShareUrl = buildLinkedinShareUrl(shortArticleUrl);
-  const xShareUrl = buildXShareUrl(shortArticleUrl, data?.title);
 
   useEffect(() => {
     return () => {
@@ -360,16 +355,6 @@ const ArticleDetail = () => {
                     title="Compartilhar no LinkedIn"
                   >
                     <Linkedin className="h-4 w-4" />
-                  </a>
-                  <a
-                    href={xShareUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#252525] bg-[#0f0f0f] text-github-text transition-colors hover:border-[#3a3a3a] hover:text-white"
-                    aria-label="Compartilhar no X"
-                    title="Compartilhar no X"
-                  >
-                    <BsTwitterX className="h-4 w-4" />
                   </a>
                   <button
                     type="button"
