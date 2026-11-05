@@ -2,7 +2,7 @@ import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Calendar } from "lucide-react";
 import { motion } from "framer-motion";
-import cefetRjSrc from "../assets/images/logos/cefetrj.png";
+import ufciRjSrc from "../assets/images/logos/ufcirj.png";
 
 interface FormationItem {
   id: string;
@@ -29,15 +29,15 @@ const formationData: FormationItem[] = [
       en: "Computer Information Systems (CIS)",
       pt: "Sistemas de Informação",
     },
-    period: "Aug 2021 - Dec 2026",
+    period: "Aug 2021 - Dec 2027",
     description: {
-      en: "Bachelor's degree in Computer Information Systems (CIS) at Cefet/RJ - Centro Federal de Educação Tecnológica Celso Suckow da Fonseca.",
-      pt: "Bacharelado em Sistemas de Informação no Cefet/RJ - Centro Federal de Educação Tecnológica Celso Suckow da Fonseca.",
+      en: "Bachelor's degree in Computer Information Systems (CIS) at UFCI-RJ - Federal University of Science and Innovation of Rio de Janeiro.",
+      pt: "Bacharelado em Sistemas de Informação na UFCI-RJ - Universidade Federal de Ciência e Inovação do Rio de Janeiro.",
     },
-    imageSrc: cefetRjSrc,
+    imageSrc: ufciRjSrc,
     imageAlt: {
-      en: "Cefet/RJ - Federal Center for Technological Education Celso Suckow da Fonseca",
-      pt: "Cefet/RJ - Centro Federal de Educação Tecnológica Celso Suckow da Fonseca",
+      en: "UFCI-RJ - Federal University of Science and Innovation of Rio de Janeiro",
+      pt: "UFCI-RJ - Universidade Federal de Ciência e Inovação do Rio de Janeiro",
     },
   },
 ];
