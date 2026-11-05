@@ -1,6 +1,7 @@
 import { Github, Instagram, Linkedin, Youtube } from "lucide-react";
 import { getExternalRoutePath } from "@/config/externalRoutes";
 import logoSrc from "../assets/images/logos/phricardo.svg";
+import styles from "./Footer.module.css";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -24,7 +25,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="mt-20 border-t border-github-border bg-github-dark">
+    <footer className={`${styles.footer} mt-20 border-t`}>
       <div className="mx-auto max-w-[1100px] px-5 md:px-6 lg:px-8">
         <div className="flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col items-center gap-3 md:items-start">
@@ -33,7 +34,7 @@ const Footer = () => {
               alt="phricardo Logo"
               className="h-7 w-auto opacity-80"
             />
-            <p className="text-center text-sm text-[#9da3ad] md:text-left">
+            <p className={`${styles.copyright} text-center md:text-left`}>
               © {currentYear} phricardo.com. All rights reserved.
             </p>
           </div>
@@ -46,7 +47,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="text-[#aeb4be] transition-colors hover:text-white"
+                className={styles.socialLink}
               >
                 <Icon size={22} />
               </a>

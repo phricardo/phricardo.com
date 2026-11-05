@@ -14,6 +14,8 @@ import icon01 from "../assets/images/companies/icons/01.svg";
 import icon02 from "../assets/images/companies/icons/02.svg";
 import icon03 from "../assets/images/companies/icons/03.svg";
 import icon04 from "../assets/images/companies/icons/04.svg";
+import sectionStyles from "./Section.module.css";
+import styles from "./TechStack.module.css";
 
 type CompanyLogo = {
   src: string;
@@ -84,9 +86,9 @@ const TechStack = () => {
   ];
 
   return (
-    <section className="w-full min-w-0 overflow-x-clip border-t border-github-border pt-7 md:pt-8">
+    <section className={`${styles.section} w-full min-w-0 overflow-x-clip border-t pt-7 md:pt-8`}>
       <div className="w-full min-w-0">
-        <h2 className="section-title section-heading">
+        <h2 className={sectionStyles.title}>
           {t("areasOfExpertise")}
         </h2>
 
@@ -94,9 +96,9 @@ const TechStack = () => {
           {technologies.map(({ label, icon: Icon }) => (
             <div
               key={label}
-              className="flex min-h-11 max-w-full min-w-0 items-center gap-3 rounded-md border border-github-border bg-[#0d0f11] px-4 py-2 text-sm font-medium text-[#e4e7ec] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
+              className={`${styles.expertise} flex min-h-11 max-w-full min-w-0 items-center gap-3 px-4 py-2`}
             >
-              <Icon className="h-5 w-5 shrink-0 text-github-green" />
+              <Icon className={`${styles.expertiseIcon} h-5 w-5 shrink-0`} />
               <span className="min-w-0 whitespace-normal break-words leading-snug">
                 {label}
               </span>
@@ -106,18 +108,18 @@ const TechStack = () => {
       </div>
 
       <div className="mt-9 w-full min-w-0 overflow-x-clip md:mt-10">
-        <h3 className="section-title section-heading">
+        <h3 className={sectionStyles.title}>
           {language === "pt"
             ? "Organizações que já contaram com meu trabalho"
             : "Organizations I have supported"}
         </h3>
 
-        <div className="tech-stack-marquee relative w-full overflow-hidden py-3">
-          <div className="tech-stack-marquee-track">
+        <div className="relative w-full overflow-hidden py-3">
+          <div className={styles.marqueeTrack}>
             {[0, 1].map((copy) => (
               <div
                 key={`logo-copy-${copy}`}
-                className="tech-stack-marquee-group"
+                className={styles.marqueeGroup}
                 aria-hidden={copy === 1}
               >
                 {logos.map((logo, idx) => (
@@ -125,15 +127,15 @@ const TechStack = () => {
                     key={`logo-${copy}-${idx}`}
                     src={logo.src}
                     alt={logo.alt}
-                    className={`${logo.className} w-auto shrink-0 object-contain opacity-80`}
+                    className={`${styles.logo} ${logo.className} w-auto shrink-0 object-contain`}
                   />
                 ))}
               </div>
             ))}
           </div>
 
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-github-dark via-github-dark/80 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-github-dark via-github-dark/80 to-transparent" />
+          <div className={`${styles.fadeLeft} pointer-events-none absolute inset-y-0 left-0 w-24`} />
+          <div className={`${styles.fadeRight} pointer-events-none absolute inset-y-0 right-0 w-24`} />
         </div>
       </div>
     </section>

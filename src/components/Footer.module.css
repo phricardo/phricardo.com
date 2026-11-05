@@ -1,0 +1,20 @@
+.footer {
+  border-color: var(--color-border);
+  background: var(--color-surface);
+}
+
+.copyright {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.socialLink {
+  color: var(--color-text-muted);
+  transition: color var(--transition-ui);
+}
+
+.socialLink:hover,
+.socialLink:focus-visible {
+  color: var(--color-text-primary);
+}

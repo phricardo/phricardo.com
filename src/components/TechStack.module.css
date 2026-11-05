@@ -1,0 +1,78 @@
+.section {
+  border-color: var(--color-border);
+}
+
+.expertise {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: border-color var(--transition-ui), background-color var(--transition-ui);
+}
+
+.expertise:hover {
+  border-color: var(--color-border-hover);
+  background: var(--color-surface-hover);
+}
+
+.expertiseIcon {
+  color: var(--color-accent);
+}
+
+.logo {
+  filter: grayscale(1);
+  opacity: 0.72;
+  transition: filter var(--transition-ui), opacity var(--transition-ui);
+}
+
+.logo:hover {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: marquee 20s linear infinite;
+  will-change: transform;
+}
+
+.marqueeGroup {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 3.5rem;
+  padding-right: 3.5rem;
+}
+
+.fadeLeft {
+  background: linear-gradient(to right, var(--color-canvas), transparent);
+}
+
+.fadeRight {
+  background: linear-gradient(to left, var(--color-canvas), transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expertise,
+  .logo {
+    transition: none;
+  }
+
+  .marqueeTrack {
+    animation: none;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}

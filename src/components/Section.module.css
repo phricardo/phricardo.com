@@ -1,0 +1,45 @@
+.title {
+  margin-bottom: 1.5rem;
+  color: var(--color-text-primary);
+  font-size: clamp(1.05rem, 1rem + 0.2vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+}
+
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
+  background: var(--color-surface);
+  transition: border-color var(--transition-ui), background-color var(--transition-ui);
+}
+
+.card:hover {
+  border-color: var(--color-border-hover);
+  background: var(--color-surface-hover);
+}
+
+.cardTitle {
+  color: var(--color-text-primary);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.metadata {
+  color: var(--color-text-muted);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.description {
+  max-width: 70ch;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}

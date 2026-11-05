@@ -9,6 +9,7 @@ import { getExternalRoutePath } from "@/config/externalRoutes";
 
 import profile from "../assets/images/profiles/profile.png";
 import profileChristmas from "../assets/images/profiles/profile_natal.png";
+import styles from "./Profile.module.css";
 
 function isChristmasSeason(date = new Date(), timeZone = "America/Sao_Paulo") {
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -68,9 +69,6 @@ const Profile = () => {
     ? "Offline"
     : "Offline";
 
-  const socialLinkClass =
-    "text-[#c7cbd2] transition-colors hover:text-white focus:outline-none focus-visible:text-white";
-
   return (
     <section className="w-full">
       {showConfetti && dimensions.width > 0 && (
@@ -97,7 +95,7 @@ const Profile = () => {
               style={{ perspective: 1000 }}
             >
               <motion.div
-                className="relative h-full w-full rounded-full border-[8px] border-[#15181b]"
+                className={`${styles.portrait} relative h-full w-full rounded-full border-[8px]`}
                 style={{
                   transformStyle: "preserve-3d",
                 }}
@@ -135,39 +133,33 @@ const Profile = () => {
         <div className="mx-auto w-full text-center md:mx-0 md:text-left">
           <div
             className={`mb-3 flex items-center justify-center gap-2.5 md:justify-start ${
-              isOnline ? "text-github-green" : "text-[#ef4444]"
+              isOnline ? styles.statusOnline : styles.statusOffline
             }`}
           >
             <span className="relative inline-flex h-3 w-3 shrink-0 items-center justify-center">
               <span
-                className={`absolute left-0 top-0 block h-3 w-3 rounded-full opacity-60 ${
-                  isOnline
-                    ? "bg-github-green animate-greenPulse"
-                    : "bg-[#ef4444] animate-redPulse"
-                }`}
+                className={`${styles.statusPulse} absolute left-0 top-0 block h-3 w-3 rounded-full opacity-60`}
               />
               <span
-                className={`relative block h-3 w-3 shrink-0 rounded-full ${
-                  isOnline ? "bg-github-green" : "bg-[#ef4444]"
-                }`}
+                className={`${styles.statusDot} relative block h-3 w-3 shrink-0 rounded-full`}
               />
             </span>
 
-            <span className="text-xs font-bold uppercase tracking-[0.12em]">
-              {onlineTitle}
-            </span>
+            <span className={styles.statusLabel}>{onlineTitle}</span>
           </div>
 
-          <h1 className="mb-3 text-4xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+          <h1
+            className={`${styles.name} mb-3 text-4xl leading-tight sm:text-4xl lg:text-5xl`}
+          >
             Pedro Ricardo
           </h1>
 
-          <p className="mb-5 text-base font-medium text-[#aeb4be]">
-            @phricardo <span className="mx-2 text-[#6e747d]">•</span> Backend /
-            Full-stack Developer
+          <p className={`${styles.identity} mb-5 text-base`}>
+            @phricardo <span className={`${styles.separator} mx-2`}>•</span>{" "}
+            Backend / Full-stack Developer
           </p>
 
-          <p className="mb-6 w-full text-base leading-7 text-[#eef0f3]">
+          <p className={`${styles.description} mb-6 w-full text-base`}>
             {description}
           </p>
 
@@ -176,7 +168,7 @@ const Profile = () => {
               href={getExternalRoutePath("github")}
               target="_blank"
               rel="noopener noreferrer"
-              className={socialLinkClass}
+              className={styles.socialLink}
               aria-label="GitHub"
             >
               <Github size={23} />
@@ -186,7 +178,7 @@ const Profile = () => {
               href={getExternalRoutePath("linkedin")}
               target="_blank"
               rel="noopener noreferrer"
-              className={socialLinkClass}
+              className={styles.socialLink}
               aria-label="LinkedIn"
             >
               <Linkedin size={23} />
@@ -196,7 +188,7 @@ const Profile = () => {
               href={getExternalRoutePath("instagram")}
               target="_blank"
               rel="noopener noreferrer"
-              className={socialLinkClass}
+              className={styles.socialLink}
               aria-label="Instagram"
             >
               <Instagram size={23} />
@@ -206,7 +198,7 @@ const Profile = () => {
               href={getExternalRoutePath("youtube")}
               target="_blank"
               rel="noopener noreferrer"
-              className={socialLinkClass}
+              className={styles.socialLink}
               aria-label="YouTube"
             >
               <Youtube size={23} />

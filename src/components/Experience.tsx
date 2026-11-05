@@ -7,6 +7,8 @@ import UpWorkLogo from "../assets/images/companies/upwork.png";
 import SantanderLogo from "../assets/images/companies/santander.png";
 import PicPayLogo from "../assets/images/companies/picpay.png";
 import GovernancaBrasilLogo from "../assets/images/companies/governancabrasil.jpg";
+import sectionStyles from "./Section.module.css";
+import styles from "./Experience.module.css";
 
 type ExperienceItem = {
   company: string;
@@ -99,19 +101,19 @@ const Experience = () => {
 
   return (
     <section id="experience" className="py-8 md:py-12">
-      <h2 className="section-title section-heading">{t("workExperience")}</h2>
+      <h2 className={sectionStyles.title}>{t("workExperience")}</h2>
       <div className="space-y-4 md:space-y-8">
         {experiences.map((exp, index) => (
           <motion.div
             key={index}
-            className="card-hover rounded-lg p-4 md:p-6"
-            initial={{ opacity: 0, y: 26 }}
+            className={`${sectionStyles.card} p-4 md:p-6`}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
           >
             <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-6">
-              <div className="mx-auto h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg md:mx-0 md:h-24 md:w-24">
+              <div className={`${styles.logoFrame} mx-auto h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg md:mx-0 md:h-24 md:w-24`}>
                 <img
                   src={exp.logo}
                   alt={`${exp.company} logo`}
@@ -121,23 +123,23 @@ const Experience = () => {
               <div className="flex-grow">
                 <div className="mb-3 flex flex-col gap-2 md:mb-4 md:flex-row md:items-start md:justify-between md:gap-4">
                   <div>
-                    <h3 className="text-center text-lg font-medium text-white md:text-left">
+                    <h3 className={`${sectionStyles.cardTitle} text-center text-lg md:text-left`}>
                       {exp.company}
                     </h3>
-                    <div className="mt-1 flex items-center justify-center gap-2 text-github-text md:justify-start">
+                    <div className={`${styles.role} mt-1 flex items-center justify-center gap-2 md:justify-start`}>
                       <Briefcase className="h-4 w-4" />
                       <span className="text-sm md:text-base">{exp.role}</span>
                     </div>
                   </div>
-                  <div className="flex items-center justify-center gap-2 text-github-text md:justify-start">
+                  <div className={`${sectionStyles.metadata} flex items-center justify-center gap-2 md:justify-start`}>
                     <Calendar className="h-4 w-4" />
                     <span className="text-sm md:text-base">{exp.duration}</span>
                     {(exp.isCurrent || exp.isVolunteer) && (
                       <span
-                        className={`rounded-full px-2 py-1 text-xs ${
+                        className={`${styles.badge} ${
                           exp.isVolunteer
-                            ? "border border-github-border bg-[#171a1d] text-[#c9ced6]"
-                            : "bg-github-green text-black"
+                            ? styles.badgeVolunteer
+                            : styles.badgeCurrent
                         }`}
                       >
                         {exp.isVolunteer
@@ -151,7 +153,7 @@ const Experience = () => {
                     )}
                   </div>
                 </div>
-                <p className="text-center text-sm text-github-text md:text-left md:text-base">
+                <p className={`${sectionStyles.description} text-center text-sm md:text-left md:text-base`}>
                   {exp.description}
                 </p>
               </div>

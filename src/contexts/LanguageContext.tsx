@@ -8,6 +8,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import styles from "./LanguageContext.module.css";
 
 type Language = "en" | "pt";
 
@@ -127,38 +128,36 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     >
       {mounted && (
         <Dialog open={showModal} onOpenChange={handleLanguageModalChange}>
-          <DialogContent className="bg-github-secondary border-github-border text-github-text">
+          <DialogContent className={styles.dialog}>
             <DialogHeader>
-              <DialogTitle className="text-white">
+              <DialogTitle className={styles.title}>
                 Select your language / Selecione seu idioma
               </DialogTitle>
-              <DialogDescription className="text-github-text">
+              <DialogDescription className={styles.description}>
                 Choose your preferred language / Escolha seu idioma preferido
               </DialogDescription>
             </DialogHeader>
-            <DialogFooter className="flex gap-2">
+            <DialogFooter className={`${styles.footer} flex gap-2`}>
               <Button
+                variant="outline"
                 onClick={() => {
                   handleSetLanguage("en");
                   setShowModal(false);
                 }}
-                className={`text-white border ${
-                  language === "en"
-                    ? "bg-[#17251c] border-[#34eb64] hover:bg-[#1d3024]"
-                    : "bg-black border-[#212121] hover:bg-[#121212]"
+                className={`${styles.button} ${
+                  language === "en" ? styles.buttonActive : ""
                 }`}
               >
                 English
               </Button>
               <Button
+                variant="outline"
                 onClick={() => {
                   handleSetLanguage("pt");
                   setShowModal(false);
                 }}
-                className={`text-white border ${
-                  language === "pt"
-                    ? "bg-[#17251c] border-[#34eb64] hover:bg-[#1d3024]"
-                    : "bg-black border-[#212121] hover:bg-[#121212]"
+                className={`${styles.button} ${
+                  language === "pt" ? styles.buttonActive : ""
                 }`}
               >
                 Português

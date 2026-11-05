@@ -15,10 +15,12 @@ import {
 import { DiJava } from "react-icons/di";
 import { Database } from "lucide-react";
 import { motion } from "framer-motion";
+import sectionStyles from "./Section.module.css";
+import styles from "./MainLanguages.module.css";
 
 type LanguageItem = {
   name: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ className?: string }>;
 };
 
 const MainLanguages = () => {
@@ -41,7 +43,7 @@ const MainLanguages = () => {
 
   return (
     <div className="my-24 md:my-28">
-      <h2 className="section-title section-heading">
+      <h2 className={sectionStyles.title}>
         {t("mainLanguages")}
       </h2>
 
@@ -52,16 +54,16 @@ const MainLanguages = () => {
           return (
             <motion.div
               key={lang.name}
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <Card className="card-hover p-4 sm:p-6">
+              <Card className={`${sectionStyles.card} ${styles.card} p-4 sm:p-6`}>
                 <div className="flex flex-col items-center gap-3 sm:gap-4">
-                  <Icon className="w-8 h-8 sm:w-12 sm:h-12 text-github-text" />
+                  <Icon className={`${styles.icon} h-8 w-8 sm:h-12 sm:w-12`} />
 
-                  <span className="text-white font-medium text-sm sm:text-base">
+                  <span className={`${styles.label} text-sm sm:text-base`}>
                     {lang.name}
                   </span>
                 </div>

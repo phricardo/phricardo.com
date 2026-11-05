@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 
 import BRAZIL_FLAG_URL from "../assets/images/flags/brazil.svg";
 import USA_FLAG_URL from "../assets/images/flags/united_states.svg";
+import styles from "./LanguageMenu.module.css";
 
 const languageNames = {
   en: "English",
@@ -27,8 +28,6 @@ const LanguageMenu = () => {
   const currentFlagUrl = language === "en" ? USA_FLAG_URL : BRAZIL_FLAG_URL;
   const currentAlt = language === "en" ? "US Flag" : "Brazil Flag";
 
-  const baseTriggerClass =
-    "bg-transparent text-[#c9ced6] border-0 rounded-md focus:outline-none transition-colors shrink-0 py-1.5 hover:text-white hover:bg-transparent flex items-center shadow-none";
   const triggerSpacingClass = "px-2 gap-2.5 min-w-[124px]";
   const labelVisibilityClass = "inline";
   const chevronVisibilityClass = "h-4 w-4 opacity-70";
@@ -37,7 +36,7 @@ const LanguageMenu = () => {
     <Button
       variant="ghost"
       size="default"
-      className={`${baseTriggerClass} ${triggerSpacingClass}`}
+      className={`${styles.trigger} ${triggerSpacingClass} flex shrink-0 items-center py-1.5`}
     >
       <img
         src={currentFlagUrl}
@@ -63,15 +62,13 @@ const LanguageMenu = () => {
 
       <DropdownMenuContent
         align="end"
-        className="z-[110] min-w-[150px] rounded-md border border-github-border bg-[#101214] p-1 text-[#c9ced6] shadow-lg focus:outline-none"
+        className={`${styles.content} p-1 focus:outline-none`}
       >
         <DropdownMenuItem
           onClick={() => setLanguage("en")}
-          className={`flex cursor-pointer items-center rounded-sm bg-[#101214] px-3 py-2 text-sm transition-colors focus:outline-none ${
-            language === "en"
-              ? "bg-[#17251c] text-white"
-              : "text-[#c9ced6] hover:bg-[#171a1d]"
-          }`}
+          className={`${styles.item} ${
+            language === "en" ? styles.itemActive : ""
+          } flex cursor-pointer items-center px-3 py-2 focus:outline-none`}
         >
           <img
             src={USA_FLAG_URL}
@@ -83,11 +80,9 @@ const LanguageMenu = () => {
 
         <DropdownMenuItem
           onClick={() => setLanguage("pt")}
-          className={`flex cursor-pointer items-center rounded-sm bg-[#101214] px-3 py-2 text-sm transition-colors focus:outline-none ${
-            language === "pt"
-              ? "bg-[#17251c] text-white"
-              : "text-[#c9ced6] hover:bg-[#171a1d]"
-          }`}
+          className={`${styles.item} ${
+            language === "pt" ? styles.itemActive : ""
+          } flex cursor-pointer items-center px-3 py-2 focus:outline-none`}
         >
           <img
             src={BRAZIL_FLAG_URL}

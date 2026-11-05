@@ -16,6 +16,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import logoSrc from "../assets/images/logos/phricardo.svg";
 import brazilFlagSrc from "../assets/images/flags/brazil.svg";
 import usaFlagSrc from "../assets/images/flags/united_states.svg";
+import styles from "./Header.module.css";
 
 type NavItem =
   | {
@@ -227,32 +228,24 @@ const Header = () => {
   const renderNavItem = (item: NavItem, mobile = false) => {
     const active = isActive(item);
     const Icon = item.icon;
-    const desktopClasses = `relative flex h-16 items-center px-3 text-sm font-medium transition-colors after:absolute after:bottom-0 after:left-1/2 after:h-[3px] after:w-9 after:-translate-x-1/2 after:bg-github-green after:transition-opacity ${
-      active
-        ? "text-github-green after:opacity-100"
-        : "text-[#c9ced6] after:opacity-0 hover:text-white"
-    }`;
-    const mobileClasses = `flex min-h-[64px] items-center justify-between rounded-xl px-5 text-lg font-semibold transition-colors ${
-      active
-        ? "bg-[radial-gradient(circle_at_30%_50%,rgba(34,235,100,0.13),rgba(15,45,28,0.62)_48%,rgba(13,22,20,0.9)_100%)] text-github-green"
-        : "text-[#f2f3f5] hover:bg-[#10151b]/70 hover:text-white"
-    }`;
+    const desktopClasses = `${styles.navItem} ${
+      active ? styles.navItemActive : ""
+    } relative flex h-12 items-center px-3 text-sm after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-7 after:-translate-x-1/2 after:opacity-0 after:transition-opacity`;
+    const mobileClasses = `${styles.mobileNavItem} ${
+      active ? styles.mobileNavItemActive : ""
+    } flex min-h-[60px] items-center justify-between px-5 text-lg`;
     const className = mobile ? mobileClasses : desktopClasses;
     const content = mobile ? (
       <>
         <span className="flex min-w-0 items-center gap-5">
           <Icon
-            className={`h-7 w-7 shrink-0 ${
-              active ? "text-github-green" : "text-[#aeb4be]"
-            }`}
+            className={`${styles.mobileIcon} h-7 w-7 shrink-0`}
             strokeWidth={1.8}
           />
           <span className="truncate">{item.label}</span>
         </span>
         <ChevronRight
-          className={`h-6 w-6 shrink-0 ${
-            active ? "text-github-green" : "text-[#aeb4be]"
-          }`}
+          className={`${styles.mobileIcon} h-6 w-6 shrink-0`}
           strokeWidth={2.3}
         />
       </>
@@ -302,16 +295,16 @@ const Header = () => {
 
   return (
     <>
-      <div className="relative z-40 hidden w-full border-b border-github-border/80 bg-[radial-gradient(circle_at_50%_0%,rgba(34,230,101,0.16),rgba(11,13,15,0.96)_42%,rgba(11,13,15,0.98)_100%)] md:block">
+      <div className={`${styles.topBar} relative z-40 hidden w-full border-b md:block`}>
         <div className="mx-auto flex h-9 w-full max-w-[1100px] items-center justify-center px-5 md:px-6 lg:px-8">
-          <div className="flex items-center gap-2.5 text-xs font-medium text-[#b9bec7]">
-            <CalendarDays className="h-4 w-4 text-[#858b94]" />
+          <div className={`${styles.date} flex items-center gap-2.5`}>
+            <CalendarDays className={`${styles.dateIcon} h-4 w-4`} />
             <span className="whitespace-nowrap capitalize">{formattedDate}</span>
           </div>
         </div>
       </div>
 
-      <header className="fixed left-0 right-0 top-0 z-[90] w-full border-b border-github-border bg-[#0b0d0f]/95 backdrop-blur">
+      <header className={`${styles.header} fixed left-0 right-0 top-0 z-[90] w-full border-b`}>
         <div className="mx-auto flex min-h-16 w-full max-w-[1100px] items-center justify-between gap-4 px-5 md:min-h-[74px] md:px-6 lg:px-8">
           <Link className="flex shrink-0 items-center gap-2" to="/">
             <img
@@ -325,13 +318,13 @@ const Header = () => {
             {navItems.map((item) => renderNavItem(item))}
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2 md:border-l md:border-[#343840] md:pl-5">
+          <div className={`${styles.languageBorder} flex shrink-0 items-center gap-2 md:border-l md:pl-5`}>
             <div className="hidden md:block">
               <LanguageMenu />
             </div>
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-github-border bg-[#101214] text-white transition-colors hover:border-github-green/60 md:hidden"
+              className={`${styles.menuButton} inline-flex h-10 w-10 items-center justify-center md:hidden`}
               onClick={() => setIsMenuOpen((prev) => !prev)}
               aria-label={
                 isMenuOpen
@@ -355,8 +348,7 @@ const Header = () => {
       <div className="h-16 md:h-[74px]" aria-hidden="true" />
 
       {isMenuOpen ? (
-        <div className="fixed inset-0 z-[100] flex min-h-svh flex-col overflow-y-auto bg-[#05080b] px-6 py-7 text-white md:hidden">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_12%,rgba(52,235,100,0.08),transparent_34%),linear-gradient(140deg,rgba(8,16,20,0.98),rgba(3,5,8,1)_55%,rgba(7,11,16,1))]" />
+        <div className={`${styles.mobileMenu} fixed inset-0 z-[100] flex min-h-svh flex-col overflow-y-auto px-6 py-7 text-white md:hidden`}>
 
           <div className="relative z-10 flex items-center justify-between">
             <Link
@@ -373,7 +365,7 @@ const Header = () => {
 
             <button
               type="button"
-              className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[#222933] bg-[#090d12]/80 text-white transition-colors hover:border-github-green/60"
+              className={`${styles.closeButton} inline-flex h-12 w-12 items-center justify-center`}
               onClick={() => setIsMenuOpen(false)}
               aria-label={language === "pt" ? "Fechar menu" : "Close menu"}
             >
@@ -386,23 +378,21 @@ const Header = () => {
               <div key={item.href}>
                 {renderNavItem(item, true)}
                 {index < navItems.length - 1 ? (
-                  <div className="h-px bg-[#1a2028]" />
+                  <div className={`${styles.divider} h-px`} />
                 ) : null}
               </div>
             ))}
           </nav>
 
           <div className="relative z-10 mt-auto pb-3 pt-14">
-            <p className="mb-5 text-lg font-medium text-[#aeb4be]">Idioma</p>
-            <div className="grid h-14 max-w-[420px] grid-cols-2 rounded-2xl border border-[#1d242d] bg-[#05080b]/80 p-1">
+            <p className={`${styles.languageLabel} mb-5 text-lg`}>Idioma</p>
+            <div className={`${styles.languageToggle} grid h-14 max-w-[420px] grid-cols-2 p-1`}>
               <button
                 type="button"
                 onClick={() => setLanguage("pt")}
-                className={`inline-flex items-center justify-center gap-2 rounded-xl text-base font-bold transition-colors ${
-                  language === "pt"
-                    ? "bg-[radial-gradient(circle_at_30%_50%,rgba(52,235,100,0.12),rgba(15,48,30,0.76)_65%,rgba(13,22,20,0.92)_100%)] text-github-green shadow-[inset_0_0_0_1px_rgba(52,235,100,0.24)]"
-                    : "text-[#c9ced6] hover:text-white"
-                }`}
+                className={`${styles.languageChoice} ${
+                  language === "pt" ? styles.languageChoiceActive : ""
+                } inline-flex items-center justify-center gap-2 text-base`}
               >
                 <img
                   src={brazilFlagSrc}
@@ -415,11 +405,9 @@ const Header = () => {
               <button
                 type="button"
                 onClick={() => setLanguage("en")}
-                className={`inline-flex items-center justify-center gap-2 rounded-xl text-base font-bold transition-colors ${
-                  language === "en"
-                    ? "bg-[radial-gradient(circle_at_30%_50%,rgba(52,235,100,0.12),rgba(15,48,30,0.76)_65%,rgba(13,22,20,0.92)_100%)] text-github-green shadow-[inset_0_0_0_1px_rgba(52,235,100,0.24)]"
-                    : "text-[#c9ced6] hover:text-white"
-                }`}
+                className={`${styles.languageChoice} ${
+                  language === "en" ? styles.languageChoiceActive : ""
+                } inline-flex items-center justify-center gap-2 text-base`}
               >
                 <img
                   src={usaFlagSrc}

@@ -17,10 +17,10 @@ export default {
     extend: {
       colors: {
         github: {
-          dark: "#06080a",
-          secondary: "#101214",
-          border: "#25282d",
-          text: "#d7dbe2",
+          dark: "#070707",
+          secondary: "#0b0b0b",
+          border: "#1f1f1f",
+          text: "#bdbdbd",
           green: "#22e665",
           accent: "#22e665",
         },
@@ -59,7 +59,8 @@ export default {
         },
       },
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
+        raleway: ["Raleway", "Segoe UI", "sans-serif"],
+        sans: ["Raleway", "Segoe UI", "sans-serif"],
       },
       keyframes: {
         greenPulse: {

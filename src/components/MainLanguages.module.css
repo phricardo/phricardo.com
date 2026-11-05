@@ -1,0 +1,17 @@
+.card {
+  min-height: 8.5rem;
+}
+
+.icon {
+  color: var(--color-text-secondary);
+  transition: color var(--transition-ui);
+}
+
+.card:hover .icon {
+  color: var(--color-text-primary);
+}
+
+.label {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}

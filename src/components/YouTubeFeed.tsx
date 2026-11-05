@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { ExternalLink, Loader2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import sectionStyles from "./Section.module.css";
+import styles from "./YouTubeFeed.module.css";
 
 type VideoItem = {
   id: string;
@@ -97,12 +99,12 @@ const YouTubeFeed = () => {
     <section className="my-12">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-4">
         <div>
-          <h2 className="text-xl font-semibold text-white">
+          <h2 className={sectionStyles.title}>
             {language === "pt"
               ? "Últimos vídeos no YouTube"
               : "Latest YouTube Videos"}
           </h2>
-          <p className="text-github-text text-sm">
+          <p className={`${styles.description} text-sm`}>
             {language === "pt"
               ? "Atualizados direto do canal."
               : "Pulled live from the channel feed."}
@@ -112,7 +114,7 @@ const YouTubeFeed = () => {
           href="https://www.youtube.com/@phrcd"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-[#34eb64] hover:text-[#34eb64]/80 text-sm font-semibold"
+          className={`${styles.channelLink} inline-flex items-center gap-2 text-sm`}
         >
           {language === "pt" ? "Ver canal" : "View channel"}
           <ExternalLink className="w-4 h-4" />
@@ -120,7 +122,7 @@ const YouTubeFeed = () => {
       </div>
 
       {loading && (
-        <div className="flex items-center gap-2 text-github-text">
+        <div className={`${styles.state} flex items-center gap-2`}>
           <Loader2 className="w-4 h-4 animate-spin" />
           <span>
             {language === "pt" ? "Carregando vídeos..." : "Loading videos..."}
@@ -129,7 +131,7 @@ const YouTubeFeed = () => {
       )}
 
       {!loading && error && (
-        <div className="text-github-text text-sm bg-[#121212] border border-[#212121] rounded-lg px-4 py-3">
+        <div className={`${styles.error} px-4 py-3 text-sm`}>
           {language === "pt"
             ? "Não foi possível carregar os vídeos agora. Tente novamente mais tarde."
             : "Could not load videos right now. Please try again later."}
@@ -145,9 +147,9 @@ const YouTubeFeed = () => {
                 href={video.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block min-w-[240px] max-w-[280px] rounded-xl overflow-hidden snap-start card-hover hover:border-[#34eb64]/60"
+                className={`${styles.card} block min-w-[240px] max-w-[280px] snap-start overflow-hidden`}
               >
-                <div className="aspect-video bg-[#121212]">
+                <div className={`${styles.thumbnail} aspect-video`}>
                   {video.thumbnail ? (
                     <img
                       src={video.thumbnail}
@@ -158,11 +160,11 @@ const YouTubeFeed = () => {
                   ) : null}
                 </div>
                 <div className="p-3 space-y-2">
-                  <h3 className="text-white text-sm font-semibold leading-tight line-clamp-2">
+                  <h3 className={`${styles.videoTitle} line-clamp-2 text-sm leading-tight`}>
                     {video.title}
                   </h3>
                   {video.published && (
-                    <p className="text-xs text-github-text">
+                    <p className={styles.date}>
                       {new Date(video.published).toLocaleDateString(
                         dateLocale,
                         {

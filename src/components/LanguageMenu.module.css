@@ -1,0 +1,45 @@
+.trigger {
+  border: 0;
+  border-radius: var(--radius-ui);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  box-shadow: none;
+  transition: color var(--transition-ui), background-color var(--transition-ui);
+}
+
+.trigger:hover,
+.trigger:focus-visible {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+.content {
+  z-index: 110;
+  min-width: 150px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  box-shadow: 0 16px 38px rgb(0 0 0 / 0.38);
+}
+
+.item {
+  border-radius: calc(var(--radius-ui) - 2px);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color var(--transition-ui), background-color var(--transition-ui);
+}
+
+.item:hover,
+.item:focus {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+.itemActive {
+  background: var(--color-surface-active);
+  color: var(--color-text-primary);
+}

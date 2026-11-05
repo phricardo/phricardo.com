@@ -14,6 +14,8 @@ import convidarMeSrc from "../assets/images/projects/convidar.me.png";
 import englishdailySrc from "../assets/images/projects/englishdaily.png";
 import gitIdentityManagerSrc from "../assets/images/projects/git-identity-manager.png";
 import integraCefetRjSrc from "../assets/images/projects/integra-cefetrj.png";
+import sectionStyles from "./Section.module.css";
+import styles from "./Projects.module.css";
 
 type Project = {
   title: string;
@@ -78,21 +80,21 @@ const Projects = () => {
 
   return (
     <section id="projects" className="my-12">
-      <h2 className="section-title section-heading">{title}</h2>
+      <h2 className={sectionStyles.title}>{title}</h2>
       <div className="grid grid-cols-1 gap-6">
         {projects.map((project, index) => (
           <motion.div
             key={index}
             className="rounded-xl"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
           >
-            <Card className="card-hover overflow-hidden">
+            <Card className={`${sectionStyles.card} overflow-hidden`}>
               <div className="p-4">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
-                  <div className="flex-shrink-0 w-16 h-16 rounded-2xl overflow-hidden">
+                  <div className={`${styles.logoFrame} h-16 w-16 flex-shrink-0 overflow-hidden`}>
                     <img
                       src={project.logo}
                       alt={`${project.title} icon`}
@@ -102,17 +104,17 @@ const Projects = () => {
                   <div className="flex-grow min-w-0 flex flex-col items-center md:items-start text-center md:text-left">
                     <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start gap-4">
                       <div>
-                        <CardTitle className="text-white text-lg mb-2">
+                        <CardTitle className={`${sectionStyles.cardTitle} mb-2 text-lg`}>
                           {project.title}
                         </CardTitle>
-                        <CardDescription className="text-github-text line-clamp-2 mb-4">
+                        <CardDescription className={`${sectionStyles.description} mb-4 line-clamp-2`}>
                           {project.description}
                         </CardDescription>
                         <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
                           {project.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="bg-[#0f2718] border border-[#34eb64]/60 text-[#34eb64] px-4 py-1.5 rounded-full text-xs font-semibold"
+                              className={`${styles.tag} px-4 py-1.5`}
                             >
                               {tag}
                             </span>
@@ -124,7 +126,7 @@ const Projects = () => {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="min-w-[100px] bg-github-dark border-github-border text-github-text"
+                            className={`${styles.action} min-w-[100px]`}
                             asChild
                           >
                             <a
@@ -141,7 +143,7 @@ const Projects = () => {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="min-w-[100px] bg-github-dark border-github-border text-github-text"
+                            className={`${styles.action} min-w-[100px]`}
                             asChild
                           >
                             <a

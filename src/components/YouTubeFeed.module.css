@@ -1,0 +1,51 @@
+.description,
+.state,
+.date {
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+.channelLink {
+  color: var(--color-accent);
+  font-weight: 600;
+  transition: color var(--transition-ui);
+}
+
+.channelLink:hover,
+.channelLink:focus-visible {
+  color: var(--color-text-primary);
+}
+
+.error,
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-ui);
+  background: var(--color-surface);
+}
+
+.error {
+  color: var(--color-text-secondary);
+}
+
+.card {
+  transition: border-color var(--transition-ui), background-color var(--transition-ui);
+}
+
+.card:hover {
+  border-color: var(--color-border-hover);
+  background: var(--color-surface-hover);
+}
+
+.thumbnail {
+  background: var(--color-surface-active);
+}
+
+.videoTitle {
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+.date {
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}

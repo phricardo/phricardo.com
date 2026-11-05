@@ -6,10 +6,11 @@ import Experience from "@/components/Experience";
 import MainLanguages from "@/components/MainLanguages";
 import Footer from "@/components/Footer";
 import AcademicFormation from "@/components/AcademicFormation";
+import styles from "./Index.module.css";
 
 const Index = () => {
   return (
-    <div className="min-h-screen overflow-x-clip bg-github-dark font-inter text-white">
+    <div className={`${styles.page} overflow-x-clip`}>
       <Header />
       <main
         id="home"

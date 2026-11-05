@@ -1,0 +1,27 @@
+.logoFrame {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-active);
+}
+
+.role {
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badgeCurrent {
+  background: var(--color-accent);
+  color: var(--color-canvas);
+}
+
+.badgeVolunteer {
+  border: 1px solid var(--color-border-hover);
+  background: var(--color-surface-active);
+  color: var(--color-text-secondary);
+}
