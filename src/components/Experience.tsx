@@ -78,8 +78,8 @@ const Experience = () => {
           ? "Volunteering with CEFET/RJ on a digital accessibility analysis project for the SOUGOV platform across web and mobile versions. The work involves evaluating real usage scenarios, identifying accessibility barriers, assessing adherence to guidelines such as WCAG, eMAG and DS-GOV, and proposing technical recommendations to improve usability and inclusive experience, with a focus on blind and low-vision users."
           : "Participando, de forma voluntária e em conjunto com o CEFET/RJ, de um projeto de análise de acessibilidade digital da plataforma SOUGOV, nas versões web e mobile. A atuação envolve avaliação de cenários reais de uso, identificação de barreiras de acessibilidade, análise de aderência a diretrizes como WCAG, eMAG e DS-GOV, e proposição de recomendações técnicas para melhoria da usabilidade e da experiência inclusiva, com foco em pessoas cegas e com baixa visão.",
       duration:
-        language === "en" ? "May 2026 - Present" : "mai de 2026 - o momento",
-      isCurrent: true,
+        language === "en" ? "May 2026 - Jul 2026" : "mai de 2026 - jul de 2026",
+      isCurrent: false,
       isVolunteer: true,
       logo: GovernancaBrasilLogo,
     },
