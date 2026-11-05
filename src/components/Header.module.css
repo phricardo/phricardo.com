@@ -44,9 +44,26 @@
   color: var(--color-text-primary);
 }
 
-.navItemActive::after {
-  background: var(--color-accent);
-  opacity: 1;
+.desktopContent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.desktopIcon {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: var(--color-text-muted);
+  transition: color var(--transition-ui);
+}
+
+.navItem:hover .desktopIcon {
+  color: var(--color-text-primary);
+}
+
+.navItemActive .desktopIcon,
+.mobileNavItemActive .mobileIcon {
+  color: var(--color-accent);
 }
 
 .mobileMenu {
@@ -59,10 +76,6 @@
 
 .mobileIcon {
   color: var(--color-text-muted);
-}
-
-.mobileNavItemActive .mobileIcon {
-  color: var(--color-accent);
 }
 
 .menuButton,
@@ -116,6 +129,7 @@
 @media (prefers-reduced-motion: reduce) {
   .navItem,
   .mobileNavItem,
+  .desktopIcon,
   .menuButton,
   .closeButton,
   .languageChoice {

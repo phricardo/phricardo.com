@@ -9,9 +9,10 @@
 }
 
 .trigger:hover,
-.trigger:focus-visible {
-  background: var(--color-surface-hover);
-  color: var(--color-text-primary);
+.trigger:focus-visible,
+.trigger[data-state="open"] {
+  background: var(--color-surface-hover) !important;
+  color: var(--color-text-primary) !important;
 }
 
 .content {
@@ -34,12 +35,16 @@
 }
 
 .item:hover,
-.item:focus {
-  background: var(--color-surface-hover);
-  color: var(--color-text-primary);
+.item:focus,
+.item[data-highlighted] {
+  background: var(--color-surface-hover) !important;
+  color: var(--color-text-primary) !important;
 }
 
-.itemActive {
-  background: var(--color-surface-active);
-  color: var(--color-text-primary);
+.itemActive,
+.itemActive:hover,
+.itemActive:focus,
+.itemActive[data-highlighted] {
+  background: var(--color-surface-active) !important;
+  color: var(--color-text-primary) !important;
 }

@@ -230,7 +230,7 @@ const Header = () => {
     const Icon = item.icon;
     const desktopClasses = `${styles.navItem} ${
       active ? styles.navItemActive : ""
-    } relative flex h-12 items-center px-3 text-sm after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-7 after:-translate-x-1/2 after:opacity-0 after:transition-opacity`;
+    } relative flex h-12 items-center px-3 text-sm`;
     const mobileClasses = `${styles.mobileNavItem} ${
       active ? styles.mobileNavItemActive : ""
     } flex min-h-[60px] items-center justify-between px-5 text-lg`;
@@ -250,7 +250,14 @@ const Header = () => {
         />
       </>
     ) : (
-      item.label
+      <span className={styles.desktopContent}>
+        <Icon
+          className={styles.desktopIcon}
+          strokeWidth={1.8}
+          aria-hidden="true"
+        />
+        <span>{item.label}</span>
+      </span>
     );
 
     if (item.type === "external") {
