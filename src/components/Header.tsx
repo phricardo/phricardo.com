@@ -156,12 +156,11 @@ const Header = () => {
     }
 
     const sectionIds = Array.from(
-      new Set([
-        "home",
-        ...navItems
+      new Set(
+        navItems
           .map((item) => item.sectionId)
-          .filter((id): id is string => Boolean(id)),
-      ])
+          .filter((id): id is string => Boolean(id) && id !== "home")
+      )
     );
 
     const elements = sectionIds
@@ -176,19 +175,23 @@ const Header = () => {
     if (!elements.length) return;
 
     const updateActiveSection = () => {
-      const viewportCenter = window.scrollY + window.innerHeight * 0.45;
+      const headerHeight =
+        document.querySelector("header")?.getBoundingClientRect().height ?? 0;
+      const activationMargin = window.innerWidth >= 768 ? 48 : 32;
+      const activationLine = headerHeight + activationMargin;
+      let nextSection = "home";
 
-      const closest = elements
-        .map(({ id, element }) => {
-          const rect = element.getBoundingClientRect();
-          const center = rect.top + window.scrollY + rect.height / 2;
-          return { id, distance: Math.abs(center - viewportCenter) };
-        })
-        .sort((a, b) => a.distance - b.distance)[0];
+      for (const { id, element } of elements) {
+        if (element.getBoundingClientRect().top > activationLine) {
+          break;
+        }
 
-      if (closest) {
-        setActiveSection((prev) => (prev === closest.id ? prev : closest.id));
+        nextSection = id;
       }
+
+      setActiveSection((prev) =>
+        prev === nextSection ? prev : nextSection
+      );
     };
 
     updateActiveSection();
