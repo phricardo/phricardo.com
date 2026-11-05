@@ -8,13 +8,11 @@ import {
   GraduationCap,
   Home,
   Menu,
-  Newspaper,
   X,
   type LucideIcon,
 } from "lucide-react";
 import LanguageMenu from "./LanguageMenu";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { usePublicArticlesAvailability } from "@/hooks/usePublicArticlesAvailability";
 import logoSrc from "../assets/images/logos/phricardo.svg";
 import brazilFlagSrc from "../assets/images/flags/brazil.svg";
 import usaFlagSrc from "../assets/images/flags/united_states.svg";
@@ -49,8 +47,6 @@ const Header = () => {
   const [formattedDate, setFormattedDate] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const { hasArticles } = usePublicArticlesAvailability();
-  const shouldShowArticles = language === "pt" && hasArticles;
 
   const navItems = useMemo<NavItem[]>(
     () => [
@@ -82,18 +78,8 @@ const Header = () => {
         icon: FolderOpen,
         sectionId: "projects",
       },
-      ...(shouldShowArticles
-        ? [
-            {
-              href: "/articles",
-              label: language === "pt" ? "Artigos" : "Articles",
-              type: "internal" as const,
-              icon: Newspaper,
-            },
-          ]
-        : []),
     ],
-    [shouldShowArticles, language]
+    [language]
   );
 
   const isActive = (item: NavItem) => {

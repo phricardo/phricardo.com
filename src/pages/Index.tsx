@@ -6,7 +6,6 @@ import Experience from "@/components/Experience";
 import MainLanguages from "@/components/MainLanguages";
 import Footer from "@/components/Footer";
 import AcademicFormation from "@/components/AcademicFormation";
-import HomeArticlesSection from "@/components/HomeArticlesSection";
 
 const Index = () => {
   return (
@@ -21,7 +20,6 @@ const Index = () => {
           <TechStack />
           <MainLanguages />
           <Experience />
-          <HomeArticlesSection />
           <AcademicFormation />
           <Projects />
         </div>
