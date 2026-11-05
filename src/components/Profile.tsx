@@ -58,8 +58,8 @@ const Profile = () => {
 
   const description =
     language === "en"
-      ? "Java Backend developer with 5+ years in microservices (Kafka, RabbitMQ), relational and NoSQL databases, unit/integration testing, and front-end frameworks like React, Angular, Next.js and NestJS."
-      : "Desenvolvedor Backend Java com mais de 5 anos em microserviços (Kafka, RabbitMQ), bancos relacionais e NoSQL, testes unitários/integrados e frameworks como React, Angular, Next.js e NestJS.";
+      ? "Software Engineer and Systems Analyst with professional software development experience since 2019. Specialized in Java, with broad experience across multiple technologies, I have worked in fintech, ad tech, and e-commerce, building end-to-end solutions and large-scale systems. Known for clear communication, strong presentation skills, and the ability to bridge technical and business teams."
+      : "Engenheiro de Software e Analista de Sistemas, com experiência em desenvolvimento desde 2019. Especialista em Java e generalista em diversas tecnologias, atuei nos setores de fintech, ad tech e e-commerce, desenvolvendo soluções de ponta a ponta e sistemas de grande porte. Destaco-me pela comunicação clara, boa oratória e capacidade de conectar áreas técnicas e de negócio.";
 
   const onlineTitle = isOnline
     ? language === "pt"
