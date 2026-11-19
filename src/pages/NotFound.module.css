@@ -1,13 +1,9 @@
 .page {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   background: var(--color-canvas);
   color: var(--color-text-secondary);
-}
-
-.panel {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-ui);
-  background: var(--color-surface);
 }
 
 .code {

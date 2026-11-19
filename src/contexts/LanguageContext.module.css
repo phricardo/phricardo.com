@@ -1,14 +1,19 @@
+.overlay {
+  /*
+   * Lighter, unblurred scrim so the page stays visible behind the dialog and
+   * its glass rim has real content to refract.
+   */
+  background: rgb(0 0 0 / 0.5) !important;
+}
+
 .dialog {
   width: min(calc(100vw - 2rem), 32rem) !important;
   max-width: calc(100vw - 2rem) !important;
   box-sizing: border-box;
   overflow: hidden;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-ui);
-  background: var(--color-surface) !important;
   color: var(--color-text-secondary);
-  box-shadow: 0 24px 64px rgb(0 0 0 / 0.52);
-  isolation: isolate;
+  /* Dense tint keeps the title/description readable over any backdrop. */
+  --lg-tint: rgb(12 12 12 / 0.66);
 }
 
 .title {
@@ -26,24 +31,30 @@
 }
 
 .button {
+  display: inline-flex;
+  height: 2.5rem;
   min-width: 0;
   max-width: 100%;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-ui);
-  background: var(--color-surface) !important;
-  color: var(--color-text-primary) !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
   font-weight: 600;
-  transition: border-color var(--transition-ui), background-color var(--transition-ui);
+  white-space: nowrap;
+  cursor: pointer;
 }
 
-.button:hover {
-  border-color: var(--color-border-hover);
-  background: var(--color-surface-hover) !important;
+.button:hover,
+.button:focus-visible {
+  --lg-tint: rgb(52 52 52 / 0.5);
 }
 
 .buttonActive {
-  border-color: var(--color-accent) !important;
-  background: var(--color-surface-active) !important;
+  /* Accent rim marks the current language. */
+  box-shadow:
+    inset 0 0 0 1px var(--color-accent),
+    0 0 18px rgb(34 230 101 / 0.18);
 }
 
 .footer {

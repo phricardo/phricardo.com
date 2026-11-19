@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import AmbientBackground from "@/components/AmbientBackground";
+import { LiquidGlass } from "@/components/liquid-glass";
 import styles from "./NotFound.module.css";
 
 const NotFound = () => {
@@ -14,13 +16,14 @@ const NotFound = () => {
 
   return (
     <div className={`${styles.page} flex items-center justify-center`}>
-      <div className={`${styles.panel} px-6 py-8 text-center`}>
+      <AmbientBackground />
+      <LiquidGlass variant="panel" className="px-6 py-8 text-center">
         <h1 className={`${styles.code} mb-4 text-4xl`}>404</h1>
         <p className={`${styles.message} mb-4 text-xl`}>Oops! Page not found</p>
         <a href="/" className={`${styles.link} underline`}>
           Return to Home
         </a>
-      </div>
+      </LiquidGlass>
     </div>
   );
 };

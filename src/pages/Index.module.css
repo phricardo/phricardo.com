@@ -1,4 +1,6 @@
 .page {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   background: var(--color-canvas);
   color: var(--color-text-primary);

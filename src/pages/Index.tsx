@@ -6,11 +6,13 @@ import Experience from "@/components/Experience";
 import MainLanguages from "@/components/MainLanguages";
 import Footer from "@/components/Footer";
 import AcademicFormation from "@/components/AcademicFormation";
+import AmbientBackground from "@/components/AmbientBackground";
 import styles from "./Index.module.css";
 
 const Index = () => {
   return (
     <div className={`${styles.page} overflow-x-clip`}>
+      <AmbientBackground />
       <Header />
       <main
         id="home"

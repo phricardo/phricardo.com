@@ -7,6 +7,7 @@ import UpWorkLogo from "../assets/images/companies/upwork.webp";
 import SantanderLogo from "../assets/images/companies/santander.webp";
 import PicPayLogo from "../assets/images/companies/picpay.webp";
 import GovernancaBrasilLogo from "../assets/images/companies/governancabrasil.webp";
+import { LiquidGlass } from "@/components/liquid-glass";
 import sectionStyles from "./Section.module.css";
 import styles from "./Experience.module.css";
 
@@ -104,7 +105,10 @@ const Experience = () => {
       <h2 className={sectionStyles.title}>{t("workExperience")}</h2>
       <div className="space-y-4 md:space-y-8">
         {experiences.map((exp, index) => (
-          <motion.div
+          <LiquidGlass
+            as={motion.div}
+            variant="card"
+            interactive
             key={index}
             className={`${sectionStyles.card} p-4 md:p-6`}
             initial={{ opacity: 0, y: 12 }}
@@ -158,7 +162,7 @@ const Experience = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </LiquidGlass>
         ))}
       </div>
     </section>

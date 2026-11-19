@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { LiquidGlass } from "@/components/liquid-glass";
 import { Github, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -91,7 +91,12 @@ const Projects = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
           >
-            <Card className={`${sectionStyles.card} overflow-hidden`}>
+            <LiquidGlass
+              as={Card}
+              variant="card"
+              interactive
+              className={`${sectionStyles.card} overflow-hidden`}
+            >
               <div className="p-4">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
                   <div className={`${styles.logoFrame} h-16 w-16 flex-shrink-0 overflow-hidden`}>
@@ -123,45 +128,39 @@ const Projects = () => {
                       </div>
                       <div className={`flex gap-2 ${isMobile ? "mt-2" : ""}`}>
                         {project.github && (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className={`${styles.action} min-w-[100px]`}
-                            asChild
+                          <LiquidGlass
+                            as="a"
+                            variant="button"
+                            refract={false}
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`${styles.action} inline-flex h-9 min-w-[100px] items-center justify-center whitespace-nowrap px-3 text-sm`}
                           >
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Github className="mr-1 h-4 w-4" />
-                              GitHub
-                            </a>
-                          </Button>
+                            <Github className="mr-1 h-4 w-4" />
+                            GitHub
+                          </LiquidGlass>
                         )}
                         {project.demo && (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className={`${styles.action} min-w-[100px]`}
-                            asChild
+                          <LiquidGlass
+                            as="a"
+                            variant="button"
+                            refract={false}
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`${styles.action} inline-flex h-9 min-w-[100px] items-center justify-center whitespace-nowrap px-3 text-sm`}
                           >
-                            <a
-                              href={project.demo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <ExternalLink className="mr-1 h-4 w-4" />
-                              {language === "en" ? "Open" : "Acessar"}
-                            </a>
-                          </Button>
+                            <ExternalLink className="mr-1 h-4 w-4" />
+                            {language === "en" ? "Open" : "Acessar"}
+                          </LiquidGlass>
                         )}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </Card>
+            </LiquidGlass>
           </motion.div>
         ))}
       </div>

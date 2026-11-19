@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 
 import BRAZIL_FLAG_URL from "../assets/images/flags/brazil.svg";
 import USA_FLAG_URL from "../assets/images/flags/united_states.svg";
+import { useLiquidGlass } from "@/components/liquid-glass";
 import styles from "./LanguageMenu.module.css";
 
 const languageNames = {
@@ -22,6 +23,7 @@ const LanguageMenu = () => {
   const { language, setLanguage } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const glass = useLiquidGlass<HTMLDivElement>({ variant: "panel", radius: 12 });
 
   useEffect(() => setMounted(true), []);
 
@@ -61,8 +63,11 @@ const LanguageMenu = () => {
       <DropdownMenuTrigger asChild>{triggerButton}</DropdownMenuTrigger>
 
       <DropdownMenuContent
+        ref={glass.ref}
         align="end"
-        className={`${styles.content} p-1 focus:outline-none`}
+        data-lg-mode={glass.mode}
+        style={glass.style}
+        className={`${glass.className} ${styles.content} p-1 focus:outline-none`}
       >
         <DropdownMenuItem
           onClick={() => setLanguage("en")}
@@ -91,6 +96,7 @@ const LanguageMenu = () => {
           />
           <span>{languageNames.pt}</span>
         </DropdownMenuItem>
+        {glass.layer}
       </DropdownMenuContent>
     </DropdownMenu>
   );

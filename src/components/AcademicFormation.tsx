@@ -3,6 +3,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import ufciRjSrc from "../assets/images/logos/ufcirj.webp";
+import { LiquidGlass } from "@/components/liquid-glass";
 import sectionStyles from "./Section.module.css";
 import styles from "./AcademicFormation.module.css";
 
@@ -56,7 +57,10 @@ const AcademicFormation: React.FC = () => {
       </h2>
       <div className="space-y-4 md:space-y-8">
         {formationData.map((data) => (
-          <motion.div
+          <LiquidGlass
+            as={motion.div}
+            variant="card"
+            interactive
             key={data.id}
             className={`${sectionStyles.card} p-4 md:p-6`}
             initial={{ opacity: 0, y: 12 }}
@@ -91,7 +95,7 @@ const AcademicFormation: React.FC = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </LiquidGlass>
         ))}
       </div>
     </section>

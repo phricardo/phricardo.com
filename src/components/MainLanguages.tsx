@@ -15,6 +15,7 @@ import {
 import { DiJava } from "react-icons/di";
 import { Database } from "lucide-react";
 import { motion } from "framer-motion";
+import { LiquidGlass } from "@/components/liquid-glass";
 import sectionStyles from "./Section.module.css";
 import styles from "./MainLanguages.module.css";
 
@@ -59,7 +60,12 @@ const MainLanguages = () => {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <Card className={`${sectionStyles.card} ${styles.card} p-4 sm:p-6`}>
+              <LiquidGlass
+                as={Card}
+                variant="card"
+                interactive
+                className={`${sectionStyles.card} ${styles.card} p-4 sm:p-6`}
+              >
                 <div className="flex flex-col items-center gap-3 sm:gap-4">
                   <Icon className={`${styles.icon} h-8 w-8 sm:h-12 sm:w-12`} />
 
@@ -67,7 +73,7 @@ const MainLanguages = () => {
                     {lang.name}
                   </span>
                 </div>
-              </Card>
+              </LiquidGlass>
             </motion.div>
           );
         })}

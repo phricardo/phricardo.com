@@ -16,6 +16,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import logoSrc from "../assets/images/logos/phricardo.svg";
 import brazilFlagSrc from "../assets/images/flags/brazil.svg";
 import usaFlagSrc from "../assets/images/flags/united_states.svg";
+import { LiquidGlass } from "@/components/liquid-glass";
 import styles from "./Header.module.css";
 
 type NavItem =
@@ -314,7 +315,11 @@ const Header = () => {
         </div>
       </div>
 
-      <header className={`${styles.header} fixed left-0 right-0 top-0 z-[90] w-full border-b`}>
+      <LiquidGlass
+        as="header"
+        variant="nav"
+        className={`${styles.header} fixed left-0 right-0 top-0 z-[90] w-full`}
+      >
         <div className="mx-auto flex min-h-16 w-full max-w-[1100px] items-center justify-between gap-4 px-5 md:min-h-[74px] md:px-6 lg:px-8">
           <Link className="flex shrink-0 items-center gap-2" to="/">
             <img
@@ -332,7 +337,9 @@ const Header = () => {
             <div className="hidden md:block">
               <LanguageMenu />
             </div>
-            <button
+            <LiquidGlass
+              as="button"
+              variant="button"
               type="button"
               className={`${styles.menuButton} inline-flex h-10 w-10 items-center justify-center md:hidden`}
               onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -351,15 +358,18 @@ const Header = () => {
               ) : (
                 <Menu className="h-5 w-5" />
               )}
-            </button>
+            </LiquidGlass>
           </div>
         </div>
-      </header>
+      </LiquidGlass>
       <div className="h-16 md:h-[74px]" aria-hidden="true" />
 
       {isMenuOpen ? (
-        <div className={`${styles.mobileMenu} fixed inset-0 z-[100] flex min-h-svh flex-col overflow-y-auto px-6 py-7 text-white md:hidden`}>
-
+        <LiquidGlass
+          variant="overlay"
+          radius={0}
+          className={`${styles.mobileMenu} fixed inset-0 z-[100] flex min-h-svh flex-col overflow-y-auto px-6 py-7 text-white md:hidden`}
+        >
           <div className="relative z-10 flex items-center justify-between">
             <Link
               className="flex shrink-0 items-center"
@@ -373,14 +383,16 @@ const Header = () => {
               />
             </Link>
 
-            <button
+            <LiquidGlass
+              as="button"
+              variant="button"
               type="button"
               className={`${styles.closeButton} inline-flex h-12 w-12 items-center justify-center`}
               onClick={() => setIsMenuOpen(false)}
               aria-label={language === "pt" ? "Fechar menu" : "Close menu"}
             >
               <X className="h-6 w-6" strokeWidth={1.8} />
-            </button>
+            </LiquidGlass>
           </div>
 
           <nav className="relative z-10 mt-14 flex flex-col">
@@ -396,7 +408,10 @@ const Header = () => {
 
           <div className="relative z-10 mt-auto pb-3 pt-14">
             <p className={`${styles.languageLabel} mb-5 text-lg`}>Idioma</p>
-            <div className={`${styles.languageToggle} grid h-14 max-w-[420px] grid-cols-2 p-1`}>
+            <LiquidGlass
+              variant="button"
+              className={`${styles.languageToggle} grid h-14 max-w-[420px] grid-cols-2 p-1`}
+            >
               <button
                 type="button"
                 onClick={() => setLanguage("pt")}
@@ -427,9 +442,9 @@ const Header = () => {
                 />
                 <span>EN-US</span>
               </button>
-            </div>
+            </LiquidGlass>
           </div>
-        </div>
+        </LiquidGlass>
       ) : null}
     </>
   );

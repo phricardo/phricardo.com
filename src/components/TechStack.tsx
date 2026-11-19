@@ -14,6 +14,7 @@ import icon01 from "../assets/images/companies/icons/01.svg";
 import icon02 from "../assets/images/companies/icons/02.svg";
 import icon03 from "../assets/images/companies/icons/03.svg";
 import icon04 from "../assets/images/companies/icons/04.svg";
+import { LiquidGlass } from "@/components/liquid-glass";
 import sectionStyles from "./Section.module.css";
 import styles from "./TechStack.module.css";
 
@@ -94,15 +95,17 @@ const TechStack = () => {
 
         <div className="flex w-full min-w-0 flex-wrap gap-3">
           {technologies.map(({ label, icon: Icon }) => (
-            <div
+            <LiquidGlass
               key={label}
+              variant="button"
+              interactive
               className={`${styles.expertise} flex min-h-11 max-w-full min-w-0 items-center gap-3 px-4 py-2`}
             >
               <Icon className={`${styles.expertiseIcon} h-5 w-5 shrink-0`} />
               <span className="min-w-0 whitespace-normal break-words leading-snug">
                 {label}
               </span>
-            </div>
+            </LiquidGlass>
           ))}
         </div>
       </div>

@@ -1,0 +1,220 @@
+/*
+ * Liquid glass visual system.
+ *
+ * Every knob is a CSS custom property, so it can be tuned per component in a
+ * CSS module, inline style, or via the <LiquidGlass> props:
+ *
+ *   --lg-radius      corner radius
+ *   --lg-tint        surface tint colour (keep it translucent)
+ *   --lg-blur        backdrop blur in px (inside the SVG filter in refract mode)
+ *   --lg-saturate    backdrop saturation multiplier
+ *   --lg-brightness  backdrop brightness multiplier (refract mode)
+ *   --lg-refraction  max rim displacement in px (unitless number)
+ *   --lg-bezel       width of the curved rim in px
+ *   --lg-chroma      RGB split as a fraction of the refraction (0-1)
+ *   --lg-highlight   specular highlight intensity (0-1+)
+ *   --lg-shadow      outer depth shadow
+ *   --lg-solid       opaque colour used when transparency is unavailable
+ *
+ * Modes (set by the hook on the host as data-lg-mode):
+ *   refract  Chromium: SVG displacement + RGB split as a backdrop-filter
+ *   frost    Other engines: CSS blur/saturate only (no optical distortion)
+ *   solid    No backdrop-filter or prefers-reduced-transparency
+ */
+
+:where(.lg) {
+  --lg-radius: var(--radius-ui, 0.5rem);
+  --lg-tint: rgb(14 14 14 / 0.5);
+  --lg-blur: 4px;
+  --lg-saturate: 1.35;
+  --lg-brightness: 1.05;
+  --lg-refraction: 16;
+  --lg-bezel: 18px;
+  --lg-chroma: 0.25;
+  --lg-highlight: 1;
+  --lg-shadow: 0 10px 30px rgb(0 0 0 / 0.32);
+  --lg-solid: var(--color-surface, #0b0b0b);
+}
+
+/*
+ * The host itself carries the tint and the backdrop-filter. Putting the
+ * backdrop on a child would break in Firefox/Safari, which treat the host's
+ * stacking context as the backdrop root (the child would see nothing).
+ * Children are painted on top of the filtered backdrop, untouched.
+ */
+.lg {
+  isolation: isolate;
+  border-style: none;
+  border-radius: var(--lg-radius);
+  background: var(--lg-tint);
+  box-shadow: var(--lg-shadow);
+  -webkit-backdrop-filter: blur(calc(var(--lg-blur) * 2.5)) saturate(var(--lg-saturate));
+  backdrop-filter: blur(calc(var(--lg-blur) * 2.5)) saturate(var(--lg-saturate));
+}
+
+/* Chromium: SVG displacement (refraction + RGB split) as the backdrop. */
+.lg[data-lg-mode="refract"] {
+  -webkit-backdrop-filter: var(--lg-filter) saturate(var(--lg-saturate)) brightness(var(--lg-brightness));
+  backdrop-filter: var(--lg-filter) saturate(var(--lg-saturate)) brightness(var(--lg-brightness));
+}
+
+.lg[data-lg-mode="solid"] {
+  background: var(--lg-solid);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .lg {
+    background: var(--lg-solid);
+  }
+}
+
+/* Zero specificity so utilities like `fixed`/`absolute` keep working. */
+:where(.lg) {
+  position: relative;
+}
+
+.lg__edge {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.lg__defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ---------- Edge: rim light, specular sheen, gradient border ---------- */
+
+.lg__edge {
+  opacity: 0.9;
+  background: radial-gradient(
+    130% 90% at var(--lg-px, 18%) var(--lg-py, -12%),
+    rgb(255 255 255 / calc(0.07 * var(--lg-highlight))),
+    transparent 58%
+  );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / calc(0.16 * var(--lg-highlight))),
+    inset 0 -1px 0 rgb(255 255 255 / calc(0.05 * var(--lg-highlight))),
+    inset 0 0 calc(var(--lg-bezel) * 0.7) rgb(255 255 255 / calc(0.035 * var(--lg-highlight)));
+  transition: opacity var(--transition-ui, 180ms ease);
+}
+
+.lg__edge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    155deg,
+    rgb(255 255 255 / calc(0.26 * var(--lg-highlight))) 0%,
+    rgb(255 255 255 / 0.07) 28%,
+    rgb(255 255 255 / 0.04) 62%,
+    rgb(255 255 255 / calc(0.13 * var(--lg-highlight))) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.lg--interactive:hover > .lg__edge,
+.lg--interactive:focus-visible > .lg__edge,
+.lg--interactive:focus-within > .lg__edge {
+  opacity: 1;
+  --lg-highlight: 1.6;
+}
+
+/* ---------- Variants ---------- */
+
+:where(.lg--card) {
+  --lg-radius: 14px;
+  --lg-tint: rgb(16 16 16 / 0.46);
+  --lg-blur: 2px;
+  --lg-refraction: 26;
+  --lg-bezel: 22px;
+  --lg-chroma: 0.3;
+}
+
+:where(.lg--panel) {
+  --lg-radius: 16px;
+  --lg-tint: rgb(14 14 14 / 0.62);
+  --lg-blur: 6px;
+  --lg-refraction: 20;
+  --lg-bezel: 20px;
+}
+
+:where(.lg--button) {
+  --lg-radius: 10px;
+  --lg-tint: rgb(30 30 30 / 0.42);
+  --lg-blur: 2px;
+  --lg-refraction: 12;
+  --lg-bezel: 12px;
+  --lg-chroma: 0.3;
+  --lg-shadow: 0 4px 14px rgb(0 0 0 / 0.28);
+}
+
+:where(.lg--nav) {
+  --lg-radius: 0px;
+  --lg-tint: rgb(9 9 9 / 0.58);
+  --lg-blur: 4px;
+  --lg-refraction: 18;
+  --lg-bezel: 16px;
+  --lg-chroma: 0.28;
+  --lg-shadow: 0 8px 28px rgb(0 0 0 / 0.35);
+}
+
+:where(.lg--overlay) {
+  --lg-radius: 18px;
+  --lg-tint: rgb(12 12 12 / 0.6);
+  --lg-blur: 5px;
+  --lg-refraction: 32;
+  --lg-bezel: 30px;
+  --lg-chroma: 0.32;
+  --lg-shadow: 0 30px 80px rgb(0 0 0 / 0.55);
+}
+
+:where(.lg--background) {
+  --lg-radius: 24px;
+  --lg-tint: rgb(255 255 255 / 0.015);
+  --lg-blur: 1.5px;
+  --lg-refraction: 36;
+  --lg-bezel: 48px;
+  --lg-chroma: 0.22;
+  --lg-shadow: 0 20px 60px rgb(0 0 0 / 0.3);
+}
+
+/* ---------- Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .lg__edge {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .lg {
+    background: var(--lg-solid);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .lg {
+    border: 1px solid CanvasText;
+  }
+
+  .lg__edge {
+    display: none;
+  }
+}

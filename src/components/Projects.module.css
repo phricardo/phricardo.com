@@ -14,15 +14,13 @@
 }
 
 .action {
-  border-color: var(--color-border);
-  background: var(--color-surface);
   color: var(--color-text-secondary);
   font-weight: 600;
   transition: border-color var(--transition-ui), background-color var(--transition-ui), color var(--transition-ui);
 }
 
-.action:hover {
-  border-color: var(--color-border-hover);
-  background: var(--color-surface-hover);
+.action:hover,
+.action:focus-visible {
+  --lg-tint: rgb(48 48 48 / 0.5);
   color: var(--color-text-primary);
 }

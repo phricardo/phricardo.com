@@ -1,6 +1,6 @@
 .footer {
-  border-color: var(--color-border);
-  background: var(--color-surface);
+  --lg-tint: rgb(10 10 10 / 0.7);
+  --lg-shadow: none;
 }
 
 .copyright {

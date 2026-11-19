@@ -7,7 +7,7 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { LiquidGlass, useLiquidGlass } from "@/components/liquid-glass";
 import styles from "./LanguageContext.module.css";
 
 type Language = "en" | "pt";
@@ -78,6 +78,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>("en");
   const [showModal, setShowModal] = useState<boolean>(true);
   const [mounted, setMounted] = useState<boolean>(false);
+  const dialogGlass = useLiquidGlass<HTMLDivElement>({ variant: "overlay" });
   const [hasConfirmedLanguageSelection, setHasConfirmedLanguageSelection] =
     useState<boolean>(false);
 
@@ -128,7 +129,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     >
       {mounted && (
         <Dialog open={showModal} onOpenChange={handleLanguageModalChange}>
-          <DialogContent className={styles.dialog}>
+          <DialogContent
+            ref={dialogGlass.ref}
+            data-lg-mode={dialogGlass.mode}
+            style={dialogGlass.style}
+            className={`${dialogGlass.className} ${styles.dialog}`}
+            overlayClassName={styles.overlay}
+          >
             <DialogHeader>
               <DialogTitle className={styles.title}>
                 Select your language / Selecione seu idioma
@@ -138,8 +145,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
               </DialogDescription>
             </DialogHeader>
             <DialogFooter className={`${styles.footer} flex gap-2`}>
-              <Button
-                variant="outline"
+              <LiquidGlass
+                as="button"
+                type="button"
+                variant="button"
+                interactive
                 onClick={() => {
                   handleSetLanguage("en");
                   setShowModal(false);
@@ -149,9 +159,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
                 }`}
               >
                 English
-              </Button>
-              <Button
-                variant="outline"
+              </LiquidGlass>
+              <LiquidGlass
+                as="button"
+                type="button"
+                variant="button"
+                interactive
                 onClick={() => {
                   handleSetLanguage("pt");
                   setShowModal(false);
@@ -161,8 +174,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
                 }`}
               >
                 Português
-              </Button>
+              </LiquidGlass>
             </DialogFooter>
+            {dialogGlass.layer}
           </DialogContent>
         </Dialog>
       )}
