@@ -1,0 +1,7 @@
+interface:
+  display_name: "Git Session Author"
+  short_description: "Keep commits under the active Git identity"
+  default_prompt: "Use $git-session-author before creating or rewriting Git commits."
+
+policy:
+  allow_implicit_invocation: true

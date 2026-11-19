@@ -1,0 +1,213 @@
+import { useEffect, useMemo, useState } from "react";
+import Confetti from "react-confetti";
+import { Github, Instagram, Linkedin, Youtube } from "lucide-react";
+import { motion } from "framer-motion";
+
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useOnlineStatus } from "@/hooks/use-online-status";
+import { getExternalRoutePath } from "@/config/externalRoutes";
+
+import profile from "../assets/images/profiles/profile.webp";
+import profileChristmas from "../assets/images/profiles/profile_natal.webp";
+import styles from "./Profile.module.css";
+
+function isChristmasSeason(date = new Date(), timeZone = "America/Sao_Paulo") {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+
+  const month = Number(parts.find((p) => p.type === "month")?.value);
+  const day = Number(parts.find((p) => p.type === "day")?.value);
+
+  if (month === 12) return true;
+  if (month === 1 && day <= 6) return true;
+
+  return false;
+}
+
+const Profile = () => {
+  const { language } = useLanguage();
+  const isOnline = useOnlineStatus();
+
+  const isChristmas = useMemo(() => isChristmasSeason(), []);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [showConfetti, setShowConfetti] = useState(false);
+
+  useEffect(() => {
+    const update = () => {
+      setDimensions({
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight,
+      });
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  useEffect(() => {
+    if (!isChristmas) return;
+
+    setShowConfetti(true);
+    const timer = setTimeout(() => setShowConfetti(false), 5000);
+    return () => clearTimeout(timer);
+  }, [isChristmas]);
+
+  const description =
+    language === "en"
+      ? "Software Engineer and Systems Analyst with professional software development experience since 2019. Specialized in Java, with broad experience across multiple technologies, I have worked in fintech, ad tech, and e-commerce, building end-to-end solutions and large-scale systems. Known for clear communication, strong presentation skills, and the ability to bridge technical and business teams."
+      : "Engenheiro de Software e Analista de Sistemas, com experiência em desenvolvimento desde 2019. Especialista em Java e generalista em diversas tecnologias, atuei nos setores de fintech, ad tech e e-commerce, desenvolvendo soluções de ponta a ponta e sistemas de grande porte. Destaco-me pela comunicação clara, boa oratória e capacidade de conectar áreas técnicas e de negócio.";
+
+  const onlineTitle = isOnline
+    ? language === "pt"
+      ? "On-line"
+      : "Online"
+    : language === "pt"
+    ? "Offline"
+    : "Offline";
+
+  return (
+    <section className="w-full">
+      {showConfetti && dimensions.width > 0 && (
+        <Confetti
+          width={dimensions.width}
+          height={dimensions.height}
+          numberOfPieces={250}
+          recycle={false}
+          gravity={0.15}
+          style={{
+            position: "fixed",
+            inset: 0,
+            pointerEvents: "none",
+            zIndex: 50,
+          }}
+        />
+      )}
+
+      <div className="grid w-full items-center gap-8 md:grid-cols-[280px_minmax(0,1fr)] lg:grid-cols-[315px_minmax(0,1fr)] lg:gap-10">
+        <div className="flex justify-center md:justify-start">
+          <div className="relative">
+            <div
+              className="relative h-60 w-60 overflow-hidden rounded-full sm:h-64 sm:w-64 lg:h-[280px] lg:w-[280px]"
+              style={{ perspective: 1000 }}
+            >
+              <motion.div
+                className={`${styles.portrait} relative h-full w-full rounded-full border-[8px]`}
+                style={{
+                  transformStyle: "preserve-3d",
+                }}
+                initial={{ rotateY: 0 }}
+                animate={{ rotateY: isChristmas ? 180 : 0 }}
+                transition={{
+                  delay: 1,
+                  duration: 0.7,
+                  ease: "easeInOut",
+                }}
+              >
+                <img
+                  src={profile}
+                  alt="Profile"
+                  className="absolute inset-0 h-full w-full rounded-full object-cover"
+                  style={{
+                    backfaceVisibility: "hidden",
+                  }}
+                />
+
+                <img
+                  src={profileChristmas}
+                  alt="Profile Christmas"
+                  className="absolute inset-0 h-full w-full rounded-full object-cover"
+                  style={{
+                    transform: "rotateY(180deg)",
+                    backfaceVisibility: "hidden",
+                  }}
+                />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto w-full text-center md:mx-0 md:text-left">
+          <div
+            className={`mb-3 flex items-center justify-center gap-2.5 md:justify-start ${
+              isOnline ? styles.statusOnline : styles.statusOffline
+            }`}
+          >
+            <span className="relative inline-flex h-3 w-3 shrink-0 items-center justify-center">
+              <span
+                className={`${styles.statusPulse} absolute left-0 top-0 block h-3 w-3 rounded-full opacity-60`}
+              />
+              <span
+                className={`${styles.statusDot} relative block h-3 w-3 shrink-0 rounded-full`}
+              />
+            </span>
+
+            <span className={styles.statusLabel}>{onlineTitle}</span>
+          </div>
+
+          <h1
+            className={`${styles.name} mb-3 text-4xl leading-tight sm:text-4xl lg:text-5xl`}
+          >
+            Pedro Ricardo
+          </h1>
+
+          <p className={`${styles.identity} mb-5 text-base`}>
+            @phricardo <span className={`${styles.separator} mx-2`}>•</span>{" "}
+            Backend / Full-stack Developer
+          </p>
+
+          <p className={`${styles.description} mb-6 w-full text-base`}>
+            {description}
+          </p>
+
+          <div className="flex items-center justify-center gap-6 md:justify-start">
+            <a
+              href={getExternalRoutePath("github")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialLink}
+              aria-label="GitHub"
+            >
+              <Github size={23} />
+            </a>
+
+            <a
+              href={getExternalRoutePath("linkedin")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialLink}
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={23} />
+            </a>
+
+            <a
+              href={getExternalRoutePath("instagram")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialLink}
+              aria-label="Instagram"
+            >
+              <Instagram size={23} />
+            </a>
+
+            <a
+              href={getExternalRoutePath("youtube")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialLink}
+              aria-label="YouTube"
+            >
+              <Youtube size={23} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Profile;

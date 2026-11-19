@@ -1,0 +1,20 @@
+.card {
+  min-height: 8.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  color: var(--color-text-secondary);
+  transition: color var(--transition-ui);
+}
+
+.card:hover .icon {
+  color: var(--color-text-primary);
+}
+
+.label {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
